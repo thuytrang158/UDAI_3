@@ -1,0 +1,4241 @@
+{
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-10-29",
+  "project": "Trà Journey | Thái Nguyên + khu vực Ba Bể",
+  "currency": "VND",
+  "locale": "vi-VN",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "mode": "DEMO_SIMULATION",
+  "publicNotice": "BẢN DEMO — giá, lịch khởi hành, số chỗ, phương tiện, chính sách và thanh toán đều là dữ liệu giả lập phục vụ thử nghiệm, không phải tour mở bán thực tế.",
+  "sourceNote": "Dựa trên 10 tour TJ01-TJ10 và mức giá biên tập trong dist/tours-data.js; tất cả giá/khả dụng bổ sung là dữ liệu giả lập tự thiết kế, không được coi là báo giá của đối tác.",
+  "compatibility": {
+    "keepEditorialAsSingleSourceOfTruth": "dist/tours-data.js",
+    "doNotEdit": [
+      "t.name",
+      "t.description",
+      "t.summary",
+      "t.highlights",
+      "t.itinerary",
+      "t.included",
+      "t.excluded",
+      "t.food",
+      "t.lodging",
+      "t.packing",
+      "t.notes",
+      "t.weatherPlan",
+      "t.demoReviews",
+      "t.rating",
+      "t.stops",
+      "t.places",
+      "t.gallery",
+      "tourMarkdown(t)"
+    ],
+    "matchTourBy": "tourCode === TRA_CATALOG.tours[].code AND tourId === t.id",
+    "matchFallback": "Không ghép theo thứ tự mảng hoặc tên; thiếu tour thì giữ popup cũ và thông báo lỗi nhẹ.",
+    "loadFrom": "dist/data/tour-booking-config-v2.json",
+    "uiMount": "Thêm booking panel cạnh nội dung popup hoặc drawer độc lập, KHÔNG thay nội dung HTML của các phần gốc.",
+    "server": "server.cjs currently static; endpoint demo optional through independent API routes, never expose PII",
+    "priceCardsStayOriginal": true
+  },
+  "demoRules": {
+    "isRealBooking": false,
+    "realPaymentEnabled": false,
+    "realInsuranceSold": false,
+    "showDemoBadgeEverywhere": true,
+    "allowSimulatedSeatNumbers": true,
+    "neverClaimSupplierConfirmed": true,
+    "neverUseRealTransferInstructions": true,
+    "neverUseRealPaymentQR": true,
+    "fakeEmailSmsSending": false,
+    "fakeHotlineAllowed": false,
+    "demoInventoryRules": "Chỉ hiển thị chỗ trống dựa trên kịch bản giả lập có gắn nhãn DEMO; khi đặt phải có backend mock quản lý giao dịch. Nếu không có backend thì không được hứa chỗ đã được giữ giữa các máy.",
+    "privacy": "Không đưa email, số điện thoại, tên, ngày sinh khách vào URL, analytics, console log, localStorage hoặc source code.",
+    "timezone": "Ngày giờ tính theo Asia/Ho_Chi_Minh, không parse YYYY-MM-DD thành UTC khi kiểm tra ngày.",
+    "noPersistRawPaymentCredentials": true
+  },
+  "ageBands": [
+    {
+      "id": "adult",
+      "label": "Người lớn (từ 12 tuổi)",
+      "minAge": 12,
+      "maxAge": null,
+      "requiresSeat": true
+    },
+    {
+      "id": "child",
+      "label": "Trẻ em (6–11 tuổi)",
+      "minAge": 6,
+      "maxAge": 11,
+      "requiresSeat": true
+    },
+    {
+      "id": "infant",
+      "label": "Trẻ nhỏ (0–5 tuổi)",
+      "minAge": 0,
+      "maxAge": 5,
+      "requiresSeat": true,
+      "requiresAdultGuardian": true
+    }
+  ],
+  "bookingFlow": {
+    "steps": [
+      {
+        "id": "date",
+        "label": "Chọn ngày đi",
+        "description": "Xem lịch, tình trạng chỗ mô phỏng và chọn điểm đón"
+      },
+      {
+        "id": "travellers",
+        "label": "Số khách & dịch vụ",
+        "description": "Chọn độ tuổi, phương tiện, phòng nghỉ và dịch vụ thêm"
+      },
+      {
+        "id": "contact",
+        "label": "Thông tin khách",
+        "description": "Thông tin người đại diện, ghi chú và xác nhận chính sách"
+      },
+      {
+        "id": "review",
+        "label": "Kiểm tra đơn",
+        "description": "Xem toàn bộ chi tiết giá và điều kiện trước khi xác nhận demo"
+      },
+      {
+        "id": "result",
+        "label": "Mã đặt tour",
+        "description": "Mã booking demo, vé/phiếu PDF hoặc bản in và lịch trình cũ"
+      }
+    ],
+    "desktop": "Tour content left with booking sidebar width ~340-390px, visually sticky within modal; keep map and all editorial sections intact",
+    "mobile": "One-column content and compact bottom CTA (Xem giá/Đặt tour), booking drawer full-screen; avoid nested scroll traps",
+    "buttons": [
+      "Chọn ngày",
+      "Kiểm tra chỗ DEMO",
+      "Giữ chỗ 10 phút DEMO",
+      "Tiếp tục",
+      "Xác nhận đặt tour DEMO",
+      "Xem mã đặt tour",
+      "In / Lưu phiếu DEMO"
+    ],
+    "badges": [
+      "DEMO",
+      "Còn x chỗ (mô phỏng)",
+      "Sắp hết chỗ (mô phỏng)",
+      "Hết chỗ (mô phỏng)"
+    ],
+    "currencyFormat": "Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0})",
+    "errorMessages": {
+      "soldOut": "Ngày này đã hết chỗ (mô phỏng). Hãy chọn ngày khác.",
+      "shortLead": "Ngày chọn quá sát ngày đi. Hãy chọn một ngày khác.",
+      "overCapacity": "Số khách vượt chỗ còn lại trong dữ liệu demo.",
+      "invalidAge": "Độ tuổi chưa phù hợp điều kiện tour.",
+      "expiredHold": "Thời gian giữ chỗ demo đã hết. Vui lòng kiểm tra lại.",
+      "offline": "Không kết nối được máy chủ demo. Đơn chưa được ghi nhận.",
+      "unpriced": "Dịch vụ này yêu cầu báo giá, không tự động cộng 0 đồng.",
+      "privacy": "Hãy đồng ý với thông báo xử lý dữ liệu demo trước khi tiếp tục."
+    }
+  },
+  "passengerData": {
+    "leadFields": [
+      {
+        "key": "fullName",
+        "required": true,
+        "maxLength": 80
+      },
+      {
+        "key": "phone",
+        "required": true,
+        "pattern": "^(?:\\+84|0)(?:[0-9]{9})$"
+      },
+      {
+        "key": "email",
+        "required": true,
+        "type": "email"
+      },
+      {
+        "key": "city",
+        "required": false
+      },
+      {
+        "key": "specialRequests",
+        "required": false,
+        "maxLength": 800
+      }
+    ],
+    "travellerFields": [
+      {
+        "key": "fullName",
+        "required": true
+      },
+      {
+        "key": "birthDate",
+        "required": true,
+        "validation": "Đối chiếu tuổi tại ngày đi với ageBands; không thu giấy tờ tùy thân trên frontend demo"
+      },
+      {
+        "key": "gender",
+        "required": false
+      },
+      {
+        "key": "dietaryNotes",
+        "required": false
+      }
+    ],
+    "optionalEmergContactForAdventure": true,
+    "medicalDataPolicy": "Chỉ hiện checkbox tự đánh giá khả năng vận động và ghi chú tự nguyện; không yêu cầu chẩn đoán/bệnh án/số CCCD/hộ chiếu để demo.",
+    "privacyAndTermsCheckboxes": [
+      {
+        "id": "consent",
+        "required": true,
+        "label": "Tôi đồng ý cung cấp thông tin để tạo đơn demo và hiểu thông tin chỉ dùng trong bản thử nghiệm."
+      },
+      {
+        "id": "demoAcknowledgement",
+        "required": true,
+        "label": "Tôi hiểu đây là đặt chỗ và thanh toán mô phỏng; không có giao dịch thật."
+      },
+      {
+        "id": "travelPolicies",
+        "required": true,
+        "label": "Tôi đã đọc điều kiện giá, thay đổi lịch và hủy đơn demo."
+      }
+    ],
+    "invoiceRequest": {
+      "enabled": true,
+      "mockOnly": true,
+      "fields": [
+        "companyName",
+        "taxCode",
+        "invoiceEmail",
+        "companyAddress"
+      ],
+      "disclaimer": "Chỉ mô phỏng yêu cầu hóa đơn, không xuất hóa đơn điện tử thật."
+    }
+  },
+  "pricingEngine": {
+    "integerVND": true,
+    "roundMoneyToVND": 1000,
+    "formula": [
+      "baseFare = adultCount*adultBaseVND + childCount*childBaseVND + infantCount*infantBaseVND",
+      "dateSurcharge = adults*departure.surchargeAdultVND + children*departure.surchargeChildVND + infants*departure.surchargeInfantVND",
+      "transportCharge = pricingUnit(transportOption) with negative self-arrival discount if selected",
+      "pickupCharge = pricingUnit(pickupOption)",
+      "roomCharge = roomUnitVND * roomCount * tour.durationNights for per_room_per_night options",
+      "addonCharge = sum(each selected add-on priced by per_person, per_booking or per_day_per_booking and units)",
+      "fareEligibleForDiscount = adultCount*adultBaseVND + childCount*childBaseVND + dateSurcharge (exclude infants)",
+      "discount = exactly one of groupTierDiscount OR validCouponDiscount; never stack; cap at fareEligibleForDiscount",
+      "subtotal = baseFare + dateSurcharge + transportCharge + pickupCharge + roomCharge + addonCharge - discount",
+      "demoDeposit = roundHalfUpToNearest1000(subtotal*30/100), demoBalance = subtotal - demoDeposit",
+      "null chargeVND = manual_quote, not 0; do not present grandTotal as final when unpriced item is selected"
+    ],
+    "rounding": {
+      "method": "HALF_UP",
+      "unitVND": 1000,
+      "implementation": "Math.floor((amount+500)/1000)*1000 for integer non-negative amount"
+    },
+    "subtotalFloorVND": 0,
+    "infantSeatCountsAsPassenger": true,
+    "discountGroupTiers": [
+      {
+        "minPayingGuests": 4,
+        "maxPayingGuests": 7,
+        "percent": 3
+      },
+      {
+        "minPayingGuests": 8,
+        "maxPayingGuests": 100,
+        "percent": 5
+      }
+    ],
+    "couponStackingAllowed": false,
+    "couponRules": [
+      {
+        "code": "TRAXANH100",
+        "kind": "fixed",
+        "valueVND": 100000,
+        "minFareVND": 1500000,
+        "activeFrom": "2026-11-01",
+        "activeThrough": "2027-12-31",
+        "applicableTourCodes": "ALL",
+        "maxUsePerDemoBooking": 1,
+        "disclaimer": "Mã khuyến mại giả lập"
+      },
+      {
+        "code": "TRA5",
+        "kind": "percentage",
+        "percent": 5,
+        "maxDiscountVND": 250000,
+        "minFareVND": 3000000,
+        "activeFrom": "2026-11-01",
+        "activeThrough": "2027-12-31",
+        "applicableTourCodes": "ALL",
+        "maxUsePerDemoBooking": 1,
+        "disclaimer": "Mã khuyến mại giả lập"
+      },
+      {
+        "code": "BABE200",
+        "kind": "fixed",
+        "valueVND": 200000,
+        "minFareVND": 6500000,
+        "activeFrom": "2026-11-01",
+        "activeThrough": "2027-12-31",
+        "applicableTourCodes": [
+          "TJ06",
+          "TJ08",
+          "TJ09",
+          "TJ10"
+        ],
+        "maxUsePerDemoBooking": 1,
+        "disclaimer": "Mã khuyến mại giả lập"
+      }
+    ],
+    "unknownChargesHandling": "Cho phép gửi yêu cầu tư vấn demo nhưng không cho bấm thanh toán mô phỏng đến khi bỏ dịch vụ chưa có giá.",
+    "dateSurcharge": "Mỗi departure có surchargeAdultVND, surchargeChildVND, surchargeInfantVND minh họa riêng; không double count surcharge khi đổi ngày."
+  },
+  "lookupCatalogs": {
+    "transportOptions": {
+      "shuttle": {
+        "label": "Xe du lịch theo đoàn",
+        "chargeVND": 0,
+        "unit": "per_booking",
+        "maxPassengers": null,
+        "description": "Đã tính trong giá tour demo; không phải dịch vụ xe cố định của doanh nghiệp thực."
+      },
+      "limousine": {
+        "label": "Nâng cấp Limousine 9 chỗ",
+        "chargeVND": 280000,
+        "unit": "per_person_per_day",
+        "maxPassengers": 8,
+        "description": "Phụ phí minh họa tính trên mỗi khách có ghế và mỗi ngày."
+      },
+      "private_7": {
+        "label": "Xe riêng 7 chỗ (thay xe đoàn)",
+        "chargeVND": 1450000,
+        "unit": "per_day_per_booking",
+        "maxPassengers": 6,
+        "description": "Phụ phí cho mỗi ngày; đã coi là khoản nâng cấp so với xe đoàn (không cộng lại xe cơ bản)."
+      },
+      "self_arrival": {
+        "label": "Tự túc phương tiện",
+        "chargeVND": -120000,
+        "unit": "per_adult",
+        "childChargeVND": -60000,
+        "infantChargeVND": 0,
+        "maxPassengers": null,
+        "description": "Khoản giảm trừ mô phỏng; phải đến đúng điểm hẹn đầu tiên, không ảnh hưởng lịch tour."
+      }
+    },
+    "pickupOptions": {
+      "thai-nguyen-center": {
+        "label": "Trung tâm TP. Thái Nguyên",
+        "chargeVND": 0,
+        "unit": "per_booking",
+        "timeOffsetMinutes": 0,
+        "addressStatus": "demo_approximate",
+        "details": "Địa điểm tập kết cụ thể có trong phiếu xác nhận demo."
+      },
+      "pho-yen": {
+        "label": "Khu vực Phổ Yên - điểm đón phụ (demo)",
+        "chargeVND": 220000,
+        "unit": "per_booking",
+        "timeOffsetMinutes": -50,
+        "addressStatus": "demo_approximate",
+        "details": "Điểm đón gần trục giao thông lớn; giờ dự kiến có thể điều chỉnh."
+      },
+      "ha-noi-my-dinh": {
+        "label": "Hà Nội - bến xe Mỹ Đình (demo)",
+        "chargeVND": 270000,
+        "unit": "per_person",
+        "timeOffsetMinutes": -135,
+        "addressStatus": "demo_approximate",
+        "details": "Phụ thu gom khách mỗi khách (cả trẻ nhỏ có ghế), không cam kết đơn vị xe thật."
+      },
+      "custom-pickup": {
+        "label": "Địa chỉ đón khác (cần xác nhận)",
+        "chargeVND": null,
+        "unit": "per_booking",
+        "timeOffsetMinutes": null,
+        "addressStatus": "manual_quote",
+        "details": "Nhập quận/huyện và địa chỉ, hiển thị phí tạm tính không bao gồm dịch vụ chưa báo giá."
+      },
+      "meet-on-site": {
+        "label": "Tự đến điểm tập trung theo tour",
+        "chargeVND": 0,
+        "unit": "per_booking",
+        "timeOffsetMinutes": 0,
+        "addressStatus": "demo_approximate",
+        "details": "Chỉ có khi dùng phương án tự túc, không giảm trừ phí xe nếu chọn xe trong tour."
+      }
+    },
+    "roomOptions": {
+      "standard": {
+        "label": "Phòng tiêu chuẩn theo chương trình",
+        "chargeVND": 0,
+        "unit": "per_booking",
+        "occupancy": 2,
+        "details": "Tiêu chuẩn ngủ ghép 2 khách/phòng nếu phù hợp; loại phòng thực tế theo đơn vị lưu trú."
+      },
+      "private": {
+        "label": "Phòng riêng, tiêu chuẩn 2 khách",
+        "chargeVND": 420000,
+        "unit": "per_room_per_night",
+        "occupancy": 2,
+        "details": "Tính số phòng x số đêm. Không tự đặt thêm khách vượt sức chứa phòng."
+      },
+      "single": {
+        "label": "Phòng đơn (1 khách/phòng)",
+        "chargeVND": 480000,
+        "unit": "per_room_per_night",
+        "occupancy": 1,
+        "details": "Tính số phòng x số đêm; trẻ nhỏ ngủ chung theo chính sách mô phỏng."
+      },
+      "lake_view": {
+        "label": "Nâng cấp phòng hướng hồ Ba Bể",
+        "chargeVND": 620000,
+        "unit": "per_room_per_night",
+        "occupancy": 2,
+        "details": "Ví dụ phân hạng phòng cho demo, không gắn với cơ sở lưu trú cụ thể."
+      }
+    },
+    "addonOptions": {
+      "boat": {
+        "name": "Vé tham quan bằng thuyền (nếu có đối tác đủ điều kiện)",
+        "amountVND": 180000,
+        "unit": "per_person",
+        "eligibleAgeBands": [
+          "adult",
+          "child"
+        ],
+        "details": "Lựa chọn tự nguyện; phụ thuộc thời tiết, nhà khai thác, áo phao và giới hạn tuyến. Không thay đổi lịch trình gốc."
+      },
+      "photos": {
+        "name": "Bộ 10 ảnh điện tử nhóm (demo)",
+        "amountVND": 290000,
+        "unit": "per_booking",
+        "details": "Dịch vụ chụp ảnh ngoài các hình ảnh khách tự chụp."
+      },
+      "tea_workshop": {
+        "name": "Workshop pha trà chuyên sâu (tùy chọn)",
+        "amountVND": 190000,
+        "unit": "per_person",
+        "eligibleAgeBands": [
+          "adult",
+          "child"
+        ],
+        "details": "Khác với trải nghiệm thưởng trà cơ bản được ghi trong lịch trình."
+      },
+      "picnic_deluxe": {
+        "name": "Nâng cấp set picnic gia đình",
+        "amountVND": 125000,
+        "unit": "per_person",
+        "eligibleAgeBands": [
+          "adult",
+          "child"
+        ],
+        "details": "Phần nâng cấp thêm, không thu lại chi phí set dã ngoại cơ bản của tour."
+      },
+      "photographer": {
+        "name": "Thợ chụp ảnh nhóm nửa buổi (demo)",
+        "amountVND": 690000,
+        "unit": "per_booking",
+        "details": "Chỉ là dịch vụ mẫu; lịch chụp cần được xác nhận."
+      },
+      "heritage_guide": {
+        "name": "Thuyết minh chuyên đề riêng (nâng cấp)",
+        "amountVND": 550000,
+        "unit": "per_booking",
+        "details": "Phần chuyên đề tăng cường, không thu trùng phần thuyết minh cơ bản."
+      },
+      "bilingual_guide": {
+        "name": "Hướng dẫn viên tiếng Anh tăng cường",
+        "amountVND": 750000,
+        "unit": "per_day_per_booking",
+        "details": "Chi phí minh họa cho hướng dẫn riêng bằng tiếng Anh."
+      },
+      "trekking_poles": {
+        "name": "Thuê gậy trekking",
+        "amountVND": 80000,
+        "unit": "per_person",
+        "eligibleAgeBands": [
+          "adult"
+        ],
+        "details": "Thuê gậy theo tour, không thay thế trang bị an toàn bắt buộc."
+      },
+      "adventure_photo": {
+        "name": "Gói ảnh hành trình trekking/hang động (demo)",
+        "amountVND": 790000,
+        "unit": "per_booking",
+        "details": "Chỉ thực hiện tại vị trí được đơn vị khai thác cho phép; không phát sinh chụp ở khu vực nguy hiểm."
+      },
+      "lake_meal": {
+        "name": "Nâng cấp thực đơn cá hồ (suất)",
+        "amountVND": 170000,
+        "unit": "per_person",
+        "eligibleAgeBands": [
+          "adult",
+          "child"
+        ],
+        "details": "Chi phí phần bổ sung trên thực đơn tiêu chuẩn."
+      },
+      "bonfire_permit": {
+        "name": "Yêu cầu tổ chức hoạt động lửa trại (báo giá)",
+        "amountVND": null,
+        "unit": "per_booking",
+        "requiresManualQuote": true,
+        "details": "Chỉ khi có đơn vị vận hành cấp phép và điều kiện an toàn phù hợp; không mặc định tổ chức."
+      },
+      "dry_bag": {
+        "name": "Thuê túi chống nước cho hành lý cá nhân",
+        "amountVND": 95000,
+        "unit": "per_person",
+        "eligibleAgeBands": [
+          "adult"
+        ],
+        "details": "Không thay thế thiết bị bảo hộ hoặc chuyên môn dẫn đoàn."
+      }
+    }
+  },
+  "simulatedPayment": {
+    "enabled": true,
+    "paymentType": "MOCK_ONLY_NO_REAL_CHARGE",
+    "methods": [
+      {
+        "id": "pay_later",
+        "label": "Thanh toán sau khi được tư vấn (demo)",
+        "showForm": false,
+        "paymentStatus": "not_paid"
+      },
+      {
+        "id": "mock_cash",
+        "label": "Tiền mặt tại điểm đón (mô phỏng)",
+        "showForm": false,
+        "paymentStatus": "unpaid"
+      },
+      {
+        "id": "mock_card",
+        "label": "Thẻ nội bộ giả lập — KHÔNG nhập số thẻ thật",
+        "showForm": true,
+        "inputMode": "one-click-test-confirmation",
+        "paymentStatus": "simulated_paid"
+      },
+      {
+        "id": "mock_wallet",
+        "label": "Ví điện tử demo (không kết nối ví thật)",
+        "showForm": false,
+        "paymentStatus": "simulated_paid"
+      }
+    ],
+    "demoDepositPercent": 30,
+    "simulatePaymentDelayMs": 450,
+    "allowBalancePaymentInDemo": true,
+    "showMockReceipt": true,
+    "neverCollect": [
+      "realCardNumber",
+      "CVV",
+      "expiry",
+      "bankLogin",
+      "otp",
+      "actualPaymentToken"
+    ],
+    "disclaimer": "Thanh toán demo không trừ tiền thật, không dùng QR ngân hàng hoặc tài khoản thật."
+  },
+  "inventoryDemo": {
+    "availabilityType": "mock_seeded_server_authoritative",
+    "seatHoldTTLMinutes": 10,
+    "expireHoldAutomatically": true,
+    "seatUnit": "everyTravellerIncludingInfant",
+    "seatValue": "capacity - bookedSeats - activeHeldSeats",
+    "soldOutCondition": "availableSeats < totalTravellers",
+    "lastSeatsThreshold": 4,
+    "refreshIntervalSeconds": 30,
+    "oversellPrevention": "Atomic updates / mutex / transactional store on server; never rely on client counters for concurrency.",
+    "fallbackWithoutServer": "Cho phép xem lịch và tính giá, nhưng vô hiệu hóa giữ chỗ và xác nhận; không ghi trạng thái thành công giả."
+  },
+  "demoOrderLifecycle": {
+    "statuses": [
+      {
+        "id": "draft",
+        "label": "Nháp"
+      },
+      {
+        "id": "held",
+        "label": "Đang giữ chỗ (DEMO)"
+      },
+      {
+        "id": "pending_payment",
+        "label": "Chờ hoàn tất thao tác thanh toán demo"
+      },
+      {
+        "id": "pending_review_demo",
+        "label": "Chờ điều phối viên duyệt (DEMO)"
+      },
+      {
+        "id": "confirmed_demo",
+        "label": "Xác nhận booking mô phỏng"
+      },
+      {
+        "id": "cancelled_demo",
+        "label": "Đã hủy đơn mô phỏng"
+      },
+      {
+        "id": "expired",
+        "label": "Hết hạn giữ chỗ"
+      }
+    ],
+    "transitions": {
+      "draft": [
+        "held"
+      ],
+      "held": [
+        "pending_payment",
+        "pending_review_demo",
+        "confirmed_demo",
+        "expired",
+        "cancelled_demo"
+      ],
+      "pending_payment": [
+        "pending_review_demo",
+        "confirmed_demo",
+        "expired",
+        "cancelled_demo"
+      ],
+      "confirmed_demo": [
+        "cancelled_demo"
+      ],
+      "cancelled_demo": [],
+      "expired": [],
+      "pending_review_demo": [
+        "confirmed_demo",
+        "cancelled_demo"
+      ]
+    },
+    "idFormat": "TRJ-<tourCode>-<YYMMDD>-<8-char-random>",
+    "secureLookup": "Mã đặt tour + token ngẫu nhiên riêng (không lưu trong URL), chỉ lấy đơn của chính phiên demo; API không lộ PII công khai.",
+    "ticketFields": [
+      "code",
+      "tourCode",
+      "tourName",
+      "departureDate",
+      "departureTime",
+      "meetingPoint",
+      "passengerCounts",
+      "transport",
+      "room",
+      "addons",
+      "priceBreakdown",
+      "depositDemo",
+      "balanceDemo",
+      "bookingStatus",
+      "paymentStatus",
+      "generatedAt",
+      "importantNotes"
+    ],
+    "confirmationText": "ĐẶT TOUR MÔ PHỎNG THÀNH CÔNG — Đây không phải hợp đồng hay vé tour thật.",
+    "notifications": {
+      "inApp": true,
+      "printVoucher": true,
+      "downloadJsonReceipt": true,
+      "emailEnabled": false,
+      "smsEnabled": false,
+      "toastOnlyForActions": true
+    }
+  },
+  "demoPolicies": {
+    "cancelPolicy": {
+      "id": "CANCEL_DEMO_STANDARD",
+      "disclaimer": "Chính sách hủy DEMO chỉ dùng để thử quy trình; không áp dụng cho tour thực.",
+      "tiers": [
+        {
+          "daysBeforeDepartureMin": 14,
+          "refundPaidPercent": 100
+        },
+        {
+          "daysBeforeDepartureMin": 7,
+          "daysBeforeDepartureMax": 13,
+          "refundPaidPercent": 70
+        },
+        {
+          "daysBeforeDepartureMin": 3,
+          "daysBeforeDepartureMax": 6,
+          "refundPaidPercent": 50
+        },
+        {
+          "daysBeforeDepartureMin": 0,
+          "daysBeforeDepartureMax": 2,
+          "refundPaidPercent": 0
+        }
+      ],
+      "refundMoney": "Tính % trên số tiền đã thanh toán GIẢ LẬP, không thực hiện hoàn tiền thật."
+    },
+    "reschedulePolicy": {
+      "freeChangeBeforeDays": 7,
+      "paidChangeBeforeDaysMin": 3,
+      "feePerBookingVND": 150000,
+      "afterThat": "Chỉ hiển thị yêu cầu tư vấn demo, không tự xác nhận đổi ngày."
+    },
+    "badWeather": "Với tuyến hang, suối, hồ: điều phối viên mô phỏng có thể khóa ngày hoặc đề xuất đổi ngày; tuyệt đối không override cảnh báo an toàn chỉ để hoàn thành demo.",
+    "childSeat": "Mỗi trẻ nhỏ có chỗ ngồi phù hợp; không mặc định ngồi chung ghế hoặc bỏ qua quy định an toàn.",
+    "insurance": "Không khẳng định đã mua bảo hiểm thật; trên phiếu demo hiển thị mục bảo hiểm cần xác nhận với đơn vị vận hành.",
+    "vat": "Không xuất hóa đơn thật, không tự khẳng định mức giá đã bao gồm VAT trong thực tế."
+  },
+  "faqsGlobal": [
+    {
+      "q": "Giá trên trang là giá chốt chưa?",
+      "a": "Chưa. Đây là đơn giá và phụ phí minh họa để trải nghiệm đặt tour."
+    },
+    {
+      "q": "Tôi đã thực sự thanh toán hay giữ chỗ chưa?",
+      "a": "Chưa. Mã booking, số chỗ và thanh toán ở chế độ demo; không liên kết nhà điều hành hay ngân hàng."
+    },
+    {
+      "q": "Có thể đổi ngày hoặc hủy tour?",
+      "a": "Trong demo có thể thao tác theo bảng chính sách giả lập và cập nhật trạng thái đơn trên hệ thống mẫu."
+    },
+    {
+      "q": "Trẻ nhỏ có được miễn phí không?",
+      "a": "Không mặc định miễn phí; giá và điều kiện phụ thuộc tour, ghế xe và chính sách minh họa của từng tour."
+    }
+  ],
+  "tours": [
+    {
+      "tourCode": "TJ01",
+      "tourId": 101,
+      "name": "Hương trà, sắc hồ — Một ngày chạm miền xanh",
+      "slug": "huong-tra-sac-ho",
+      "durationDays": 1,
+      "durationNights": 0,
+      "bookingTagline": "Thưởng trà buổi sáng, ngắm hồ buổi chiều",
+      "pricing": {
+        "adultBaseVND": 790000,
+        "adultReferenceMaxVND": 990000,
+        "childBaseVND": 630000,
+        "infantBaseVND": 190000,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Giá trẻ nhỏ giả lập đã gồm suất ngồi/chi phí phục vụ tối thiểu; không được mặc định miễn phí.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 3,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "07:30",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "17:00",
+        "meetingPointDemo": "Cổng quảng trường Võ Nguyên Giáp, TP. Thái Nguyên (điểm hẹn mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "ha-noi-my-dinh",
+          "custom-pickup",
+          "meet-on-site"
+        ],
+        "list": [
+          {
+            "departureId": "TJ01-20261107",
+            "date": "2026-11-07",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20261114",
+            "date": "2026-11-14",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20261121",
+            "date": "2026-11-21",
+            "time": "07:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 190000,
+            "surchargeChildVND": 95000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 15,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20261128",
+            "date": "2026-11-28",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 18,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20261205",
+            "date": "2026-12-05",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20261212",
+            "date": "2026-12-12",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 16,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20261219",
+            "date": "2026-12-19",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20261226",
+            "date": "2026-12-26",
+            "time": "07:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 190000,
+            "surchargeChildVND": 95000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20270102",
+            "date": "2027-01-02",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 17,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20270109",
+            "date": "2027-01-09",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20270116",
+            "date": "2027-01-16",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20270123",
+            "date": "2027-01-23",
+            "time": "07:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 14,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ01-20270130",
+            "date": "2027-01-30",
+            "time": "07:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 190000,
+            "surchargeChildVND": 95000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 0,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": true,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 18,
+        "infantAdultRatio": "Tối đa 1 trẻ 0-5 tuổi/người lớn",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": false,
+        "safetyConsentRequired": false,
+        "safetyNote": "Trẻ em đi cùng người giám hộ, hoạt động ven nước luôn phải có giám sát."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "limousine",
+          "private_7",
+          "self_arrival"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "limousine": {
+            "chargeVND": 280000,
+            "unit": "per_person_per_day"
+          },
+          "private_7": {
+            "chargeVND": 1450000,
+            "unit": "per_day_per_booking"
+          },
+          "self_arrival": {}
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": false,
+        "roomOptions": [],
+        "defaultRoomOptionId": null,
+        "roomCount": {
+          "min": 0,
+          "max": 0
+        },
+        "note": "Tour đi trong ngày, không hiển thị tùy chọn lưu trú."
+      },
+      "addons": [
+        "boat",
+        "photos",
+        "tea_workshop"
+      ],
+      "checkout": {
+        "minLeadDays": 3,
+        "requiresSafetyAgreement": false,
+        "requiresOperatorDemoApproval": false,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Tour có bao gồm thưởng trà không?",
+          "answer": "Trải nghiệm thưởng trà cơ bản theo lịch trình gốc; workshop chuyên sâu là dịch vụ thêm."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ02",
+      "tourId": 102,
+      "name": "Trà sớm, hồ chiều — Picnic bên Ghềnh Chè",
+      "slug": "tra-som-ho-chieu",
+      "durationDays": 1,
+      "durationNights": 0,
+      "bookingTagline": "Ngày picnic gia đình thư thái",
+      "pricing": {
+        "adultBaseVND": 850000,
+        "adultReferenceMaxVND": 1090000,
+        "childBaseVND": 680000,
+        "infantBaseVND": 210000,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Giá trẻ nhỏ giả lập đã gồm suất ngồi/chi phí phục vụ tối thiểu; không được mặc định miễn phí.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 3,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "08:00",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "17:15",
+        "meetingPointDemo": "Khu vực trung tâm TP. Thái Nguyên (địa điểm xác nhận trong vé demo)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "ha-noi-my-dinh",
+          "custom-pickup",
+          "meet-on-site"
+        ],
+        "list": [
+          {
+            "departureId": "TJ02-20261108",
+            "date": "2026-11-08",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20261115",
+            "date": "2026-11-15",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20261122",
+            "date": "2026-11-22",
+            "time": "08:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 17,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20261129",
+            "date": "2026-11-29",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 20,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20261206",
+            "date": "2026-12-06",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20261213",
+            "date": "2026-12-13",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 18,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20261220",
+            "date": "2026-12-20",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20261227",
+            "date": "2026-12-27",
+            "time": "08:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20270103",
+            "date": "2027-01-03",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 19,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20270110",
+            "date": "2027-01-10",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20270117",
+            "date": "2027-01-17",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20270124",
+            "date": "2027-01-24",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 100000,
+            "surchargeChildVND": 50000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 16,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ02-20270131",
+            "date": "2027-01-31",
+            "time": "08:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 20,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 0,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": true,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 20,
+        "infantAdultRatio": "Tối đa 1 trẻ 0-5 tuổi/người lớn",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": false,
+        "safetyConsentRequired": false,
+        "safetyNote": "Trẻ em đi cùng người giám hộ, hoạt động ven nước luôn phải có giám sát."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "limousine",
+          "private_7",
+          "self_arrival"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "limousine": {
+            "chargeVND": 280000,
+            "unit": "per_person_per_day"
+          },
+          "private_7": {
+            "chargeVND": 1450000,
+            "unit": "per_day_per_booking"
+          },
+          "self_arrival": {}
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": false,
+        "roomOptions": [],
+        "defaultRoomOptionId": null,
+        "roomCount": {
+          "min": 0,
+          "max": 0
+        },
+        "note": "Tour đi trong ngày, không hiển thị tùy chọn lưu trú."
+      },
+      "addons": [
+        "picnic_deluxe",
+        "photographer",
+        "tea_workshop"
+      ],
+      "checkout": {
+        "minLeadDays": 3,
+        "requiresSafetyAgreement": false,
+        "requiresOperatorDemoApproval": false,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Set picnic có được chuẩn bị sẵn?",
+          "answer": "Tour có set picnic cơ bản như nội dung gốc; nâng cấp set tính phí nếu khách chọn."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ03",
+      "tourId": 103,
+      "name": "Về nguồn giữa tiếng thác — ATK & Khuôn Tát",
+      "slug": "ve-nguon-giua-tieng-thac",
+      "durationDays": 1,
+      "durationNights": 0,
+      "bookingTagline": "Dấu ấn lịch sử và núi rừng Định Hóa",
+      "pricing": {
+        "adultBaseVND": 790000,
+        "adultReferenceMaxVND": 990000,
+        "childBaseVND": 630000,
+        "infantBaseVND": null,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Không nhận trẻ 0-5 tuổi cho tour này.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 3,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "07:00",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "17:30",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm tập kết mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "ha-noi-my-dinh",
+          "custom-pickup",
+          "meet-on-site"
+        ],
+        "list": [
+          {
+            "departureId": "TJ03-20261108",
+            "date": "2026-11-08",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20261115",
+            "date": "2026-11-15",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20261122",
+            "date": "2026-11-22",
+            "time": "07:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 190000,
+            "surchargeChildVND": 95000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 15,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20261129",
+            "date": "2026-11-29",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 18,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20261206",
+            "date": "2026-12-06",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20261213",
+            "date": "2026-12-13",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 16,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20261220",
+            "date": "2026-12-20",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20261227",
+            "date": "2026-12-27",
+            "time": "07:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 190000,
+            "surchargeChildVND": 95000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20270103",
+            "date": "2027-01-03",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 17,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20270110",
+            "date": "2027-01-10",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20270117",
+            "date": "2027-01-17",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20270124",
+            "date": "2027-01-24",
+            "time": "07:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 90000,
+            "surchargeChildVND": 45000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 14,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ03-20270131",
+            "date": "2027-01-31",
+            "time": "07:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 190000,
+            "surchargeChildVND": 95000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 18,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 6,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": false,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 18,
+        "infantAdultRatio": "Không nhận trẻ 0-5 tuổi",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": false,
+        "safetyConsentRequired": false,
+        "safetyNote": "Trẻ em đi cùng người giám hộ, hoạt động ven nước luôn phải có giám sát."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "limousine",
+          "private_7",
+          "self_arrival"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "limousine": {
+            "chargeVND": 280000,
+            "unit": "per_person_per_day"
+          },
+          "private_7": {
+            "chargeVND": 1450000,
+            "unit": "per_day_per_booking"
+          },
+          "self_arrival": {}
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": false,
+        "roomOptions": [],
+        "defaultRoomOptionId": null,
+        "roomCount": {
+          "min": 0,
+          "max": 0
+        },
+        "note": "Tour đi trong ngày, không hiển thị tùy chọn lưu trú."
+      },
+      "addons": [
+        "heritage_guide",
+        "photographer"
+      ],
+      "checkout": {
+        "minLeadDays": 3,
+        "requiresSafetyAgreement": false,
+        "requiresOperatorDemoApproval": false,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Có được vào khu vực thác để tắm không?",
+          "answer": "Không. Tour tham quan từ khu vực an toàn; hoạt động xuống nước không nằm trong dịch vụ."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ04",
+      "tourId": 104,
+      "name": "Miền đá và tiếng suối — Chùa Hang & Võ Nhai",
+      "slug": "mien-da-va-tieng-suoi",
+      "durationDays": 2,
+      "durationNights": 1,
+      "bookingTagline": "Khám phá văn hóa và hang động Võ Nhai",
+      "pricing": {
+        "adultBaseVND": 1890000,
+        "adultReferenceMaxVND": 2390000,
+        "childBaseVND": 1510000,
+        "infantBaseVND": null,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Không nhận trẻ 0-5 tuổi cho tour này.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 5,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "08:00",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "17:30 ngày cuối",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm hẹn mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "ha-noi-my-dinh",
+          "custom-pickup",
+          "meet-on-site"
+        ],
+        "list": [
+          {
+            "departureId": "TJ04-20261107",
+            "date": "2026-11-07",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20261114",
+            "date": "2026-11-14",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20261121",
+            "date": "2026-11-21",
+            "time": "08:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 390000,
+            "surchargeChildVND": 195000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 12,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20261128",
+            "date": "2026-11-28",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 15,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20261205",
+            "date": "2026-12-05",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20261212",
+            "date": "2026-12-12",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 13,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20261219",
+            "date": "2026-12-19",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20261226",
+            "date": "2026-12-26",
+            "time": "08:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 390000,
+            "surchargeChildVND": 195000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20270102",
+            "date": "2027-01-02",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 14,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20270109",
+            "date": "2027-01-09",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20270116",
+            "date": "2027-01-16",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20270123",
+            "date": "2027-01-23",
+            "time": "08:00",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 11,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ04-20270130",
+            "date": "2027-01-30",
+            "time": "08:00",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 390000,
+            "surchargeChildVND": 195000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 15,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 8,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": false,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 15,
+        "infantAdultRatio": "Không nhận trẻ 0-5 tuổi",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": false,
+        "safetyConsentRequired": true,
+        "safetyNote": "Tour có đoạn trekking/địa hình phức tạp: chỉ nhận người từ đủ 8 tuổi trong demo, xem cảnh báo an toàn trước khi xác nhận."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "limousine",
+          "private_7",
+          "self_arrival"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "limousine": {
+            "chargeVND": 240000,
+            "unit": "per_person_per_day"
+          },
+          "private_7": {
+            "chargeVND": 1250000,
+            "unit": "per_day_per_booking"
+          },
+          "self_arrival": {}
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": true,
+        "nightCount": 1,
+        "defaultRoomOptionId": "standard",
+        "roomOptions": [
+          "standard",
+          "private",
+          "single"
+        ],
+        "roomCount": {
+          "min": 1,
+          "max": 12,
+          "defaultAuto": "ceil((adults + children)/selectedRoom.occupancy)",
+          "excludeInfantFromBedCount": true
+        },
+        "note": "Chi phí phòng tiêu chuẩn có sẵn trong đơn giá. Phí nâng hạng nhân số phòng x số đêm. Tất cả chỉ là mô phỏng."
+      },
+      "addons": [
+        "photographer",
+        "bilingual_guide"
+      ],
+      "checkout": {
+        "minLeadDays": 5,
+        "requiresSafetyAgreement": true,
+        "requiresOperatorDemoApproval": false,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Có cần giày đi bộ?",
+          "answer": "Nên mang giày có độ bám tốt do có đường dốc, hang và lối đi ẩm."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ05",
+      "tourId": 105,
+      "name": "Theo dòng Cửa Tử — Rừng, hồ và hương trà",
+      "slug": "theo-dong-cua-tu",
+      "durationDays": 2,
+      "durationNights": 1,
+      "bookingTagline": "Trekking nguyên sơ, suối rừng và hương trà",
+      "pricing": {
+        "adultBaseVND": 2490000,
+        "adultReferenceMaxVND": 2990000,
+        "childBaseVND": null,
+        "infantBaseVND": null,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "Không nhận khách 6-11 tuổi tự động cho tour này.",
+        "infantPolicy": "Không nhận trẻ 0-5 tuổi cho tour này.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 7,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "06:30",
+        "checkInBeforeMinutes": 35,
+        "estimatedReturnTime": "17:00 ngày cuối",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm tập kết mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "custom-pickup"
+        ],
+        "list": [
+          {
+            "departureId": "TJ05-20261107",
+            "date": "2026-11-07",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20261114",
+            "date": "2026-11-14",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20261121",
+            "date": "2026-11-21",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 490000,
+            "surchargeChildVND": 245000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20261128",
+            "date": "2026-11-28",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 10,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20261205",
+            "date": "2026-12-05",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20261212",
+            "date": "2026-12-12",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 8,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20261219",
+            "date": "2026-12-19",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20261226",
+            "date": "2026-12-26",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 490000,
+            "surchargeChildVND": 245000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20270102",
+            "date": "2027-01-02",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 9,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "below_booking_minimum",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20270109",
+            "date": "2027-01-09",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20270116",
+            "date": "2027-01-16",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20270123",
+            "date": "2027-01-23",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ05-20270130",
+            "date": "2027-01-30",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 490000,
+            "surchargeChildVND": 245000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 10,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 16,
+        "minAdultCount": 2,
+        "allowChildren6to11": false,
+        "allowInfants0to5": false,
+        "totalGuestsMin": 2,
+        "totalGuestsMax": 10,
+        "infantAdultRatio": "Không nhận trẻ 0-5 tuổi",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": true,
+        "safetyConsentRequired": true,
+        "safetyNote": "Tour có đoạn trekking/địa hình phức tạp: chỉ nhận người từ đủ 16 tuổi trong demo, xem cảnh báo an toàn trước khi xác nhận."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "private_7"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "private_7": {
+            "chargeVND": 1250000,
+            "unit": "per_day_per_booking"
+          }
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": true,
+        "nightCount": 1,
+        "defaultRoomOptionId": "standard",
+        "roomOptions": [
+          "standard",
+          "private",
+          "single"
+        ],
+        "roomCount": {
+          "min": 1,
+          "max": 12,
+          "defaultAuto": "ceil((adults + children)/selectedRoom.occupancy)",
+          "excludeInfantFromBedCount": true
+        },
+        "note": "Chi phí phòng tiêu chuẩn có sẵn trong đơn giá. Phí nâng hạng nhân số phòng x số đêm. Tất cả chỉ là mô phỏng."
+      },
+      "addons": [
+        "trekking_poles",
+        "adventure_photo"
+      ],
+      "checkout": {
+        "minLeadDays": 7,
+        "requiresSafetyAgreement": true,
+        "requiresOperatorDemoApproval": true,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Trẻ em có tham gia được không?",
+          "answer": "Demo đặt giới hạn từ 16 tuổi, phải đồng ý quy tắc an toàn trước khi xác nhận mô phỏng."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ06",
+      "tourId": 106,
+      "name": "Ba Bể, miền trúc xanh — Ba ngày sống chậm",
+      "slug": "ba-be-mien-truc-xanh",
+      "durationDays": 3,
+      "durationNights": 2,
+      "bookingTagline": "Thư giãn bên hồ Ba Bể",
+      "pricing": {
+        "adultBaseVND": 3290000,
+        "adultReferenceMaxVND": 3890000,
+        "childBaseVND": 2630000,
+        "infantBaseVND": 340000,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Giá trẻ nhỏ giả lập đã gồm suất ngồi/chi phí phục vụ tối thiểu; không được mặc định miễn phí.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 7,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "06:30",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "18:00 ngày cuối",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm tập kết mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "ha-noi-my-dinh",
+          "custom-pickup",
+          "meet-on-site"
+        ],
+        "list": [
+          {
+            "departureId": "TJ06-20261107",
+            "date": "2026-11-07",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20261114",
+            "date": "2026-11-14",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20261121",
+            "date": "2026-11-21",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 490000,
+            "surchargeChildVND": 245000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 13,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20261128",
+            "date": "2026-11-28",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 16,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20261205",
+            "date": "2026-12-05",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20261212",
+            "date": "2026-12-12",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 14,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20261219",
+            "date": "2026-12-19",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20261226",
+            "date": "2026-12-26",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 490000,
+            "surchargeChildVND": 245000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20270102",
+            "date": "2027-01-02",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 15,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20270109",
+            "date": "2027-01-09",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20270116",
+            "date": "2027-01-16",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20270123",
+            "date": "2027-01-23",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 220000,
+            "surchargeChildVND": 110000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 12,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ06-20270130",
+            "date": "2027-01-30",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 490000,
+            "surchargeChildVND": 245000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 16,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 0,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": true,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 16,
+        "infantAdultRatio": "Tối đa 1 trẻ 0-5 tuổi/người lớn",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": false,
+        "safetyConsentRequired": false,
+        "safetyNote": "Trẻ em đi cùng người giám hộ, hoạt động ven nước luôn phải có giám sát."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "limousine",
+          "private_7",
+          "self_arrival"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "limousine": {
+            "chargeVND": 240000,
+            "unit": "per_person_per_day"
+          },
+          "private_7": {
+            "chargeVND": 1250000,
+            "unit": "per_day_per_booking"
+          },
+          "self_arrival": {}
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": true,
+        "nightCount": 2,
+        "defaultRoomOptionId": "standard",
+        "roomOptions": [
+          "standard",
+          "private",
+          "single",
+          "lake_view"
+        ],
+        "roomCount": {
+          "min": 1,
+          "max": 12,
+          "defaultAuto": "ceil((adults + children)/selectedRoom.occupancy)",
+          "excludeInfantFromBedCount": true
+        },
+        "note": "Chi phí phòng tiêu chuẩn có sẵn trong đơn giá. Phí nâng hạng nhân số phòng x số đêm. Tất cả chỉ là mô phỏng."
+      },
+      "addons": [
+        "boat",
+        "photographer",
+        "lake_meal"
+      ],
+      "checkout": {
+        "minLeadDays": 7,
+        "requiresSafetyAgreement": false,
+        "requiresOperatorDemoApproval": false,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Có phát sinh phí đi thuyền không?",
+          "answer": "Không mặc định bao gồm hoạt động thuyền phát sinh; khách có thể chọn dịch vụ bổ sung."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ07",
+      "tourId": 107,
+      "name": "Gió trên thảo nguyên — Sam Chiêm & Bản Chang",
+      "slug": "sam-chiem-ban-chang",
+      "durationDays": 2,
+      "durationNights": 1,
+      "bookingTagline": "Thảo nguyên, Bản Chang và khoảng trời núi",
+      "pricing": {
+        "adultBaseVND": 2590000,
+        "adultReferenceMaxVND": 3190000,
+        "childBaseVND": 2070000,
+        "infantBaseVND": null,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Không nhận trẻ 0-5 tuổi cho tour này.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 7,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "06:30",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "18:00 ngày cuối",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm tập kết mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "custom-pickup"
+        ],
+        "list": [
+          {
+            "departureId": "TJ07-20261107",
+            "date": "2026-11-07",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20261114",
+            "date": "2026-11-14",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20261121",
+            "date": "2026-11-21",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 390000,
+            "surchargeChildVND": 195000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 9,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20261128",
+            "date": "2026-11-28",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 12,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20261205",
+            "date": "2026-12-05",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20261212",
+            "date": "2026-12-12",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 10,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20261219",
+            "date": "2026-12-19",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20261226",
+            "date": "2026-12-26",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 390000,
+            "surchargeChildVND": 195000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20270102",
+            "date": "2027-01-02",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 11,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20270109",
+            "date": "2027-01-09",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20270116",
+            "date": "2027-01-16",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20270123",
+            "date": "2027-01-23",
+            "time": "06:30",
+            "fareClass": "weekend",
+            "fareClassLabel": "Cuối tuần",
+            "surchargeAdultVND": 180000,
+            "surchargeChildVND": 90000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 8,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ07-20270130",
+            "date": "2027-01-30",
+            "time": "06:30",
+            "fareClass": "holiday_demo_peak",
+            "fareClassLabel": "Cao điểm mô phỏng",
+            "surchargeAdultVND": 390000,
+            "surchargeChildVND": 195000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 8,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": false,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 12,
+        "infantAdultRatio": "Không nhận trẻ 0-5 tuổi",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": true,
+        "safetyConsentRequired": true,
+        "safetyNote": "Tour có đoạn trekking/địa hình phức tạp: chỉ nhận người từ đủ 8 tuổi trong demo, xem cảnh báo an toàn trước khi xác nhận."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "private_7"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "private_7": {
+            "chargeVND": 1250000,
+            "unit": "per_day_per_booking"
+          }
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": true,
+        "nightCount": 1,
+        "defaultRoomOptionId": "standard",
+        "roomOptions": [
+          "standard",
+          "private",
+          "single"
+        ],
+        "roomCount": {
+          "min": 1,
+          "max": 12,
+          "defaultAuto": "ceil((adults + children)/selectedRoom.occupancy)",
+          "excludeInfantFromBedCount": true
+        },
+        "note": "Chi phí phòng tiêu chuẩn có sẵn trong đơn giá. Phí nâng hạng nhân số phòng x số đêm. Tất cả chỉ là mô phỏng."
+      },
+      "addons": [
+        "photographer",
+        "bonfire_permit"
+      ],
+      "checkout": {
+        "minLeadDays": 7,
+        "requiresSafetyAgreement": true,
+        "requiresOperatorDemoApproval": true,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Có thể tổ chức lửa trại?",
+          "answer": "Chỉ là yêu cầu tư vấn; tuyệt đối không tự khẳng định được tổ chức hay đốt lửa."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ08",
+      "tourId": 108,
+      "name": "Từ mặt hồ đến lòng núi — Ba Bể & Thẳm Phầy",
+      "slug": "ba-be-tham-phay",
+      "durationDays": 3,
+      "durationNights": 2,
+      "bookingTagline": "Khám phá Ba Bể và hang Thẳm Phầy",
+      "pricing": {
+        "adultBaseVND": 4590000,
+        "adultReferenceMaxVND": 5590000,
+        "childBaseVND": null,
+        "infantBaseVND": null,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "Không nhận khách 6-11 tuổi tự động cho tour này.",
+        "infantPolicy": "Không nhận trẻ 0-5 tuổi cho tour này.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 10,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "06:00",
+        "checkInBeforeMinutes": 35,
+        "estimatedReturnTime": "18:00 ngày cuối",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm tập kết mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "custom-pickup"
+        ],
+        "list": [
+          {
+            "departureId": "TJ08-20261113",
+            "date": "2026-11-13",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20261120",
+            "date": "2026-11-20",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "below_booking_minimum",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20261127",
+            "date": "2026-11-27",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20261204",
+            "date": "2026-12-04",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 8,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20261211",
+            "date": "2026-12-11",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20261218",
+            "date": "2026-12-18",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20261225",
+            "date": "2026-12-25",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20270101",
+            "date": "2027-01-01",
+            "time": "06:00",
+            "fareClass": "holiday",
+            "fareClassLabel": "Tết Dương lịch (demo)",
+            "surchargeAdultVND": 790000,
+            "surchargeChildVND": 395000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20270108",
+            "date": "2027-01-08",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "below_booking_minimum",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20270115",
+            "date": "2027-01-15",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "below_booking_minimum",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20270122",
+            "date": "2027-01-22",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20270129",
+            "date": "2027-01-29",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ08-20270205",
+            "date": "2027-02-05",
+            "time": "06:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 8,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 18,
+        "minAdultCount": 2,
+        "allowChildren6to11": false,
+        "allowInfants0to5": false,
+        "totalGuestsMin": 2,
+        "totalGuestsMax": 8,
+        "infantAdultRatio": "Không nhận trẻ 0-5 tuổi",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": true,
+        "safetyConsentRequired": true,
+        "safetyNote": "Tour có đoạn trekking/địa hình phức tạp: chỉ nhận người từ đủ 18 tuổi trong demo, xem cảnh báo an toàn trước khi xác nhận."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "private_7"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "private_7": {
+            "chargeVND": 1250000,
+            "unit": "per_day_per_booking"
+          }
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": true,
+        "nightCount": 2,
+        "defaultRoomOptionId": "standard",
+        "roomOptions": [
+          "standard",
+          "private",
+          "single",
+          "lake_view"
+        ],
+        "roomCount": {
+          "min": 1,
+          "max": 12,
+          "defaultAuto": "ceil((adults + children)/selectedRoom.occupancy)",
+          "excludeInfantFromBedCount": true
+        },
+        "note": "Chi phí phòng tiêu chuẩn có sẵn trong đơn giá. Phí nâng hạng nhân số phòng x số đêm. Tất cả chỉ là mô phỏng."
+      },
+      "addons": [
+        "dry_bag",
+        "adventure_photo"
+      ],
+      "checkout": {
+        "minLeadDays": 10,
+        "requiresSafetyAgreement": true,
+        "requiresOperatorDemoApproval": true,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Tuyến hang có được xác nhận tự động không?",
+          "answer": "Không. Demo yêu cầu từ đủ 18 tuổi, điều phối viên duyệt điều kiện an toàn và điều kiện thời tiết."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ09",
+      "tourId": 109,
+      "name": "Miền trà về nguồn — Từ ATK đến Ba Bể",
+      "slug": "mien-tra-ve-nguon-ba-be",
+      "durationDays": 4,
+      "durationNights": 3,
+      "bookingTagline": "Hành trình kết nối trà - ATK - Ba Bể",
+      "pricing": {
+        "adultBaseVND": 4690000,
+        "adultReferenceMaxVND": 5590000,
+        "childBaseVND": 3750000,
+        "infantBaseVND": null,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Không nhận trẻ 0-5 tuổi cho tour này.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 10,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "07:00",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "18:00 ngày cuối",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm tập kết mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "ha-noi-my-dinh",
+          "custom-pickup",
+          "meet-on-site"
+        ],
+        "list": [
+          {
+            "departureId": "TJ09-20261113",
+            "date": "2026-11-13",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20261120",
+            "date": "2026-11-20",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20261127",
+            "date": "2026-11-27",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 11,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20261204",
+            "date": "2026-12-04",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 14,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20261211",
+            "date": "2026-12-11",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20261218",
+            "date": "2026-12-18",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 12,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20261225",
+            "date": "2026-12-25",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20270101",
+            "date": "2027-01-01",
+            "time": "07:00",
+            "fareClass": "holiday",
+            "fareClassLabel": "Tết Dương lịch (demo)",
+            "surchargeAdultVND": 690000,
+            "surchargeChildVND": 345000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20270108",
+            "date": "2027-01-08",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 13,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20270115",
+            "date": "2027-01-15",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20270122",
+            "date": "2027-01-22",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20270129",
+            "date": "2027-01-29",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 10,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ09-20270205",
+            "date": "2027-02-05",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 14,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 6,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": false,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 14,
+        "infantAdultRatio": "Không nhận trẻ 0-5 tuổi",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": false,
+        "safetyConsentRequired": false,
+        "safetyNote": "Trẻ em đi cùng người giám hộ, hoạt động ven nước luôn phải có giám sát."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "limousine",
+          "private_7",
+          "self_arrival"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "limousine": {
+            "chargeVND": 240000,
+            "unit": "per_person_per_day"
+          },
+          "private_7": {
+            "chargeVND": 1250000,
+            "unit": "per_day_per_booking"
+          },
+          "self_arrival": {}
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": true,
+        "nightCount": 3,
+        "defaultRoomOptionId": "standard",
+        "roomOptions": [
+          "standard",
+          "private",
+          "single",
+          "lake_view"
+        ],
+        "roomCount": {
+          "min": 1,
+          "max": 12,
+          "defaultAuto": "ceil((adults + children)/selectedRoom.occupancy)",
+          "excludeInfantFromBedCount": true
+        },
+        "note": "Chi phí phòng tiêu chuẩn có sẵn trong đơn giá. Phí nâng hạng nhân số phòng x số đêm. Tất cả chỉ là mô phỏng."
+      },
+      "addons": [
+        "bilingual_guide",
+        "photographer",
+        "boat"
+      ],
+      "checkout": {
+        "minLeadDays": 10,
+        "requiresSafetyAgreement": false,
+        "requiresOperatorDemoApproval": false,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Có cần giày đi bộ?",
+          "answer": "Nên mang giày có độ bám tốt do có đường dốc, hang và lối đi ẩm."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    },
+    {
+      "tourCode": "TJ10",
+      "tourId": 110,
+      "name": "Vòng cung miền xanh — Trà, thảo nguyên và Ba Bể",
+      "slug": "vong-cung-mien-xanh",
+      "durationDays": 5,
+      "durationNights": 4,
+      "bookingTagline": "Một vòng cung xanh nhiều điểm đến",
+      "pricing": {
+        "adultBaseVND": 5990000,
+        "adultReferenceMaxVND": 7190000,
+        "childBaseVND": 4790000,
+        "infantBaseVND": null,
+        "priceLabel": "Giá cơ sở minh họa / khách, theo mức thấp nhất trong khoảng tham khảo của website",
+        "childPolicy": "80% giá cơ sở người lớn, làm tròn 10.000đ, chỉ áp dụng trong demo.",
+        "infantPolicy": "Không nhận trẻ 0-5 tuổi cho tour này.",
+        "pricePerDayApplies": false,
+        "baseIncludesStandardVehicle": true,
+        "discountTiers": "global_pricingEngine.discountGroupTiers",
+        "estimatedProviderPriceVerified": false,
+        "rateChangeNotice": "Giá trên card tour cũ là khoảng dự kiến, tổng tại bước checkout phụ thuộc ngày và dịch vụ."
+      },
+      "departures": {
+        "selectionMode": "DEMO_SEEDED_FIXED_DATES",
+        "requestPrivateDateEnabled": true,
+        "requestPrivateDateRequiresQuote": true,
+        "leadDays": 10,
+        "timeZone": "Asia/Ho_Chi_Minh",
+        "displayTime": "07:00",
+        "checkInBeforeMinutes": 20,
+        "estimatedReturnTime": "18:30 ngày cuối",
+        "meetingPointDemo": "Trung tâm TP. Thái Nguyên (điểm tập kết mô phỏng)",
+        "defaultPickupId": "thai-nguyen-center",
+        "pickupIds": [
+          "thai-nguyen-center",
+          "pho-yen",
+          "ha-noi-my-dinh",
+          "custom-pickup",
+          "meet-on-site"
+        ],
+        "list": [
+          {
+            "departureId": "TJ10-20261113",
+            "date": "2026-11-13",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 3,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20261120",
+            "date": "2026-11-20",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20261127",
+            "date": "2026-11-27",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 9,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20261204",
+            "date": "2026-12-04",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 12,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "sold_out",
+            "canSelect": false,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20261211",
+            "date": "2026-12-11",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20261218",
+            "date": "2026-12-18",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 10,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20261225",
+            "date": "2026-12-25",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 6,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20270101",
+            "date": "2027-01-01",
+            "time": "07:00",
+            "fareClass": "holiday",
+            "fareClassLabel": "Tết Dương lịch (demo)",
+            "surchargeAdultVND": 890000,
+            "surchargeChildVND": 445000,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 5,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20270108",
+            "date": "2027-01-08",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 11,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20270115",
+            "date": "2027-01-15",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 7,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20270122",
+            "date": "2027-01-22",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 2,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20270129",
+            "date": "2027-01-29",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 8,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "limited",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          },
+          {
+            "departureId": "TJ10-20270205",
+            "date": "2027-02-05",
+            "time": "07:00",
+            "fareClass": "weekday",
+            "fareClassLabel": "Ngày thường",
+            "surchargeAdultVND": 0,
+            "surchargeChildVND": 0,
+            "surchargeInfantVND": 0,
+            "capacitySeats": 12,
+            "bookedSeatsDemoSeed": 4,
+            "heldSeatsDemoSeed": 0,
+            "seatStatus": "available",
+            "canSelect": true,
+            "note": "Lịch và chỗ giả lập. Chỉ dùng để kiểm thử booking."
+          }
+        ],
+        "soldOutSuggestion": "Chọn lịch kế tiếp hoặc gửi yêu cầu tour riêng; yêu cầu riêng chỉ là phiếu tư vấn demo.",
+        "seatInventoryMode": "mock_backend_only",
+        "disclaimer": "Lịch khởi hành, chỗ trống, giờ đón và trạng thái chỉ là dữ liệu giả lập."
+      },
+      "travelerPolicy": {
+        "minParticipantAge": 10,
+        "minAdultCount": 1,
+        "allowChildren6to11": true,
+        "allowInfants0to5": false,
+        "totalGuestsMin": 1,
+        "totalGuestsMax": 12,
+        "infantAdultRatio": "Không nhận trẻ 0-5 tuổi",
+        "requireAgeDeclaration": true,
+        "eligibleAgeCheckOnDepartureDate": true,
+        "infantConsumesVehicleSeat": true,
+        "operatorReviewRequired": false,
+        "safetyConsentRequired": true,
+        "safetyNote": "Tour có đoạn trekking/địa hình phức tạp: chỉ nhận người từ đủ 10 tuổi trong demo, xem cảnh báo an toàn trước khi xác nhận."
+      },
+      "transport": {
+        "defaultOptionId": "shuttle",
+        "allowedOptionIds": [
+          "shuttle",
+          "limousine",
+          "private_7",
+          "self_arrival"
+        ],
+        "optionOverrides": {
+          "shuttle": {},
+          "limousine": {
+            "chargeVND": 240000,
+            "unit": "per_person_per_day"
+          },
+          "private_7": {
+            "chargeVND": 1250000,
+            "unit": "per_day_per_booking"
+          },
+          "self_arrival": {}
+        },
+        "priceNote": "Chỉ giá demo. Đã bao gồm xe đoàn tiêu chuẩn trong đơn giá cơ sở; nâng cấp là chi phí phát sinh."
+      },
+      "accommodation": {
+        "enabled": true,
+        "nightCount": 4,
+        "defaultRoomOptionId": "standard",
+        "roomOptions": [
+          "standard",
+          "private",
+          "single",
+          "lake_view"
+        ],
+        "roomCount": {
+          "min": 1,
+          "max": 12,
+          "defaultAuto": "ceil((adults + children)/selectedRoom.occupancy)",
+          "excludeInfantFromBedCount": true
+        },
+        "note": "Chi phí phòng tiêu chuẩn có sẵn trong đơn giá. Phí nâng hạng nhân số phòng x số đêm. Tất cả chỉ là mô phỏng."
+      },
+      "addons": [
+        "bilingual_guide",
+        "photographer",
+        "tea_workshop"
+      ],
+      "checkout": {
+        "minLeadDays": 10,
+        "requiresSafetyAgreement": true,
+        "requiresOperatorDemoApproval": false,
+        "depositDemoPercent": 30,
+        "cancelPolicyId": "CANCEL_DEMO_STANDARD",
+        "allowedPaymentMethods": [
+          "pay_later",
+          "mock_cash",
+          "mock_card",
+          "mock_wallet"
+        ],
+        "approvalHandling": "Nếu requiresOperatorDemoApproval, tạo trạng thái pending_review_demo trước confirmed_demo; chỉ admin/tester mô phỏng phê duyệt.",
+        "displayChecklist": [
+          "Kiểm tra thông tin cá nhân",
+          "Đọc chính sách độ tuổi",
+          "Kiểm tra lịch và số chỗ demo",
+          "Đọc điều khoản hủy/đổi",
+          "Chọn thanh toán mô phỏng hoặc trả sau"
+        ]
+      },
+      "faq": [
+        {
+          "question": "Tour dài ngày có cần phòng riêng không?",
+          "answer": "Giá demo có phòng tiêu chuẩn; khách có thể nâng cấp phòng theo giá mô phỏng."
+        },
+        {
+          "question": "Tôi có được chọn giờ đón khác không?",
+          "answer": "Bạn có thể chọn điểm đón và nhập ghi chú; giờ hẹn chi tiết của demo được hiển thị khi tạo phiếu."
+        },
+        {
+          "question": "Tôi cần mang theo gì?",
+          "answer": "Hãy xem mục “Trước khi lên đường” và “Lưu ý hành trình” đã có trong trang chi tiết; nội dung đó được giữ nguyên."
+        }
+      ],
+      "sourcePriceProvenance": "dist/tours-data.js (giá gốc dự kiến); phí dịch vụ thêm, lịch, ưu đãi, chỗ là DEMO GENERATED",
+      "uiKeepUnchanged": [
+        "Giới thiệu hành trình",
+        "Điều khiến chuyến đi đáng nhớ",
+        "Lịch trình chi tiết",
+        "Ăn uống & lưu trú",
+        "Dịch vụ",
+        "Đánh giá",
+        "Bản đồ điểm đến"
+      ]
+    }
+  ]
+}

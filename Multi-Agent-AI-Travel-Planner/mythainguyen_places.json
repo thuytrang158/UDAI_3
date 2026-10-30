@@ -1,0 +1,211 @@
+{
+  "source_listing": "https://mythainguyen.vn/vi/places",
+  "retrieved_date": "2026-10-29",
+  "coverage": "first_18_visible_results_only; infinite_scroll_not_exhaustively_accessible",
+  "is_complete": false,
+  "total_places_in_listing": null,
+  "places_in_this_file": 18,
+  "places_with_external_coordinates": 7,
+  "coordinate_reference_system": "WGS84 (EPSG:4326)",
+  "note_vi": "Trang web tải thêm địa điểm động. File này CHƯA chứa toàn bộ địa điểm. Tọa độ bên ngoài chưa được kiểm chứng là tọa độ chính thức của website; các điểm chưa xác minh để null.",
+  "places": [
+    {
+      "id": 1,
+      "name": "Khu di tích lịch sử Quốc gia đặc biệt ATK Định Hóa",
+      "address": "Thôn Đèo De, xã Phú Đình, tỉnh Thái Nguyên",
+      "latitude": 21.788848,
+      "longitude": 105.5091807,
+      "coordinate_status": "external_source_unverified_on_site",
+      "coordinate_source_url": "https://tanitour.vn/bql-khu-di-tich-lich-su-sinh-thai-atk-dinh-hoa-thai-nguyen/",
+      "source_url": "https://mythainguyen.vn/vi/atkthainguyen",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 2,
+      "name": "Khu di tích Quốc gia đặc biệt ATK Chợ Đồn",
+      "address": "Xã Nghĩa Tá, tỉnh Thái Nguyên",
+      "latitude": 22.16244646463283,
+      "longitude": 105.60287905833098,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/atkchodon",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 3,
+      "name": "Di tích lịch sử quốc gia 60 liệt sỹ TNXP, Đại đội 915, Đội 91 Bắc Thái",
+      "address": "Phường Gia Sàng, tỉnh Thái Nguyên",
+      "latitude": 21.583946036700418,
+      "longitude": 105.84810418445541,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/daidoi915",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 4,
+      "name": "Di tích lịch sử Quốc gia 27/7",
+      "address": "Tổ dân phố Bàn Cờ, xã Đại Phúc, tỉnh Thái Nguyên",
+      "latitude": 21.628548,
+      "longitude": 105.6329441,
+      "coordinate_status": "external_source_unverified_on_site",
+      "coordinate_source_url": "https://tanitour.vn/khu-di-tich-27-7-hung-son/",
+      "source_url": "https://mythainguyen.vn/vi/khuditichlichsu277",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 5,
+      "name": "Di tích lịch sử Quốc gia Nà Tu",
+      "address": "Xã Cẩm Giàng, tỉnh Thái Nguyên",
+      "latitude": 21.481595531115227,
+      "longitude": 105.87743612462829,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/natu",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 6,
+      "name": "Di tích lịch sử rừng Khuôn Mánh",
+      "address": "Xã Tràng Xá, tỉnh Thái Nguyên",
+      "latitude": 22.2048434101356,
+      "longitude": 105.87743612462829,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/rungkhuonmanh",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 7,
+      "name": "Đền Đuổm",
+      "address": "Xã Phú Lương, tỉnh Thái Nguyên",
+      "latitude": 21.7551813,
+      "longitude": 105.7072463,
+      "coordinate_status": "external_source_unverified_on_site",
+      "coordinate_source_url": "https://tanitour.vn/den-duom-lang-chao/",
+      "source_url": "https://mythainguyen.vn/vi/denduom",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 8,
+      "name": "Đền Mục",
+      "address": "Tổ dân phố Hòa Bình, phường Vạn Xuân, tỉnh Thái Nguyên",
+      "latitude": 21.420265636556262,
+      "longitude": 105.90986372932521,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/denmuc",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 9,
+      "name": "Chùa Hang (Định Hóa)",
+      "address": "Xóm Đồng Chùa, xã Định Hóa, tỉnh Thái Nguyên",
+      "latitude": 21.910132730106496,
+      "longitude": 105.49262584663999,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/chuahangdha",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 10,
+      "name": "Chùa Hang (Thái Nguyên)",
+      "address": "Phường Linh Sơn, tỉnh Thái Nguyên",
+      "latitude": 21.6234705,
+      "longitude": 105.841687,
+      "coordinate_status": "external_source_unverified_on_site",
+      "coordinate_source_url": "https://tanitour.vn/hang-pagoda-dong-hy-thai-nguyen/",
+      "source_url": "https://mythainguyen.vn/vi/chuahang",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 11,
+      "name": "Đền An Mạ",
+      "address": "Xã Ba Bể, tỉnh Thái Nguyên",
+      "latitude": 22.4120284,
+      "longitude": 105.6154923,
+      "coordinate_status": "external_source_unverified_on_site",
+      "coordinate_source_url": "https://tanitour.vn/den-an-ma/",
+      "source_url": "https://mythainguyen.vn/vi/denanma",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 12,
+      "name": "Di tích lịch sử cấp Quốc gia Đình Phương Độ",
+      "address": "Xã Phú Bình, tỉnh Thái Nguyên",
+      "latitude": 21.45521051472861,
+      "longitude": 105.95119896878784,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/phuongdo",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 13,
+      "name": "Đền Mẫu",
+      "address": "Phường Bắc Kạn, tỉnh Thái Nguyên",
+      "latitude": 21.420265636556262,
+      "longitude": 105.90986372932521,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/denmau",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 14,
+      "name": "Chùa Thạch Long",
+      "address": "Xã Tân Kỳ, tỉnh Thái Nguyên",
+      "latitude": 22.039068,
+      "longitude": 105.845766,
+      "coordinate_status": "external_source_unverified_on_site",
+      "coordinate_source_url": "https://tanitour.vn/chua-thach-long/",
+      "source_url": "https://mythainguyen.vn/vi/chuathachlong",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 15,
+      "name": "Đền Thắm",
+      "address": "Xã Chợ Mới, tỉnh Thái Nguyên",
+      "latitude": 21.8783446,
+      "longitude": 105.7827597,
+      "coordinate_status": "external_source_unverified_on_site",
+      "coordinate_source_url": "https://tanitour.vn/den-tham-tt-cho-moi/",
+      "source_url": "https://mythainguyen.vn/vi/dentham",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 16,
+      "name": "Cụm di tích Đình – Đền – Chùa Cầu Muối",
+      "address": "Xóm Cầu Muối, xã Tân Thành, tỉnh Thái Nguyên",
+      "latitude": 21.420265636556262,
+      "longitude": 105.90986372932521,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/chuamuoi",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 17,
+      "name": "Di tích Núi Văn Núi Võ",
+      "address": "Xã Vạn Phú, tỉnh Thái Nguyên",
+      "latitude": 21.420265636556262,
+      "longitude": 105.90986372932521,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/nuivannuivo",
+      "source_category": "Điểm đến"
+    },
+    {
+      "id": 18,
+      "name": "Đền Đá Thiên",
+      "address": "Xã Trại Cau, tỉnh Thái Nguyên",
+      "latitude": 21.420265636556262,
+      "longitude": 105.90986372932521,
+      "coordinate_status": "not_verified",
+      "coordinate_source_url": null,
+      "source_url": "https://mythainguyen.vn/vi/dendathien",
+      "source_category": "Điểm đến"
+    }
+  ]
+}

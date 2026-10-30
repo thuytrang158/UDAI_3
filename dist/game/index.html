@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Thái Nguyên Quest – Hành Trình Khám Phá Xứ Trà</title>
+    <meta name="description" content="Trò chơi phiêu lưu khám phá 2D pixel art giới thiệu danh lam thắng cảnh, văn hóa trà và di sản lịch sử Thái Nguyên." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/game/assets/index-BphkzSKn.js"></script>
+    <link rel="modulepreload" crossorigin href="/game/assets/phaser-Czz4FBZH.js">
+    <link rel="stylesheet" crossorigin href="/game/assets/index-BAtnt-Ws.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Phaser Canvas Container -->
+      <div id="game-container"></div>
+
+      <!-- DOM UI Overlay Layer -->
+      <div id="ui-overlay">
+        <!-- In-Game HUD -->
+        <header id="game-hud" class="hud-bar hidden">
+          <div class="hud-left">
+            <div class="region-badge">
+              <span class="region-icon">🍃</span>
+              <div class="region-info">
+                <span class="region-label">Địa danh hiện tại</span>
+                <span id="hud-region-name" class="region-title">Đồi chè Tân Cương</span>
+              </div>
+            </div>
+
+            <div class="quest-tracker">
+              <div class="tracker-header">
+                <span class="tracker-badge">Nhiệm vụ chính</span>
+                <span id="hud-quest-title" class="tracker-title">Hương Trà Đầu Tiên</span>
+              </div>
+              <div id="hud-quest-objective" class="tracker-objective">
+                Gặp Nghệ nhân trà Bác Lâm tại chòi chè
+              </div>
+            </div>
+          </div>
+
+          <div class="hud-right">
+            <button id="btn-journal" class="hud-btn" title="Nhật ký 'Bí Mật Xứ Trà' (J)">
+              <span class="hud-btn-icon">📜</span>
+              <span class="hud-btn-text">Nhật ký [J]</span>
+              <span id="journal-badge" class="badge-dot hidden"></span>
+            </button>
+            <button id="btn-inventory" class="hud-btn" title="Hành trang & Ký ức (I)">
+              <span class="hud-btn-icon">🎒</span>
+              <span class="hud-btn-text">Hành trang [I]</span>
+            </button>
+            <button id="btn-map" class="hud-btn" title="Bản đồ khám phá Thái Nguyên (M)">
+              <span class="hud-btn-icon">🗺️</span>
+              <span class="hud-btn-text">Bản đồ [M]</span>
+            </button>
+            <button id="btn-audio" class="hud-btn hud-btn-icon-only" title="Âm thanh (Bật/Tắt)">
+              <span id="audio-icon" class="hud-btn-icon">🔊</span>
+            </button>
+            <button id="btn-menu" class="hud-btn hud-btn-icon-only" title="Cài đặt">
+              <span class="hud-btn-icon">⚙️</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Interaction Prompt Overlay (shown near NPC or interactable) -->
+        <div id="interaction-prompt" class="interaction-prompt hidden">
+          <div class="key-cap">E</div>
+          <span id="prompt-text">Nói chuyện với Bác Lâm</span>
+        </div>
+
+        <!-- Dialogue Box -->
+        <div id="dialogue-box" class="dialogue-box hidden">
+          <div class="dialogue-avatar-container">
+            <div id="dialogue-avatar" class="dialogue-avatar">👨‍🌾</div>
+            <div id="dialogue-speaker-role" class="dialogue-role">Nghệ nhân chè</div>
+          </div>
+          <div class="dialogue-body">
+            <div id="dialogue-speaker-name" class="dialogue-name">Bác Lâm</div>
+            <div id="dialogue-text" class="dialogue-text"></div>
+            <div id="dialogue-choices" class="dialogue-choices"></div>
+            <div id="dialogue-continue" class="dialogue-continue">
+              <span>Nhấn <kbd>Space</kbd> hoặc <kbd>Enter</kbd> để tiếp tục ▶</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modals Container -->
+        <div id="modal-container" class="modal-backdrop hidden">
+          <!-- Journal Modal -->
+          <div id="journal-modal" class="game-modal hidden">
+            <div class="modal-header">
+              <div class="modal-title-wrap">
+                <span class="modal-icon">📖</span>
+                <h2>Nhật Ký "Bí Mật Xứ Trà"</h2>
+              </div>
+              <button class="modal-close" data-close="journal-modal">✕</button>
+            </div>
+            <div class="modal-content journal-layout">
+              <div class="journal-sidebar">
+                <div class="sidebar-title">Mảnh ký ức (7/7)</div>
+                <ul id="journal-fragments-list" class="fragments-list"></ul>
+                <div class="journal-progression-bar">
+                  <div class="progression-label">Tiến độ khám phá: <span id="journal-progress-percent">0%</span></div>
+                  <div class="progress-track"><div id="journal-progress-fill" class="progress-fill" style="width: 0%"></div></div>
+                </div>
+              </div>
+              <div class="journal-detail">
+                <div id="journal-active-detail">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inventory Modal -->
+          <div id="inventory-modal" class="game-modal hidden">
+            <div class="modal-header">
+              <div class="modal-title-wrap">
+                <span class="modal-icon">🎒</span>
+                <h2>Hành Trang Khám Phá</h2>
+              </div>
+              <button class="modal-close" data-close="inventory-modal">✕</button>
+            </div>
+            <div class="modal-content inventory-layout">
+              <div class="inventory-grid-wrap">
+                <div id="inventory-grid" class="inventory-grid"></div>
+              </div>
+              <div id="item-inspect-panel" class="item-inspect-panel">
+                <div class="empty-inspect">Chọn một vật phẩm để xem thông tin chi tiết</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- World Map Modal -->
+          <div id="map-modal" class="game-modal hidden">
+            <div class="modal-header">
+              <div class="modal-title-wrap">
+                <span class="modal-icon">🗺️</span>
+                <h2>Bản Đồ Du Lịch Tỉnh Thái Nguyên</h2>
+              </div>
+              <button class="modal-close" data-close="map-modal">✕</button>
+            </div>
+            <div class="modal-content map-modal-content">
+              <div class="map-illustration-container">
+                <div id="world-map-nodes" class="world-map-nodes"></div>
+                <div class="map-legend">
+                  <span class="legend-item"><span class="legend-dot active"></span> Điểm hiện tại / Đã mở</span>
+                  <span class="legend-item"><span class="legend-dot locked"></span> Vùng khóa (khám phá thêm)</span>
+                  <span class="legend-item"><span class="legend-dot complete"></span> Hoàn thành</span>
+                </div>
+              </div>
+              <div id="map-region-detail" class="map-region-detail">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Destination Card Modal (Real-World Tourism Highlight) -->
+          <div id="destination-card-modal" class="game-modal destination-modal hidden">
+            <div class="modal-header">
+              <div class="modal-title-wrap">
+                <span class="modal-icon">🌟</span>
+                <h2 id="dest-card-title">Khám Phá: Đồi Chè Tân Cương</h2>
+              </div>
+              <button class="modal-close" data-close="destination-card-modal">✕</button>
+            </div>
+            <div class="modal-content destination-card-content">
+              <div class="dest-hero">
+                <div id="dest-hero-img" class="dest-hero-canvas"></div>
+                <div class="dest-hero-badge" id="dest-hero-badge">Đệ Nhất Danh Trà Việt Nam</div>
+              </div>
+              <div class="dest-info-body">
+                <p id="dest-card-desc" class="dest-desc"></p>
+                <div class="dest-highlights-grid">
+                  <div class="highlight-card">
+                    <span class="highlight-icon">🍵</span>
+                    <h4 data-dest-highlight-title>Đặc sản chè búp</h4>
+                    <p data-dest-highlight-copy>Hương thơm cốm non thanh khiết, tiền chát hậu ngọt sâu đậm.</p>
+                  </div>
+                  <div class="highlight-card">
+                    <span class="highlight-icon">📸</span>
+                    <h4 data-dest-highlight-title>Điểm check-in</h4>
+                    <p data-dest-highlight-copy>Những nương chè bát úp xanh ngút ngàn, không khí trong lành quanh năm.</p>
+                  </div>
+                  <div class="highlight-card">
+                    <span class="highlight-icon">🏡</span>
+                    <h4 data-dest-highlight-title>Homestay & Trải nghiệm</h4>
+                    <p data-dest-highlight-copy>Trực tiếp sao chè cùng nghệ nhân và thưởng trà trong không gian văn hóa.</p>
+                  </div>
+                </div>
+
+                <!-- Tourism Website Tour Integration -->
+                <div class="dest-tours-section">
+                  <h3>🎯 Tour Du Lịch Đề Xuất Ngoài Đời Thực</h3>
+                  <div id="dest-tours-list" class="dest-tours-list"></div>
+                </div>
+
+                <div class="dest-actions">
+                  <button id="dest-btn-continue" class="btn btn-secondary">Tiếp tục cuộc phiêu lưu</button>
+                  <button id="dest-btn-view-tours" class="btn btn-secondary">Xem Tour Trải Nghiệm</button>
+                  <button id="dest-btn-explore-more" class="btn btn-primary">Khám Phá Tân Cương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini-game Container Overlay -->
+          <div id="minigame-modal" class="game-modal minigame-modal hidden">
+            <div class="modal-header">
+              <div class="modal-title-wrap">
+                <span id="minigame-icon" class="modal-icon">🍃</span>
+                <h2 id="minigame-title">Mini-Game Hái Chè Tân Cương</h2>
+              </div>
+              <button class="modal-close" data-close="minigame-modal">✕</button>
+            </div>
+            <div id="minigame-body" class="modal-content minigame-content">
+              <!-- Dynamically populated by TeaHarvestMinigame / TeaProcessingMinigame -->
+            </div>
+          </div>
+
+          <!-- Tea Nursery & Supplies Shop Modal -->
+          <div id="shop-modal" class="game-modal shop-modal-wrapper hidden">
+            <!-- Dynamically populated by ShopModal -->
+          </div>
+        </div>
+
+        <!-- Mobile Touch Controls -->
+        <div id="mobile-controls" class="mobile-controls">
+          <div class="virtual-dpad">
+            <button class="dpad-btn dpad-up" data-dir="up">▲</button>
+            <button class="dpad-btn dpad-left" data-dir="left">◀</button>
+            <button class="dpad-btn dpad-center">●</button>
+            <button class="dpad-btn dpad-right" data-dir="right">▶</button>
+            <button class="dpad-btn dpad-down" data-dir="down">▼</button>
+          </div>
+          <div class="virtual-actions">
+            <button id="btn-touch-interact" class="touch-action-btn">
+              <span class="action-icon">💬</span>
+              <span class="action-label">Tương tác</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div id="toast-container" class="toast-container"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,741 @@
+/* Ẩm thực Thái Nguyên & Miền Xanh - Trà Journey Design System */
+.cuisine-section {
+  background: #fbfbf7;
+  border-top: 1px solid var(--line, #e4e8df);
+}
+
+.cuisine-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 24px 0 32px;
+}
+
+.cuisine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+/* Thẻ món ăn ẩm thực */
+.cuisine-card {
+  background: #ffffff;
+  border: 1px solid var(--line, #e4e8df);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.cuisine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(22, 63, 49, 0.08);
+}
+
+.cuisine-card-media {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: #eef2e8;
+}
+
+.cuisine-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cuisine-card:hover .cuisine-card-media img {
+  transform: scale(1.05);
+}
+
+.cuisine-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: rgba(255, 254, 240, 0.94);
+  color: var(--deep, #163f31);
+  padding: 5px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(22, 63, 49, 0.08);
+  z-index: 2;
+}
+
+/* Nút thả tim tương tác */
+.cuisine-like-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(216, 60, 45, 0.25);
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: #788078;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.cuisine-like-btn:hover {
+  background: #ffffff;
+  color: #d83c2d;
+  border-color: #d83c2d;
+  transform: scale(1.06);
+}
+
+.cuisine-like-btn.liked {
+  background: #d83c2d;
+  color: #ffffff;
+  border-color: #d83c2d;
+}
+
+.cuisine-like-btn.liked svg {
+  fill: #ffffff;
+}
+
+.cuisine-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cuisine-region {
+  font-size: 11px;
+  color: var(--muted, #788078);
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.cuisine-card h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+  color: var(--ink, #233f33);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cuisine-summary {
+  font-size: 12px;
+  line-height: 1.75;
+  color: #556357;
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+.cuisine-taste-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.taste-pill {
+  font-size: 10px;
+  color: var(--green, #225941);
+  background: #eef3eb;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.cuisine-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line, #e4e8df);
+  padding-top: 14px;
+  margin-top: auto;
+}
+
+.cuisine-category-label {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: var(--muted, #788078);
+}
+
+.cuisine-explore-btn {
+  font-size: 11px;
+  color: var(--green, #225941);
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: color 0.15s;
+}
+
+.cuisine-explore-btn:hover {
+  color: #d83c2d;
+}
+
+/* ==========================================================================
+   GIAO DIỆN BLOG ẨM THỰC TRONG MODAL
+   ========================================================================== */
+dialog:has(.cuisine-blog) {
+  width: min(880px, 94vw);
+  padding: 36px 40px;
+  border-radius: 12px;
+}
+
+.cuisine-blog {
+  color: var(--ink, #233f33);
+}
+
+.cuisine-blog-header {
+  margin-bottom: 20px;
+}
+
+.cuisine-blog-header h2 {
+  font-size: 34px;
+  margin: 6px 0 10px;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--ink, #233f33);
+}
+
+.cuisine-blog-sub {
+  font-size: 14px;
+  color: var(--green, #225941);
+  margin: 0 0 16px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.cuisine-blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line, #e4e8df);
+  font-size: 12px;
+}
+
+.badge-mini {
+  background: #edf2e8;
+  color: var(--green, #225941);
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.cuisine-blog-like-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #d83c2d;
+  background: #fff;
+  color: #d83c2d;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.cuisine-blog-like-btn:hover {
+  background: #fff5f4;
+  transform: translateY(-1px);
+}
+
+.cuisine-blog-like-btn.liked {
+  background: #d83c2d;
+  color: #ffffff;
+}
+
+.cuisine-blog-like-btn.liked svg {
+  fill: #ffffff;
+}
+
+.cuisine-blog-hero {
+  margin: 20px 0;
+}
+
+.cuisine-blog-hero img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.cuisine-taste-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #f4f7f1;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin: 22px 0 28px;
+}
+
+.taste-bar-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--deep, #163f31);
+}
+
+.taste-bar-items {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.taste-chip {
+  background: #ffffff;
+  border: 1px solid #dce4d5;
+  border-radius: 16px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--ink, #233f33);
+}
+
+.cuisine-blog-content .blog-section {
+  margin-bottom: 24px;
+}
+
+.cuisine-blog-content h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+  color: var(--deep, #163f31);
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.cuisine-blog-content p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #3b473d;
+  margin: 0;
+}
+
+.cuisine-spot-box {
+  background: #fffdf4;
+  border-left: 4px solid #c9a751;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 26px 0;
+}
+
+.cuisine-spot-box h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #795e1e;
+}
+
+.cuisine-spot-box p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #5d4a1e;
+}
+
+/* Tour gợi ý */
+.cuisine-related-tour {
+  background: #eff4eb;
+  border: 1px dashed #abc0a4;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.related-tour-info h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.related-tour-info p {
+  margin: 0;
+}
+
+/* Phần bình luận & cảm nhận ẩm thực */
+.cuisine-reviews-section {
+  border-top: 1px solid var(--line, #e4e8df);
+  padding-top: 26px;
+  margin-top: 30px;
+}
+
+.reviews-header h3 {
+  font-size: 18px;
+  margin: 0 0 4px;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.cuisine-comment-form {
+  background: #fbfbf8;
+  border: 1px solid var(--line, #e4e8df);
+  border-radius: 8px;
+  padding: 18px;
+  margin: 18px 0 24px;
+}
+
+.cuisine-comment-form .form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.cuisine-comment-form textarea {
+  resize: vertical;
+}
+
+.cuisine-comment-form button {
+  justify-self: start;
+  margin-top: 4px;
+}
+
+.cuisine-reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cuisine-review-item {
+  background: #ffffff;
+  border: 1px solid var(--line, #e4e8df);
+  border-radius: 7px;
+  padding: 14px 18px;
+}
+
+.review-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.review-meta b {
+  color: var(--deep, #163f31);
+}
+
+.review-meta .stars {
+  color: #c9932b;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+
+.review-meta small {
+  color: var(--muted, #788078);
+  margin-left: auto;
+  font-size: 10px;
+}
+
+.cuisine-review-item p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #4b574d;
+}
+
+@media (max-width: 1000px) {
+  .cuisine-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  dialog:has(.cuisine-blog) {
+    padding: 24px 18px;
+  }
+  .cuisine-grid {
+    grid-template-columns: 1fr;
+  }
+  .cuisine-blog-header h2 {
+    font-size: 26px;
+  }
+  .cuisine-blog-hero img {
+    max-height: 240px;
+  }
+  .cuisine-related-tour {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cuisine-comment-form .form-row {
+    flex-direction: column;
+  }
+}
+
+/* Bài blog ẩm thực: nhịp đọc thoáng, ảnh mở bài và cột ghi chú riêng. */
+dialog:has(.cuisine-blog) {
+  width: min(1040px, 95vw);
+  max-height: min(92vh, 960px);
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 28px 90px rgba(11, 40, 28, .28);
+}
+
+.cuisine-blog {
+  padding: 42px clamp(22px, 6vw, 72px) 52px;
+}
+
+.cuisine-blog-header {
+  max-width: 760px;
+  margin: 0 auto 28px;
+}
+
+.cuisine-blog-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #788078;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  margin: 0 0 14px;
+}
+
+.cuisine-blog-kicker span:first-child { color: #9b7132; }
+.cuisine-blog-kicker i { width: 20px; height: 1px; background: #c8b994; }
+
+.cuisine-blog-header h2 {
+  font-size: clamp(32px, 4.8vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -.7px;
+  margin: 0 0 12px;
+}
+
+.cuisine-blog-sub {
+  max-width: 670px;
+  color: #687868;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 0 0 20px;
+}
+
+.cuisine-blog-meta {
+  gap: 10px 16px;
+  padding: 13px 0 0;
+  color: #6e786d;
+}
+
+.cuisine-blog-meta .cuisine-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: auto;
+}
+
+.cuisine-blog-like-btn { margin-left: 0; }
+
+.cuisine-blog-hero {
+  position: relative;
+  margin: 0 auto 20px;
+  max-width: 896px;
+}
+
+.cuisine-blog-hero img {
+  display: block;
+  width: 100%;
+  height: clamp(250px, 42vw, 440px);
+  max-height: none;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.cuisine-blog-hero figcaption {
+  color: #7c8379;
+  font-size: 10px;
+  line-height: 1.6;
+  padding: 9px 3px 0;
+}
+
+.cuisine-blog-hero figcaption span { color: #a1a79e; }
+
+.cuisine-blog-lead {
+  max-width: 780px;
+  margin: 30px auto 36px;
+  padding: 0 0 0 20px;
+  border-left: 3px solid #c4a55d;
+  color: #425b48;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(17px, 2.1vw, 21px);
+  line-height: 1.75;
+}
+
+.cuisine-journal-note {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  max-width: 780px;
+  margin: -12px auto 38px;
+  padding: 17px 20px;
+  border-radius: 10px;
+  background: #f4f1e6;
+}
+
+.cuisine-journal-note > span {
+  color: #8a713e;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  padding-top: 5px;
+}
+
+.cuisine-journal-note p {
+  color: #586253;
+  font: italic 13px/1.8 'Playfair Display', Georgia, serif;
+  margin: 0;
+}
+
+.cuisine-article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: clamp(28px, 5vw, 64px);
+  max-width: 896px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.cuisine-blog-content .blog-section {
+  margin: 0 0 32px;
+}
+
+.blog-section-label,
+.aside-eyebrow {
+  display: block;
+  color: #9b7132;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.35px;
+  margin: 0 0 7px;
+}
+
+.cuisine-blog-content h3 {
+  font-size: 21px;
+  line-height: 1.4;
+  margin: 0 0 10px;
+}
+
+.cuisine-blog-content p {
+  color: #4c594e;
+  font-size: 13px;
+  line-height: 1.95;
+}
+
+.blog-experience {
+  padding: 20px 22px;
+  background: #f6f7f1;
+  border-radius: 10px;
+}
+
+.blog-experience p { margin-bottom: 0; }
+
+.cuisine-article-aside {
+  display: grid;
+  gap: 14px;
+  padding-top: 3px;
+}
+
+.cuisine-taste-card,
+.cuisine-article-aside .cuisine-spot-box {
+  border: 1px solid #e2e7dc;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 0;
+  background: #fbfcf8;
+}
+
+.cuisine-taste-card h3,
+.cuisine-article-aside .cuisine-spot-box h3 {
+  color: #244b37;
+  font: 600 16px/1.4 'Playfair Display', Georgia, serif;
+  margin: 0 0 13px;
+}
+
+.cuisine-taste-card .taste-bar-items { display: flex; gap: 7px; flex-wrap: wrap; }
+.cuisine-taste-card .taste-chip { background: #fff; font-size: 10px; line-height: 1.5; padding: 5px 9px; }
+
+.cuisine-article-aside .cuisine-spot-box {
+  border-left: 1px solid #e2e7dc;
+  background: #fffaf0;
+}
+
+.cuisine-article-aside .cuisine-spot-box h3 { color: #795e1e; }
+.cuisine-article-aside .cuisine-spot-box p { color: #5d5646; font-size: 11px; line-height: 1.8; margin: 0; }
+.cuisine-article-aside .cuisine-spot-box .spot-note { color: #8a867a; font-size: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee4cd; }
+
+.cuisine-aside-note {
+  display: flex;
+  gap: 10px;
+  padding: 3px 4px;
+  color: #758171;
+}
+
+.cuisine-aside-note span { color: #b38d42; font-size: 17px; }
+.cuisine-aside-note p { margin: 0; font: italic 12px/1.8 'Playfair Display', Georgia, serif; }
+
+.cuisine-related-tour {
+  max-width: 896px;
+  margin: 26px auto 0;
+  border-style: solid;
+  border-color: #dfe7d8;
+  background: #f5f8f1;
+}
+
+.cuisine-reviews-section {
+  max-width: 896px;
+  margin: 42px auto 0;
+  padding-top: 30px;
+}
+
+.reviews-header h3 { font-size: 22px; }
+.reviews-header .micro { font-size: 11px; }
+.cuisine-comment-form { display: grid; gap: 11px; padding: 20px; }
+.cuisine-comment-form .form-row > * { flex: 1; }
+.cuisine-comment-form textarea { min-height: 100px; }
+.cuisine-review-item { padding: 17px 20px; }
+.cuisine-review-item p { font-size: 12px; line-height: 1.8; }
+
+@media (max-width: 760px) {
+  dialog:has(.cuisine-blog) { width: 96vw; max-height: 94vh; border-radius: 12px; }
+  .cuisine-blog { padding: 28px 18px 34px; }
+  .cuisine-blog-sub { font-size: 15px; }
+  .cuisine-blog-hero img { height: 240px; }
+  .cuisine-blog-lead { margin: 23px auto 28px; padding-left: 14px; }
+  .cuisine-journal-note { grid-template-columns: 1fr; gap: 5px; margin: -6px auto 30px; padding: 15px; }
+  .cuisine-article-layout { grid-template-columns: 1fr; gap: 24px; }
+  .cuisine-article-aside { grid-template-columns: 1fr 1fr; }
+  .cuisine-aside-note { grid-column: 1 / -1; }
+  .cuisine-blog-content h3 { font-size: 19px; }
+}
+
+@media (max-width: 480px) {
+  .cuisine-blog { padding: 23px 15px 28px; }
+  .cuisine-blog-kicker { font-size: 8px; letter-spacing: 1px; }
+  .cuisine-blog-meta { gap: 10px; }
+  .cuisine-blog-meta .cuisine-location { flex-basis: 100%; }
+  .cuisine-blog-like-btn { margin-left: auto; }
+  .cuisine-article-aside { grid-template-columns: 1fr; }
+  .cuisine-aside-note { grid-column: auto; }
+  .cuisine-comment-form { padding: 14px; }
+  .review-meta { flex-wrap: wrap; }
+  .review-meta small { margin-left: 0; }
+}

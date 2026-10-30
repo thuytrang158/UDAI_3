@@ -1,0 +1,3080 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-14",
+  "editorialNote": "10 tour do Trà Journey biên soạn. Nguồn dùng để đối chiếu điểm đến; tên tour, giờ, giá, dịch vụ và phối tuyến là đề xuất biên tập, chưa được nhà cung cấp xác nhận.",
+  "sources": {
+    "tea": {
+      "title": "Cổng du lịch Thái Nguyên — Điểm du lịch cộng đồng Tân Cương",
+      "url": "https://mythainguyen.vn/vi/tancuong11"
+    },
+    "lake": {
+      "title": "Cổng du lịch Thái Nguyên — Hồ Núi Cốc",
+      "url": "https://mythainguyen.vn/vi/honuicoc"
+    },
+    "regional": {
+      "title": "Báo Thái Nguyên — Thái Nguyên vào mùa du lịch",
+      "url": "https://baothainguyen.vn/van-hoa/du-lich-thai-nguyen/202604/thai-nguyen-vao-mua-du-lich-d15161d"
+    },
+    "heritage": {
+      "title": "Cổng du lịch Thái Nguyên — Chương trình tham quan",
+      "url": "https://mythainguyen.vn/vi/detailnews/?id=news_187&t=chuong-trinh-tham-quan-du-lich-thai-nguyen"
+    },
+    "waterfall": {
+      "title": "Thái Nguyên 360 — Thác Khuôn Tát",
+      "url": "https://thainguyen360.com.vn/648cB6Hc987938E"
+    },
+    "phoenix": {
+      "title": "Báo Thái Nguyên — Phụ nữ Mỏ Gà làm du lịch cộng đồng, 25/10/2023",
+      "url": "https://baothainguyen.vn/file/e7837c027f6ecd14017ffa4e5f2a0e34/upload/xdata/202310/20231025064953trang_1-2_25-10-2023chuan.pdf"
+    },
+    "pagoda": {
+      "title": "Thông tin tham khảo Chùa Hang — Kim Sơn Tự",
+      "url": "https://www.hagiangtrekkingtours.com/hang-pagoda-chua-hang.asp"
+    },
+    "stream": {
+      "title": "Cổng tỉnh Thái Nguyên — Cửa Tử, điểm du lịch trải nghiệm",
+      "url": "https://cms.thainguyen.vn/web/guest/tin-du-lich-noi-bat/-/asset_publisher/lVjDI9uKhOvh/content/cua-tu-iem-du-lich-trai-nghiem-hap-dan-tai-thai-nguyen"
+    },
+    "babe": {
+      "title": "Cục Du lịch Quốc gia Việt Nam — Ba Be Lake",
+      "url": "https://vietnamtourism.gov.vn/en/printer/14483?type=1"
+    },
+    "bamboo": {
+      "title": "Cục Du lịch Quốc gia Việt Nam — Du lịch cộng đồng Ba Bể, Phiêng Phàng",
+      "url": "https://nongthon.vietnamtourism.gov.vn/huyen-ba-be-tinh-bac-kan-khai-thac-tiem-nang-phat-trien-du-lich/"
+    },
+    "prairie": {
+      "title": "Báo Thái Nguyên — Có một thảo nguyên Sam Chiêm tại Thái Nguyên",
+      "url": "https://baothainguyen.vn/van-hoa/202507/co-mot-thao-nguyen-sam-chiem-tai-thai-nguyen-3b80404"
+    },
+    "chang": {
+      "title": "TravelViet — Hồ Bản Chang",
+      "url": "https://travelviet.net/vn/travel/bac-kan/ho-ban-chang"
+    },
+    "cave": {
+      "title": "Umove Adventure — Thông tin tham khảo đặc điểm hang Thẳm Phầy",
+      "url": "https://www.umoveadventure.com/vi/sup-caving-ba-be-ky-thu.html"
+    }
+  },
+  "places": [
+    {
+      "id": "tan-cuong",
+      "name": "Đồi chè Tân Cương",
+      "region": "Tân Cương",
+      "lat": 21.527,
+      "lng": 105.754,
+      "sourceIds": [
+        "tea"
+      ]
+    },
+    {
+      "id": "atk",
+      "name": "ATK Định Hóa",
+      "region": "Định Hóa",
+      "lat": 21.8906,
+      "lng": 105.6322,
+      "sourceIds": [
+        "heritage"
+      ]
+    },
+    {
+      "id": "nui-coc",
+      "name": "Hồ Núi Cốc",
+      "region": "Khu vực Đại Từ",
+      "lat": 21.571,
+      "lng": 105.6815,
+      "sourceIds": [
+        "lake"
+      ]
+    },
+    {
+      "id": "phuong-hoang",
+      "name": "Hang Phượng Hoàng - Suối Mỏ Gà",
+      "region": "Khu vực Võ Nhai",
+      "lat": 21.7225,
+      "lng": 105.9928,
+      "sourceIds": [
+        "phoenix"
+      ]
+    },
+    {
+      "id": "khuon-tat",
+      "name": "Thác Khuôn Tát",
+      "region": "Khu vực Định Hóa",
+      "lat": 21.8967,
+      "lng": 105.6178,
+      "sourceIds": [
+        "waterfall"
+      ]
+    },
+    {
+      "id": "ghenh-che",
+      "name": "Hồ Ghềnh Chè",
+      "region": "Khu vực Sông Công",
+      "lat": 21.4678,
+      "lng": 105.7958,
+      "sourceIds": [
+        "regional"
+      ]
+    },
+    {
+      "id": "chua-hang",
+      "name": "Chùa Hang",
+      "region": "Kim Sơn Tự, khu vực trung tâm Thái Nguyên",
+      "lat": 21.6094,
+      "lng": 105.8572,
+      "sourceIds": [
+        "pagoda"
+      ]
+    },
+    {
+      "id": "cua-tu",
+      "name": "Suối Cửa Tử",
+      "region": "Khu vực Đại Từ",
+      "lat": 21.6231,
+      "lng": 105.5722,
+      "sourceIds": [
+        "stream"
+      ]
+    },
+    {
+      "id": "ba-be",
+      "name": "Hồ Ba Bể",
+      "region": "Khu vực Ba Bể",
+      "lat": 22.4083,
+      "lng": 105.6167,
+      "sourceIds": [
+        "babe"
+      ]
+    },
+    {
+      "id": "sam-chiem",
+      "name": "Thảo nguyên Sam Chiêm",
+      "region": "Hiệp Lực, khu vực Ngân Sơn",
+      "lat": 22.4667,
+      "lng": 105.9833,
+      "sourceIds": [
+        "prairie"
+      ]
+    },
+    {
+      "id": "ban-chang",
+      "name": "Hồ Bản Chang",
+      "region": "Khu vực Đức Vân cũ, Ngân Sơn",
+      "lat": 22.4417,
+      "lng": 105.9333,
+      "sourceIds": [
+        "chang"
+      ]
+    },
+    {
+      "id": "yen-duong",
+      "name": "Rừng trúc Yến Dương",
+      "aliases": [
+        "Rừng trúc Yên Dương",
+        "Rừng trúc Pù Lầu",
+        "Rừng trúc Phiêng Phàng"
+      ],
+      "region": "Phiêng Phàng, khu vực Ba Bể",
+      "lat": 22.385,
+      "lng": 105.75,
+      "sourceIds": [
+        "bamboo"
+      ]
+    },
+    {
+      "id": "tham-phay",
+      "name": "Hang Thẳm Phầy",
+      "aliases": [
+        "Hang Thẩm Phầy"
+      ],
+      "region": "Khu vực Ba Bể",
+      "lat": 22.3556,
+      "lng": 105.6583,
+      "sourceIds": [
+        "cave"
+      ]
+    }
+  ],
+  "common": {
+    "status": "draft_itinerary",
+    "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+    "currency": "VND",
+    "reviewCount": 0,
+    "rating": null,
+    "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+    "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+    "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+    "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+    "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+    "included": [
+      "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+      "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+      "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+      "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán."
+    ],
+    "excluded": [
+      "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+      "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+      "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+      "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung."
+    ],
+    "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+    "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+    "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+    "packing": [
+      "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+      "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+      "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+    ],
+    "operationChecklist": [
+      "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+      "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+      "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+      "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+    ]
+  },
+  "tours": [
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "Một buổi thưởng trà cơ bản tại cơ sở được đặt trước."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Vé thuyền hồ Núi Cốc, trò chơi và trải nghiệm trà chuyên sâu nếu có phụ thu."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 101,
+      "code": "TJ01",
+      "slug": "huong-tra-sac-ho",
+      "name": "Hương trà, sắc hồ — Một ngày chạm miền xanh",
+      "destinationIds": [
+        "tan-cuong",
+        "nui-coc"
+      ],
+      "days": 1,
+      "price": 790000,
+      "priceMax": 990000,
+      "tags": [
+        "Thiên nhiên",
+        "Văn hóa",
+        "Gia đình",
+        "Trải nghiệm Trà"
+      ],
+      "label": "LẦN ĐẦU ĐẾN MIỀN TRÀ",
+      "image": "tours/doi-che-tan-cuong.jpg",
+      "imageCaption": "Ảnh minh họa đồi chè cho hành trình Tân Cương · Bộ ảnh chủ website cung cấp.",
+      "summary": "Hòa mình vào đồi chè Tân Cương xanh ngát, trải nghiệm hái chè cùng nghệ nhân và thả hồn thư thái trên du thuyền thưởng ngoạn hồ Núi Cốc thơ mộng.",
+      "description": "Một ngày vừa đủ để làm quen với hai sắc thái của miền trà: gần gũi trong câu chuyện người làm chè và khoáng đạt giữa không gian mặt hồ. Chuyến đi ưu tiên thưởng thức, trò chuyện và những khoảng nghỉ, phù hợp để mở đầu bộ sưu tập kỷ niệm Thái Nguyên của bạn.",
+      "audience": "Khách lần đầu đến Thái Nguyên, cặp đôi, gia đình có khả năng đi bộ nhẹ; nhóm bạn muốn đi về trong ngày.",
+      "difficulty": "Nhẹ — đi bộ trên lối tham quan và đồi chè; có đoạn dốc ngắn.",
+      "group": "10–20 khách; đoàn nhỏ báo giá riêng.",
+      "season": "Ưu tiên ngày khô ráo, thời tiết dịu. Trải nghiệm hái chè tùy lứa chè và lịch của cơ sở, không cam kết có quanh năm.",
+      "transport": "Xe riêng; trung tâm → Tân Cương dự trù 30–60 phút, Tân Cương → hồ Núi Cốc 45–75 phút, về trung tâm 45–75 phút.",
+      "highlights": [
+        "Tìm hiểu từ búp chè đến chén trà cùng cơ sở địa phương.",
+        "Khoảng thời gian chụp ảnh trên lối đi được phép giữa đồi chè.",
+        "Một buổi chiều ven hồ, có lựa chọn đi thuyền nếu điều kiện phù hợp."
+      ],
+      "itinerary": [
+        {
+          "title": "Từ đồi chè đến mặt hồ",
+          "meals": [
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:30–08:30",
+              "title": "Đón khách, về Tân Cương",
+              "description": "Gặp hướng dẫn viên tại trung tâm, kiểm tra danh sách đoàn và di chuyển về vùng chè; giới thiệu câu chuyện của hành trình."
+            },
+            {
+              "time": "08:30–11:15",
+              "title": "Chậm lại giữa hương trà",
+              "description": "Dạo lối giữa đồi chè, chụp ảnh theo hướng dẫn, gặp cơ sở làm trà và tìm hiểu các bước chế biến. Thưởng trà; hoạt động hái hoặc sao chè chỉ thực hiện khi cơ sở xác nhận."
+            },
+            {
+              "time": "11:15–12:30",
+              "title": "Bữa trưa miền trà",
+              "description": "Dùng bữa tại cơ sở đã đặt, thực đơn gợi ý cơm, rau theo mùa và món mặn địa phương; dành thời gian nghỉ."
+            },
+            {
+              "time": "12:30–15:45",
+              "title": "Chiều bên hồ Núi Cốc",
+              "description": "Di chuyển sang hồ, đi bộ tại khu vực mở cửa, tìm góc ngắm cảnh. Có khoảng 45–60 phút cho chuyến thuyền tự chọn; khách không đi thuyền nghỉ tại điểm hẹn ven hồ."
+            },
+            {
+              "time": "15:45–17:00",
+              "title": "Trở về",
+              "description": "Tập trung đoàn, về điểm đón tại trung tâm; kết thúc chương trình sau khi kiểm tra tư trang."
+            }
+          ],
+          "day": 1
+        }
+      ],
+      "includedExtra": [
+        "Một buổi thưởng trà cơ bản tại cơ sở được đặt trước."
+      ],
+      "excludedExtra": [
+        "Vé thuyền hồ Núi Cốc, trò chơi và trải nghiệm trà chuyên sâu nếu có phụ thu."
+      ],
+      "lodging": "Không có đêm nghỉ; có thời gian nghỉ trưa tại nhà hàng.",
+      "food": "01 bữa trưa; thực đơn theo mùa và nhu cầu ăn kiêng đã báo trước.",
+      "notes": [
+        "Không hái chè hoặc đi vào khu sản xuất khi chưa được đồng ý.",
+        "Nếu đi thuyền: mặc áo phao, tuân thủ sức chứa và hướng dẫn của người vận hành."
+      ],
+      "weatherPlan": "Nếu mưa, ưu tiên không gian thưởng trà trong nhà, giảm phần đi đồi; bỏ thuyền khi thời tiết không phù hợp, điều chỉnh thời gian ven hồ.",
+      "gallery": [
+        {
+          "image": "tours/doi-che-tan-cuong.jpg",
+          "caption": "Ảnh minh họa đồi chè cho hành trình Tân Cương · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/ho-nui-coc.jpg",
+          "caption": "Ảnh minh họa cảnh hồ cho hành trình Núi Cốc · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 0,
+      "tag": "Thiên nhiên",
+      "places": [
+        "Đồi chè Tân Cương",
+        "Hồ Núi Cốc"
+      ],
+      "stops": [
+        {
+          "id": "tan-cuong",
+          "name": "Đồi chè Tân Cương",
+          "region": "Tân Cương",
+          "lat": 21.527,
+          "lng": 105.754,
+          "sourceIds": [
+            "tea"
+          ]
+        },
+        {
+          "id": "nui-coc",
+          "name": "Hồ Núi Cốc",
+          "region": "Khu vực Đại Từ",
+          "lat": 21.571,
+          "lng": 105.6815,
+          "sourceIds": [
+            "lake"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "tea",
+        "lake"
+      ],
+      "demoReviews": [
+        {
+          "name": "Nguyễn Minh Anh",
+          "party": "Đi cùng gia đình",
+          "rating": 5,
+          "title": "Một ngày nhẹ nhàng mà nhiều kỷ niệm",
+          "body": "Mình thích nhất buổi thưởng trà, được nghe giải thích từng bước nên thấy chuyến đi có chiều sâu hơn việc chỉ chụp ảnh. Lịch trình có khoảng nghỉ, bố mẹ mình theo được khá thoải mái.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Trần Hoàng Nam",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Đồi chè buổi sáng rất hợp để chụp ảnh",
+          "body": "Nhóm mình có đủ thời gian đi bộ và chụp ảnh mà không bị gọi lên xe liên tục. Bạn hướng dẫn nói chuyện gần gũi, bữa trưa vừa miệng. Phần bên hồ giúp cả nhóm thư giãn trước khi về.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        },
+        {
+          "name": "Lê Thu Hà",
+          "party": "Đi cùng người thương",
+          "rating": 4,
+          "title": "Hợp cho cuối tuần ngắn",
+          "body": "Phần trà thú vị hơn mình nghĩ, còn đoạn đi hồ khá thư thả. Mình muốn thời gian ở đồi chè dài hơn một chút; nếu quay lại sẽ chọn tour riêng để ở lâu hơn.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Thưởng trà cùng người làm chè",
+        "Một chiều thư thả bên hồ Núi Cốc"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "Đi về trong ngày",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "Một buổi thưởng trà cơ bản.",
+        "Khu ngồi picnic dùng chung và phần đồ ăn nhẹ theo set của đoàn, cần đặt trước."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Thuyền, SUP/kayak, câu cá, lều ngủ qua đêm và dịch vụ ngoài set picnic."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 102,
+      "code": "TJ02",
+      "slug": "tra-som-ho-chieu",
+      "name": "Trà sớm, hồ chiều — Picnic bên Ghềnh Chè",
+      "destinationIds": [
+        "tan-cuong",
+        "ghenh-che"
+      ],
+      "days": 1,
+      "price": 850000,
+      "priceMax": 1090000,
+      "tags": [
+        "Gia đình",
+        "Nghỉ dưỡng",
+        "Thiên nhiên",
+        "Dã ngoại & Picnic"
+      ],
+      "label": "MỘT NGÀY BÊN NHAU",
+      "image": "tours/doi-che-tan-cuong.jpg",
+      "imageCaption": "Ảnh minh họa đồi chè cho hành trình Tân Cương · Bộ ảnh chủ website cung cấp.",
+      "summary": "Thưởng thức ấm trà sớm tinh khôi giữa triền đồi Tân Cương, thảnh thơi picnic ven hồ Ghềnh Chè lộng gió và tận hưởng không gian gắn kết gia đình trọn vẹn.",
+      "description": "Không đặt mục tiêu đi thật nhiều, hành trình này dành phần lớn buổi chiều cho cả nhóm ở cạnh nhau. Sau sắc xanh của đồi chè là một điểm dã ngoại ven Ghềnh Chè, nơi bạn có thể đọc sách, chụp ảnh gia đình hoặc đơn giản ngồi nghe gió. Picnic được tổ chức tại khu vực có dịch vụ và được phép đón khách.",
+      "audience": "Gia đình, nhóm bạn và nhóm đồng nghiệp thích thư giãn; không yêu cầu kinh nghiệm trekking.",
+      "difficulty": "Nhẹ — tản bộ ngắn; cần giám sát trẻ ở khu vực ven nước.",
+      "group": "10–20 khách; ưu tiên nhóm riêng.",
+      "season": "Ngày khô ráo, không có cảnh báo dông. Không hứa hẹn hoàng hôn vì chương trình kết thúc trước tối.",
+      "transport": "Xe riêng; dành 45–60 phút từ trung tâm đến Tân Cương, 60–90 phút chuyển sang Ghềnh Chè và 45–75 phút trở về, cần khảo sát lại cung đường.",
+      "highlights": [
+        "Một chén trà mở đầu ngày nghỉ bên người thân.",
+        "Picnic nhẹ với chỗ ngồi, mái che dự kiến tại cơ sở dịch vụ.",
+        "Thời gian tự do thực sự thay vì liên tục lên xuống xe."
+      ],
+      "itinerary": [
+        {
+          "title": "Một ngày sống chậm",
+          "meals": [
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "08:00–09:00",
+              "title": "Khởi hành về vùng trà",
+              "description": "Đón tại trung tâm, lên xe về Tân Cương; thống nhất điểm hẹn và nhịp đi phù hợp cho gia đình."
+            },
+            {
+              "time": "09:00–11:00",
+              "title": "Thưởng trà và dạo đồi",
+              "description": "Tìm hiểu cách pha trà, đi bộ nhẹ trên lối mở và chụp ảnh; trẻ em tham gia cùng người giám hộ."
+            },
+            {
+              "time": "11:00–12:30",
+              "title": "Về Ghềnh Chè",
+              "description": "Chuyển xe sang khu vực hồ, có thời gian đệm cho đường địa phương; nhận bàn tại cơ sở đặt trước."
+            },
+            {
+              "time": "12:30–14:00",
+              "title": "Bữa trưa và nghỉ ngơi",
+              "description": "Ăn trưa, nghỉ dưới mái che; hướng dẫn viên giới thiệu khu vực được phép đi lại và ranh giới ven nước."
+            },
+            {
+              "time": "14:00–16:00",
+              "title": "Picnic ven hồ",
+              "description": "Thưởng thức đồ ăn nhẹ đã chuẩn bị, chơi trò kết nối nhẹ, đọc sách hoặc chụp ảnh. Không mặc định bao gồm chèo thuyền, bơi hay đốt lửa."
+            },
+            {
+              "time": "16:00–17:15",
+              "title": "Gói lại một ngày bình yên",
+              "description": "Thu gom rác, kiểm tra trẻ nhỏ và tư trang, trả khách tại trung tâm."
+            }
+          ],
+          "day": 1
+        }
+      ],
+      "includedExtra": [
+        "Một buổi thưởng trà cơ bản.",
+        "Khu ngồi picnic dùng chung và phần đồ ăn nhẹ theo set của đoàn, cần đặt trước."
+      ],
+      "excludedExtra": [
+        "Thuyền, SUP/kayak, câu cá, lều ngủ qua đêm và dịch vụ ngoài set picnic."
+      ],
+      "lodging": "Không nghỉ đêm, không cắm trại tự phát.",
+      "food": "01 bữa trưa và 01 phần ăn nhẹ; đồ uống ngoài nước cơ bản tính riêng.",
+      "notes": [
+        "Không đưa trẻ xuống hồ hoặc đến mép nước thiếu rào chắn.",
+        "Chỉ sử dụng khu picnic khi chủ điểm đồng ý; không đốt lửa trên thảm cỏ."
+      ],
+      "weatherPlan": "Chuyển picnic sang khu có mái che nếu cơ sở đáp ứng. Dông gió mạnh: chuyển sang trải nghiệm trà trong nhà hoặc đổi ngày sau khi thống nhất với khách.",
+      "gallery": [
+        {
+          "image": "tours/doi-che-tan-cuong.jpg",
+          "caption": "Ảnh minh họa đồi chè cho hành trình Tân Cương · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 0,
+      "tag": "Gia đình",
+      "places": [
+        "Đồi chè Tân Cương",
+        "Hồ Ghềnh Chè"
+      ],
+      "stops": [
+        {
+          "id": "tan-cuong",
+          "name": "Đồi chè Tân Cương",
+          "region": "Tân Cương",
+          "lat": 21.527,
+          "lng": 105.754,
+          "sourceIds": [
+            "tea"
+          ]
+        },
+        {
+          "id": "ghenh-che",
+          "name": "Hồ Ghềnh Chè",
+          "region": "Khu vực Sông Công",
+          "lat": 21.4678,
+          "lng": 105.7958,
+          "sourceIds": [
+            "regional"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "tea",
+        "regional"
+      ],
+      "demoReviews": [
+        {
+          "name": "Phạm Ngọc Linh",
+          "party": "Đi cùng gia đình",
+          "rating": 5,
+          "title": "Cả nhà có thời gian ở bên nhau",
+          "body": "Chuyến này không quá nhiều điểm nên hai bé không bị mệt vì lên xuống xe. Buổi picnic là phần cả nhà thích nhất, có chỗ ngồi nghỉ và thời gian trò chuyện thay vì chạy theo lịch.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Vũ Đức Anh",
+          "party": "Đi cùng đồng nghiệp",
+          "rating": 4,
+          "title": "Một ngày đổi không khí dễ chịu",
+          "body": "Nhóm mình thích cách bố trí thưởng trà trước rồi mới picnic. Phần ăn nhẹ ổn, nhưng nếu có thêm món ít ngọt thì sẽ hợp với cả nhóm hơn. Nhìn chung lịch trình dễ theo.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 4,
+            "planning": 5,
+            "value": 4
+          }
+        },
+        {
+          "name": "Đỗ Mai Phương",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Đi ít điểm nhưng cảm nhận được nhiều",
+          "body": "Mình đã có một buổi chiều đọc sách và ngắm cảnh đúng nghĩa. Xe di chuyển vừa phải, bạn hướng dẫn chủ động nhắc giờ tập trung nên nhóm không phải tự lo nhiều việc.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Picnic và phần ăn nhẹ ven hồ",
+        "Lịch nhẹ nhàng cho cả gia đình"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "Đi về trong ngày",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "Dự toán thuyết minh chuyên đề cơ bản tại cụm ATK, cần đặt lịch."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Lễ vật, công đức, chương trình dâng hương nghi thức riêng và hoạt động ngoài tuyến cơ bản."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 103,
+      "code": "TJ03",
+      "slug": "ve-nguon-giua-tieng-thac",
+      "name": "Về nguồn giữa tiếng thác — ATK & Khuôn Tát",
+      "destinationIds": [
+        "atk",
+        "khuon-tat"
+      ],
+      "days": 1,
+      "price": 790000,
+      "priceMax": 990000,
+      "tags": [
+        "Văn hóa",
+        "Thiên nhiên",
+        "Lịch sử & Về nguồn"
+      ],
+      "label": "DẤU ẤN LỊCH SỬ",
+      "image": "tours/atk-dinh-hoa.jpg",
+      "imageCaption": "ATK Định Hóa · Bộ ảnh chủ website cung cấp.",
+      "summary": "Lắng nghe trang sử hào hùng của chiến khu ATK Định Hóa, thưởng thức cơm lam nướng thơm lừng và đắm mình trong thanh âm trong trẻo của thác Khuôn Tát.",
+      "description": "Hành trình có nhịp đi trang trọng vào buổi sáng và nhẹ nhàng vào buổi chiều. Thay vì chạy qua nhiều di tích, đoàn tập trung một số điểm trong cụm ATK để nghe thuyết minh, đặt câu hỏi và kết nối kiến thức; phần thác là điểm thư giãn, không tổ chức leo các tầng cao hay tắm thác.",
+      "audience": "Nhóm yêu lịch sử, gia đình có trẻ lớn, đoàn học tập trải nghiệm; chương trình học sinh cần điều chỉnh quản lý và giá riêng.",
+      "difficulty": "Nhẹ đến vừa — có bậc thang, lối dốc và đường ẩm tại thác.",
+      "group": "10–20 khách; đoàn học sinh cần kế hoạch riêng.",
+      "season": "Có thể xây dựng nhiều thời điểm trong năm; chọn ngày khô và kiểm tra đường vào thác trước chuyến đi.",
+      "transport": "Xe riêng từ trung tâm đi Định Hóa, dự trù 1,5–2 giờ mỗi chiều; di chuyển trong cụm điểm 20–45 phút tùy tuyến.",
+      "highlights": [
+        "Thuyết minh tại cụm di tích ATK, ưu tiên hiểu sâu hơn đi nhiều.",
+        "Bữa trưa với món địa phương, gợi ý cơm lam nếu đặt được.",
+        "Ngắm thác Khuôn Tát từ khu vực tiếp cận phù hợp."
+      ],
+      "itinerary": [
+        {
+          "title": "Ký ức miền gió ngàn",
+          "meals": [
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:00–09:00",
+              "title": "Lên đường về Định Hóa",
+              "description": "Đón đoàn tại trung tâm, nghỉ ngắn dọc đường và nghe giới thiệu bối cảnh lịch sử."
+            },
+            {
+              "time": "09:00–11:30",
+              "title": "Tìm hiểu ATK",
+              "description": "Tham quan theo tuyến được ban quản lý xác nhận, dự kiến khu trưng bày và một điểm di tích tiêu biểu như Tỉn Keo. Có thời gian nghe thuyết minh và trao đổi; không cam kết toàn bộ cụm đều mở cửa."
+            },
+            {
+              "time": "11:30–13:00",
+              "title": "Ăn trưa, nghỉ chân",
+              "description": "Dùng bữa tại Định Hóa; có thể đặt cơm lam và món theo mùa, thay thế tương đương nếu không có nguyên liệu."
+            },
+            {
+              "time": "13:00–15:00",
+              "title": "Khoảng xanh Khuôn Tát",
+              "description": "Di chuyển đến khu vực thác, đi bộ trên đoạn được hướng dẫn cho phép, ngắm cảnh và chụp ảnh từ vị trí an toàn; không vượt dòng nước hay leo đá trơn."
+            },
+            {
+              "time": "15:00–17:30",
+              "title": "Trở về trung tâm",
+              "description": "Dành thời gian dự phòng trên đường về. Kết thúc bằng phần chia sẻ ngắn về điều đáng nhớ của chuyến đi."
+            }
+          ],
+          "day": 1
+        }
+      ],
+      "includedExtra": [
+        "Dự toán thuyết minh chuyên đề cơ bản tại cụm ATK, cần đặt lịch."
+      ],
+      "excludedExtra": [
+        "Lễ vật, công đức, chương trình dâng hương nghi thức riêng và hoạt động ngoài tuyến cơ bản."
+      ],
+      "lodging": "Không nghỉ đêm.",
+      "food": "01 bữa trưa tại Định Hóa; suất ăn theo thực đơn chốt trước.",
+      "notes": [
+        "Trang phục lịch sự, giữ yên lặng tại không gian tưởng niệm.",
+        "Không xuống nước hoặc trèo lên các tầng thác."
+      ],
+      "weatherPlan": "Nếu đường vào thác trơn hoặc nước lớn, bỏ điểm thác và kéo dài nội dung tại không gian trưng bày ATK nếu mở cửa; thông báo thay đổi trước khi di chuyển.",
+      "gallery": [
+        {
+          "image": "tours/atk-dinh-hoa.jpg",
+          "caption": "ATK Định Hóa · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/thac-khuon-tat.jpg",
+          "caption": "Thác Khuôn Tát · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 0,
+      "tag": "Văn hóa",
+      "places": [
+        "ATK Định Hóa",
+        "Thác Khuôn Tát"
+      ],
+      "stops": [
+        {
+          "id": "atk",
+          "name": "ATK Định Hóa",
+          "region": "Định Hóa",
+          "lat": 21.8906,
+          "lng": 105.6322,
+          "sourceIds": [
+            "heritage"
+          ]
+        },
+        {
+          "id": "khuon-tat",
+          "name": "Thác Khuôn Tát",
+          "region": "Khu vực Định Hóa",
+          "lat": 21.8967,
+          "lng": 105.6178,
+          "sourceIds": [
+            "waterfall"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "heritage",
+        "waterfall"
+      ],
+      "demoReviews": [
+        {
+          "name": "Bùi Quang Huy",
+          "party": "Đi cùng gia đình",
+          "rating": 5,
+          "title": "Câu chuyện lịch sử khiến chuyến đi đáng nhớ",
+          "body": "Thay vì ghé thật nhiều di tích, đoàn dành thời gian nghe thuyết minh và đặt câu hỏi. Mình thích cách kể dễ hiểu, có liên hệ với từng nơi đang đứng. Bố mình đặc biệt thích buổi sáng ở ATK.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Nguyễn Thảo Vy",
+          "party": "Đi cùng bạn bè",
+          "rating": 4,
+          "title": "Một ngày vừa học thêm vừa thư giãn",
+          "body": "Lịch sử buổi sáng và cảnh thác buổi chiều kết hợp khá hay. Có vài đoạn bậc thang nên cần đi giày thoải mái. Mình mong thời gian nghỉ trưa thêm khoảng 15 phút.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Trần Quốc Bảo",
+          "party": "Đi cùng đồng nghiệp",
+          "rating": 5,
+          "title": "Thuyết minh có chiều sâu",
+          "body": "Phần ATK được chuẩn bị kỹ, không có cảm giác nghe giới thiệu cho xong. Bữa trưa đơn giản nhưng hợp khẩu vị, buổi chiều ngắm thác giúp cả nhóm thả lỏng sau buổi tham quan.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Nghe chuyện lịch sử tại ATK",
+        "Ngắm thác Khuôn Tát giữa màu xanh"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "Đi về trong ngày",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "01 đêm lưu trú theo loại phòng đã thống nhất, không cam kết cơ sở cụ thể khi chưa đặt.",
+        "Người dẫn đường địa phương cho tuyến hang được phép; đèn chiếu sáng phù hợp cần xác nhận nhà cung cấp."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Phòng đơn, giao lưu văn nghệ, trải nghiệm làm bánh riêng và các dịch vụ vui chơi tại khu du lịch."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 104,
+      "code": "TJ04",
+      "slug": "mien-da-va-tieng-suoi",
+      "name": "Miền đá và tiếng suối — Chùa Hang & Võ Nhai",
+      "destinationIds": [
+        "chua-hang",
+        "phuong-hoang"
+      ],
+      "days": 2,
+      "price": 1890000,
+      "priceMax": 2390000,
+      "tags": [
+        "Văn hóa",
+        "Khám phá",
+        "Thiên nhiên",
+        "Hang động kỳ vĩ"
+      ],
+      "label": "CÂU CHUYỆN TRONG LÒNG NÚI",
+      "image": "tours/nha-san-minh-hoa.png",
+      "imageCaption": "Ảnh minh họa không gian nhà sàn, chưa xác định địa điểm; không phải cơ sở lưu trú đã xác nhận trong tour.",
+      "summary": "Chiêm bái Chùa Hang cổ kính, chinh phục hang Phượng Hoàng kỳ vĩ với thạch nhũ lung linh, ngắm suối ngầm Mỏ Gà và ngủ đêm nhà sàn ấm áp bản Tày.",
+      "description": "Chuyến đi kết hợp văn hóa và vận động vừa phải, với khoảng đệm đủ dài cho đường lên hang. Buổi tối nghỉ tại cơ sở địa phương mang lại thời gian cảm nhận nhịp sống vùng núi. Các hoạt động giao lưu chỉ tổ chức khi chủ nhà và cộng đồng đồng ý, không xem sinh hoạt của người dân là một tiết mục mặc định.",
+      "audience": "Nhóm bạn, cặp đôi thích hang động và văn hóa; khách có thể đi bộ lên xuống dốc.",
+      "difficulty": "Vừa — đường lên hang có độ dốc và bậc đá; không phù hợp người hạn chế vận động nếu chưa có phương án riêng.",
+      "group": "10–16 khách, chia nhóm nhỏ khi vào hang.",
+      "season": "Ưu tiên thời tiết khô, đường lên hang không trơn và khu tham quan được phép mở.",
+      "transport": "Xe riêng; trung tâm → Chùa Hang khoảng 20–40 phút, Chùa Hang → Võ Nhai khoảng 1,5–2,5 giờ; xe dừng theo điều kiện đường vào cơ sở.",
+      "highlights": [
+        "Vãn cảnh Chùa Hang — Kim Sơn Tự.",
+        "Đêm nghỉ tại Võ Nhai và bữa cơm theo hương vị địa phương.",
+        "Buổi sáng dành riêng cho hang Phượng Hoàng, chiều ngắm suối Mỏ Gà."
+      ],
+      "itinerary": [
+        {
+          "title": "Từ không gian tĩnh đến bản làng",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "01 đêm tại nhà nghỉ/homestay Võ Nhai, phòng tiêu chuẩn hoặc phòng cộng đồng đã thống nhất",
+          "activities": [
+            {
+              "time": "08:00–10:00",
+              "title": "Chùa Hang buổi sáng",
+              "description": "Đón đoàn và đến Kim Sơn Tự, tham quan khuôn viên mở cửa, tìm hiểu không gian chùa trong cảnh quan đá vôi; ăn mặc lịch sự."
+            },
+            {
+              "time": "10:00–12:30",
+              "title": "Di chuyển đến Võ Nhai",
+              "description": "Đi xe theo tuyến đã khảo sát, có một điểm dừng nghỉ; đến cơ sở dùng bữa trưa."
+            },
+            {
+              "time": "12:30–14:30",
+              "title": "Nhận phòng, nghỉ trưa",
+              "description": "Dùng bữa, nhận chỗ nghỉ và chuẩn bị giày, nước cho ngày đi hang tiếp theo."
+            },
+            {
+              "time": "14:30–17:00",
+              "title": "Gặp gỡ vùng Mỏ Gà",
+              "description": "Dạo làng trên lối được phép, tìm hiểu sinh hoạt địa phương với người dẫn đường; hoạt động làm bánh hoặc giao lưu có thể đặt thêm, không bao gồm mặc định."
+            },
+            {
+              "time": "18:00–20:00",
+              "title": "Bữa tối và câu chuyện hành trình",
+              "description": "Ăn tối, nghe phổ biến tuyến hang, giờ tập trung và phương án theo thể lực; nghỉ sớm."
+            }
+          ],
+          "day": 1
+        },
+        {
+          "title": "Phượng Hoàng và dòng suối Mỏ Gà",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:00–08:00",
+              "title": "Ăn sáng, chuẩn bị",
+              "description": "Kiểm tra giày, đèn và nước; thống nhất nhóm tham quan hang và nhóm nghỉ tại khu dịch vụ nếu không leo."
+            },
+            {
+              "time": "08:00–11:30",
+              "title": "Khám phá hang Phượng Hoàng",
+              "description": "Lên xuống chậm theo hướng dẫn địa phương, chỉ đi tuyến được phép; dừng quan sát cảnh quan hang, không chạm hoặc lấy nhũ đá. Thời lượng điều chỉnh theo thể lực và lối mở."
+            },
+            {
+              "time": "11:30–13:00",
+              "title": "Bữa trưa phục hồi",
+              "description": "Về khu dịch vụ, nghỉ và ăn trưa; thay áo khô nếu cần."
+            },
+            {
+              "time": "13:00–14:30",
+              "title": "Ngắm suối Mỏ Gà",
+              "description": "Tản bộ và chụp ảnh ở khu vực được phép tiếp cận; không tự bơi vào cửa hang nước."
+            },
+            {
+              "time": "14:30–17:00",
+              "title": "Về Thái Nguyên",
+              "description": "Trả phòng theo thỏa thuận từ buổi sáng, kiểm tra đủ khách và di chuyển về điểm đón."
+            }
+          ],
+          "day": 2
+        }
+      ],
+      "includedExtra": [
+        "01 đêm lưu trú theo loại phòng đã thống nhất, không cam kết cơ sở cụ thể khi chưa đặt.",
+        "Người dẫn đường địa phương cho tuyến hang được phép; đèn chiếu sáng phù hợp cần xác nhận nhà cung cấp."
+      ],
+      "excludedExtra": [
+        "Phòng đơn, giao lưu văn nghệ, trải nghiệm làm bánh riêng và các dịch vụ vui chơi tại khu du lịch."
+      ],
+      "lodging": "01 đêm Võ Nhai; ưu tiên cơ sở sạch, có khu vệ sinh phù hợp quy mô đoàn; phòng riêng hay cộng đồng chốt trước.",
+      "food": "01 bữa sáng, 03 bữa chính; gợi ý rau theo mùa và món Tày do cơ sở chế biến, thực đơn xác nhận trước.",
+      "notes": [
+        "Mang giày bám tốt, không tách nhóm trong hang.",
+        "Không đồng nhất tham quan hang Phượng Hoàng với tự thám hiểm hang nước Mỏ Gà."
+      ],
+      "weatherPlan": "Nếu hang đóng hoặc đường trơn, thay bằng trải nghiệm tại cơ sở cộng đồng và không gian tham quan được phép; thông báo trước và đối soát phần dịch vụ thay đổi.",
+      "gallery": [
+        {
+          "image": "tours/nha-san-minh-hoa.png",
+          "caption": "Ảnh minh họa không gian nhà sàn, chưa xác định địa điểm; không phải cơ sở lưu trú đã xác nhận trong tour."
+        }
+      ],
+      "nights": 1,
+      "tag": "Văn hóa",
+      "places": [
+        "Chùa Hang",
+        "Hang Phượng Hoàng - Suối Mỏ Gà"
+      ],
+      "stops": [
+        {
+          "id": "chua-hang",
+          "name": "Chùa Hang",
+          "region": "Kim Sơn Tự, khu vực trung tâm Thái Nguyên",
+          "lat": 21.6094,
+          "lng": 105.8572,
+          "sourceIds": [
+            "pagoda"
+          ]
+        },
+        {
+          "id": "phuong-hoang",
+          "name": "Hang Phượng Hoàng - Suối Mỏ Gà",
+          "region": "Khu vực Võ Nhai",
+          "lat": 21.7225,
+          "lng": 105.9928,
+          "sourceIds": [
+            "phoenix"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "pagoda",
+        "phoenix"
+      ],
+      "demoReviews": [
+        {
+          "name": "Hoàng Ngọc Anh",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Hai ngày nhiều trải nghiệm khác nhau",
+          "body": "Buổi đầu nhẹ nhàng ở chùa và khu dân cư, hôm sau mới dành sức lên hang nên lịch khá hợp lý. Người dẫn đường thường xuyên chờ cả nhóm, mình không cảm thấy bị thúc ép.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        },
+        {
+          "name": "Đặng Minh Khoa",
+          "party": "Đi cùng người thương",
+          "rating": 4,
+          "title": "Thích phần đi hang, cần giày tốt",
+          "body": "Đường lên xuống có đoạn dốc nên mình mừng vì đã mang giày bám. Chỗ nghỉ đơn giản, sạch sẽ theo cảm nhận của mình. Nếu phòng cách âm tốt hơn thì buổi tối sẽ dễ ngủ hơn.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Lê Khánh Chi",
+          "party": "Đi cùng bạn bè",
+          "rating": 4,
+          "title": "Không chỉ là đến chụp ảnh rồi về",
+          "body": "Mình thích phần nghe chuyện địa phương và bữa cơm buổi tối. Tuyến hang vừa sức nhóm, nhưng người ít vận động nên chuẩn bị trước. Xe đi đoạn cuối hơi chậm, bù lại lịch có thời gian đệm.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 4,
+            "planning": 4,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.3,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Khám phá hang với người dẫn đường",
+        "Một đêm cảm nhận nhịp sống Võ Nhai"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "1 đêm lưu trú",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "01 đêm tại Đại Từ.",
+        "Người dẫn đường chuyên môn cho tuyến Cửa Tử cơ bản và bộ trang bị an toàn cần thiết theo đánh giá tuyến; danh mục phải xác nhận trước khi bán.",
+        "Suất ăn trekking ngày đầu và buổi thưởng trà cơ bản ngày hai."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Vé thuyền hồ Núi Cốc; tuyến nâng cao, vượt thác hoặc hoạt động kỹ thuật ngoài chương trình."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động.",
+        "Giày trekking bám ướt, quần áo nhanh khô, bộ đồ thay và túi chống nước."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 105,
+      "code": "TJ05",
+      "slug": "theo-dong-cua-tu",
+      "name": "Theo dòng Cửa Tử — Rừng, hồ và hương trà",
+      "destinationIds": [
+        "cua-tu",
+        "nui-coc",
+        "tan-cuong"
+      ],
+      "days": 2,
+      "price": 2490000,
+      "priceMax": 2990000,
+      "tags": [
+        "Trekking",
+        "Thiên nhiên",
+        "Khám phá",
+        "Vượt suối mạo hiểm"
+      ],
+      "label": "BƯỚC CHÂN VỀ RỪNG",
+      "image": "tours/suoi-cua-tu.jpg",
+      "imageCaption": "Ảnh minh họa trải nghiệm suối cho hành trình Cửa Tử · Bộ ảnh chủ website cung cấp.",
+      "summary": "Chinh phục cung trekking Cửa Tử nguyên sơ vượt ghềnh đá ngọc bích cùng người dẫn đường, tái tạo năng lượng bên hồ Núi Cốc và đồi chè Tân Cương.",
+      "description": "Hành trình dành cho người muốn vận động nhưng vẫn có một ngày cuối thật thư thả. Cửa Tử được bố trí riêng một ngày để kiểm tra điều kiện, đi theo nhịp đoàn và quay về sớm. Tour không hứa chinh phục bảy cửa, không mặc định có nhảy thác, trượt máng hay vượt dây; giới hạn tuyến do người hướng dẫn chuyên môn quyết định.",
+      "audience": "Người lớn có thể lực phù hợp, quen đi bộ ngoài trời; người mới cần trao đổi khả năng vận động với đơn vị tổ chức.",
+      "difficulty": "Vừa đến cao tùy mực nước và đường đi — có đá ẩm và địa hình ven suối. Cần sàng lọc thể lực trước khi nhận khách.",
+      "group": "8–12 khách; báo giá hiển thị theo đoàn 10 khách, bố trí người dẫn đường theo yêu cầu tuyến.",
+      "season": "Chỉ tổ chức khi đơn vị địa phương xác nhận thời tiết và lưu lượng nước phù hợp; không suy ra an toàn chỉ từ thời tiết tại điểm đón.",
+      "transport": "Xe riêng, dự trù 1,5–2 giờ từ trung tâm đến điểm tập kết Đại Từ; ngày hai chuyển khu vực hồ và Tân Cương theo lộ trình khảo sát.",
+      "highlights": [
+        "Một ngày trekking có người dẫn đường và thời gian dự phòng.",
+        "Đêm nghỉ tại Đại Từ sau ngày vận động.",
+        "Ngày thứ hai thư giãn ven hồ Núi Cốc và thưởng trà Tân Cương."
+      ],
+      "itinerary": [
+        {
+          "title": "Một ngày cùng rừng và suối",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "01 đêm nhà nghỉ/homestay khu vực Đại Từ",
+          "activities": [
+            {
+              "time": "06:30–08:30",
+              "title": "Đến điểm tập kết",
+              "description": "Đón đoàn và đi Đại Từ, dừng vệ sinh; kiểm tra tình hình tuyến với người dẫn đường trước khi bắt đầu."
+            },
+            {
+              "time": "08:30–09:15",
+              "title": "Kiểm tra trang bị và nhịp đi",
+              "description": "Phổ biến quy tắc, kiểm tra giày bám, áo phao khi tuyến có đoạn nước được phép, đánh giá sức khỏe tự khai và thống nhất điểm quay đầu."
+            },
+            {
+              "time": "09:15–12:00",
+              "title": "Trekking tuyến cơ bản",
+              "description": "Đi theo tuyến địa phương cho phép, ưu tiên khu vực Cửa Tử 1 phù hợp điều kiện ngày đi; không tự tách nhóm hoặc mở rộng sang các tầng cao."
+            },
+            {
+              "time": "12:00–13:00",
+              "title": "Ăn trưa dã ngoại",
+              "description": "Dùng suất ăn mang theo tại nơi hướng dẫn viên chọn, bổ sung nước, thu gom toàn bộ rác."
+            },
+            {
+              "time": "13:00–15:30",
+              "title": "Quay về trước chiều muộn",
+              "description": "Trở về điểm tập kết theo tốc độ của nhóm, có đệm thời gian cho đường trơn; thay đồ và kiểm tra quân số."
+            },
+            {
+              "time": "16:00–19:00",
+              "title": "Nghỉ tại Đại Từ",
+              "description": "Nhận phòng, tắm rửa, dùng bữa tối; để cơ thể nghỉ sau ngày vận động."
+            }
+          ],
+          "day": 1
+        },
+        {
+          "title": "Từ mặt hồ đến chén trà",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:30–09:00",
+              "title": "Ăn sáng, trả phòng",
+              "description": "Khởi hành thong thả, di chuyển về khu vực hồ Núi Cốc."
+            },
+            {
+              "time": "09:00–11:30",
+              "title": "Một buổi sáng ven hồ",
+              "description": "Đi bộ nhẹ, nghỉ và ngắm cảnh; chuyến thuyền ngắn là tùy chọn khi có dịch vụ phù hợp, không bắt buộc."
+            },
+            {
+              "time": "11:30–13:00",
+              "title": "Ăn trưa và nghỉ",
+              "description": "Dùng bữa tại cơ sở ven tuyến, ưu tiên suất ăn dễ dùng sau ngày trekking."
+            },
+            {
+              "time": "13:00–15:30",
+              "title": "Tân Cương và hương trà",
+              "description": "Chuyển xe đến vùng chè, thưởng trà, trò chuyện cùng người làm chè và chụp ảnh trên lối tham quan."
+            },
+            {
+              "time": "15:30–17:00",
+              "title": "Kết thúc hành trình",
+              "description": "Về trung tâm Thái Nguyên, dành thời gian đệm và trả khách."
+            }
+          ],
+          "day": 2
+        }
+      ],
+      "includedExtra": [
+        "01 đêm tại Đại Từ.",
+        "Người dẫn đường chuyên môn cho tuyến Cửa Tử cơ bản và bộ trang bị an toàn cần thiết theo đánh giá tuyến; danh mục phải xác nhận trước khi bán.",
+        "Suất ăn trekking ngày đầu và buổi thưởng trà cơ bản ngày hai."
+      ],
+      "excludedExtra": [
+        "Vé thuyền hồ Núi Cốc; tuyến nâng cao, vượt thác hoặc hoạt động kỹ thuật ngoài chương trình."
+      ],
+      "lodging": "01 đêm phòng tiêu chuẩn Đại Từ; không ngủ trong rừng.",
+      "food": "01 bữa sáng, 03 bữa chính, trong đó 01 bữa trưa mang theo.",
+      "packingExtra": [
+        "Giày trekking bám ướt, quần áo nhanh khô, bộ đồ thay và túi chống nước."
+      ],
+      "notes": [
+        "Hoạt động dưới nước chỉ khi nằm trong tuyến được phép và có giám sát; không tự nhảy, trượt thác.",
+        "Không khởi hành khi có cảnh báo mưa lớn/lũ hoặc khi người dẫn đường đánh giá tuyến không phù hợp."
+      ],
+      "weatherPlan": "Hoãn phần trekking hoặc chuyển toàn chương trình sang hồ–trà và hoạt động trong nhà sau khi khách đồng ý; không cố thay bằng một suối khác cùng điều kiện nguy hiểm.",
+      "gallery": [
+        {
+          "image": "tours/suoi-cua-tu.jpg",
+          "caption": "Ảnh minh họa trải nghiệm suối cho hành trình Cửa Tử · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/ho-nui-coc.jpg",
+          "caption": "Ảnh minh họa cảnh hồ cho hành trình Núi Cốc · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/doi-che-tan-cuong.jpg",
+          "caption": "Ảnh minh họa đồi chè cho hành trình Tân Cương · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 1,
+      "tag": "Trekking",
+      "places": [
+        "Suối Cửa Tử",
+        "Hồ Núi Cốc",
+        "Đồi chè Tân Cương"
+      ],
+      "stops": [
+        {
+          "id": "cua-tu",
+          "name": "Suối Cửa Tử",
+          "region": "Khu vực Đại Từ",
+          "lat": 21.6231,
+          "lng": 105.5722,
+          "sourceIds": [
+            "stream"
+          ]
+        },
+        {
+          "id": "nui-coc",
+          "name": "Hồ Núi Cốc",
+          "region": "Khu vực Đại Từ",
+          "lat": 21.571,
+          "lng": 105.6815,
+          "sourceIds": [
+            "lake"
+          ]
+        },
+        {
+          "id": "tan-cuong",
+          "name": "Đồi chè Tân Cương",
+          "region": "Tân Cương",
+          "lat": 21.527,
+          "lng": 105.754,
+          "sourceIds": [
+            "tea"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "stream",
+        "lake",
+        "tea"
+      ],
+      "demoReviews": [
+        {
+          "name": "Phan Tuấn Kiệt",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Một ngày vận động, một ngày nghỉ đúng ý",
+          "body": "Cách tách ngày đi suối và ngày hồ–trà rất hợp lý. Nhóm được phổ biến tuyến trước khi đi, ai chậm hơn cũng có thời gian theo. Ngày thứ hai nhẹ nhàng giúp mình không thấy chuyến đi quá đuối.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Nguyễn Hoài An",
+          "party": "Đi cùng đồng nghiệp",
+          "rating": 4,
+          "title": "Cần chuẩn bị thể lực nhưng rất đáng trải nghiệm",
+          "body": "Mình đi bộ thường xuyên mà vẫn thấy vài đoạn khá tốn sức. Điểm cộng là hướng dẫn nhắc cách đặt chân và giữ khoảng cách. Mình muốn phần hướng dẫn chuẩn bị hành lý gửi sớm hơn.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Trịnh Gia Hân",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Thích nhịp đi vừa với nhóm",
+          "body": "Mình không muốn một chuyến chạy thành tích, nên rất thích việc có điểm nghỉ và không cố đi thêm tuyến khó. Bữa tối sau ngày vận động ngon miệng, buổi thưởng trà hôm sau là kết thúc đẹp.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Ngày riêng cho tuyến Cửa Tử cơ bản",
+        "Hồi phục bên hồ và chén trà"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "1 đêm lưu trú",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "02 đêm homestay Ba Bể, cùng cơ sở nếu còn phòng.",
+        "01 chuyến thuyền ngắm hồ dùng chung cho đoàn, tuyến cơ bản và áo phao; người vận hành xác nhận điều kiện.",
+        "Dẫn đường địa phương cho rừng trúc khi cần theo tuyến thực tế."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Kayak/SUP, đêm văn nghệ riêng, phòng đơn và tuyến thuyền bổ sung."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 106,
+      "code": "TJ06",
+      "slug": "ba-be-mien-truc-xanh",
+      "name": "Ba Bể, miền trúc xanh — Ba ngày sống chậm",
+      "destinationIds": [
+        "yen-duong",
+        "ba-be"
+      ],
+      "days": 3,
+      "price": 3290000,
+      "priceMax": 3890000,
+      "tags": [
+        "Nghỉ dưỡng",
+        "Thiên nhiên",
+        "Văn hóa",
+        "Sinh thái Rừng Trúc"
+      ],
+      "label": "Ở LẠI GIỮA MIỀN XANH",
+      "image": "tours/ho-ba-be.jpg",
+      "imageCaption": "Hồ Ba Bể · Bộ ảnh chủ website cung cấp.",
+      "summary": "Rảo bước giữa rừng trúc Yến Dương xanh ngút ngàn, du thuyền lướt nhẹ trên mặt hồ Ba Bể huyền ảo và tận hưởng hai đêm homestay an yên bản làng.",
+      "description": "Một hành trình ưu tiên chiều sâu và khoảng nghỉ: không vừa chạy đường dài vừa nhồi thêm hang động trong ngày. Ba Bể có riêng một ngày để đi thuyền, ngắm núi và nghỉ ở homestay. Rừng trúc là trải nghiệm đi bộ có độ dốc, được tổ chức theo sức của đoàn chứ không mặc định là lối dạo bằng phẳng.",
+      "audience": "Cặp đôi, nhóm bạn yêu thiên nhiên; gia đình có thành viên đi bộ dốc được, muốn nghỉ hai đêm cùng một nơi.",
+      "difficulty": "Nhẹ đến vừa — rừng trúc có lối dốc; tuyến thuyền cần lên xuống bến.",
+      "group": "10–16 khách.",
+      "season": "Ưu tiên ngày ít mưa và điều kiện hồ cho phép tàu hoạt động; không cam kết sương hoặc cảnh lúa theo mùa.",
+      "transport": "Xe riêng; ngày đầu dự trù 4–5 giờ gồm dừng nghỉ đến khu vực Yến Dương, sau đó 1–2 giờ chuyển về nơi nghỉ Ba Bể tùy đường; ngày cuối dành khoảng 5 giờ về trung tâm.",
+      "highlights": [
+        "Dạo rừng trúc Phiêng Phàng với người hướng dẫn địa phương.",
+        "Một chuyến thuyền ngắm hồ trong ngày riêng, có áo phao.",
+        "Hai đêm cùng một homestay giúp giảm việc chuyển phòng."
+      ],
+      "itinerary": [
+        {
+          "title": "Đường đến miền trúc",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 1 tại homestay khu vực Ba Bể",
+          "activities": [
+            {
+              "time": "06:30–11:30",
+              "title": "Từ Thái Nguyên lên vùng Ba Bể",
+              "description": "Đón khách, di chuyển về khu vực Yến Dương, nghỉ dọc đường; chừa thời gian cho đường địa phương."
+            },
+            {
+              "time": "11:30–12:45",
+              "title": "Bữa trưa và chuẩn bị đi bộ",
+              "description": "Ăn trưa tại cơ sở đặt trước, thay giày và mang nước vừa đủ."
+            },
+            {
+              "time": "12:45–15:00",
+              "title": "Rừng trúc Yến Dương",
+              "description": "Theo lối được phép ở Phiêng Phàng, dừng nghe câu chuyện về trúc và chụp ảnh. Không gộp thêm leo đỉnh Pù Lầu hoặc đi thác vào tuyến cơ bản."
+            },
+            {
+              "time": "15:00–17:30",
+              "title": "Về nơi nghỉ Ba Bể",
+              "description": "Di chuyển về homestay, nhận phòng và nghỉ; thời gian dư để bù cho đoạn đường miền núi."
+            },
+            {
+              "time": "18:30–20:00",
+              "title": "Bữa tối đầu tiên ở bản",
+              "description": "Ăn tối với thực đơn địa phương đã thống nhất, làm quen không gian sinh hoạt và giờ yên tĩnh."
+            }
+          ],
+          "day": 1
+        },
+        {
+          "title": "Một ngày dành cho hồ",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 2 tại cùng homestay Ba Bể",
+          "activities": [
+            {
+              "time": "07:00–08:30",
+              "title": "Bữa sáng thong thả",
+              "description": "Ăn sáng, chuẩn bị mũ và nước, di chuyển đến bến theo giờ tàu đã đặt."
+            },
+            {
+              "time": "08:30–11:30",
+              "title": "Du ngoạn Ba Bể",
+              "description": "Đi thuyền theo tuyến ngắm hồ được xác nhận, mặc áo phao; dừng ngắm núi và chụp ảnh, không cam kết thêm các điểm ngoài danh sách."
+            },
+            {
+              "time": "11:30–14:00",
+              "title": "Ăn trưa và nghỉ",
+              "description": "Về điểm dùng bữa trên tuyến hoặc homestay theo điều phối, tránh di chuyển liên tục giữa trưa."
+            },
+            {
+              "time": "14:00–16:30",
+              "title": "Nhịp sống ven hồ",
+              "description": "Đi bộ đoạn ngắn quanh nơi lưu trú, trò chuyện khi người dân đồng ý; hoặc nghỉ tại homestay. SUP/kayak là hoạt động đặt riêng, không bao gồm."
+            },
+            {
+              "time": "18:00–20:00",
+              "title": "Bữa cơm và câu chuyện vùng hồ",
+              "description": "Dùng bữa tối; có thể đặt thêm giao lưu văn hóa theo thỏa thuận, không tự động có trong tour."
+            }
+          ],
+          "day": 2
+        },
+        {
+          "title": "Mang bình yên trở về",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:00–09:30",
+              "title": "Buổi sáng không vội",
+              "description": "Ăn sáng, tự do ngắm cảnh tại khu vực gần nơi nghỉ và thu xếp hành lý."
+            },
+            {
+              "time": "09:30–11:30",
+              "title": "Trả phòng, khởi hành",
+              "description": "Kiểm tra đồ dùng, chào chủ nhà; bắt đầu chặng về theo giờ xe."
+            },
+            {
+              "time": "11:30–12:30",
+              "title": "Bữa trưa dọc đường",
+              "description": "Nghỉ và ăn trưa tại cơ sở đặt trước trên tuyến."
+            },
+            {
+              "time": "12:30–17:00",
+              "title": "Về Thái Nguyên",
+              "description": "Tiếp tục chặng về, có điểm nghỉ; khung giờ kết thúc gồm thời gian đệm cho giao thông."
+            }
+          ],
+          "day": 3
+        }
+      ],
+      "includedExtra": [
+        "02 đêm homestay Ba Bể, cùng cơ sở nếu còn phòng.",
+        "01 chuyến thuyền ngắm hồ dùng chung cho đoàn, tuyến cơ bản và áo phao; người vận hành xác nhận điều kiện.",
+        "Dẫn đường địa phương cho rừng trúc khi cần theo tuyến thực tế."
+      ],
+      "excludedExtra": [
+        "Kayak/SUP, đêm văn nghệ riêng, phòng đơn và tuyến thuyền bổ sung."
+      ],
+      "lodging": "02 đêm homestay; báo rõ phòng riêng/phòng cộng đồng và loại vệ sinh trước khi đặt.",
+      "food": "02 bữa sáng, 05 bữa chính; thực đơn gợi ý món địa phương với rau theo mùa, không cam kết món đặc sản hiếm.",
+      "notes": [
+        "Không chặt trúc, bẻ măng hoặc đi vào đất canh tác chưa xin phép.",
+        "Mặc áo phao suốt chuyến thuyền; không tự bơi giữa hồ."
+      ],
+      "weatherPlan": "Nếu không thể đi rừng trúc, ưu tiên hoạt động tại nơi nghỉ; nếu tàu dừng do thời tiết, thay bằng nội dung văn hóa trong nhà hoặc đổi ngày, không bảo đảm vẫn thực hiện đủ tuyến.",
+      "gallery": [
+        {
+          "image": "tours/ho-ba-be.jpg",
+          "caption": "Hồ Ba Bể · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 2,
+      "tag": "Nghỉ dưỡng",
+      "places": [
+        "Rừng trúc Yến Dương",
+        "Hồ Ba Bể"
+      ],
+      "stops": [
+        {
+          "id": "yen-duong",
+          "name": "Rừng trúc Yến Dương",
+          "aliases": [
+            "Rừng trúc Yên Dương",
+            "Rừng trúc Pù Lầu",
+            "Rừng trúc Phiêng Phàng"
+          ],
+          "region": "Phiêng Phàng, khu vực Ba Bể",
+          "lat": 22.385,
+          "lng": 105.75,
+          "sourceIds": [
+            "bamboo"
+          ]
+        },
+        {
+          "id": "ba-be",
+          "name": "Hồ Ba Bể",
+          "region": "Khu vực Ba Bể",
+          "lat": 22.4083,
+          "lng": 105.6167,
+          "sourceIds": [
+            "babe"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "bamboo",
+        "babe"
+      ],
+      "demoReviews": [
+        {
+          "name": "Đỗ Bảo Ngọc",
+          "party": "Đi cùng người thương",
+          "rating": 5,
+          "title": "Ba Bể theo một nhịp thật chậm",
+          "body": "Ở cùng một nơi hai đêm nên mình có cảm giác thực sự được nghỉ. Buổi đi thuyền có nhiều khoảng yên lặng để ngắm cảnh. Chủ nhà trong kịch bản trải nghiệm rất gần gũi, bữa ăn tạo cảm giác ấm cúng.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Ngô Thành Đạt",
+          "party": "Đi cùng gia đình",
+          "rating": 4,
+          "title": "Lịch trình có khoảng nghỉ hợp lý",
+          "body": "Phần rừng trúc đẹp nhưng có dốc, mình nghĩ nên đọc kỹ phần mức vận động trước khi chọn. Gia đình thích ngày ở hồ vì không phải liên tục chuyển xe. Phòng nghỉ ở mức cơ bản, phù hợp kỳ vọng.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Võ Thanh Trúc",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Chuyến đi để trò chuyện nhiều hơn",
+          "body": "Nhóm mình thích buổi chiều tự do ở nơi nghỉ, không phải hoạt động nào cũng lên lịch kín. Thuyền và bữa ăn được sắp xếp thuận tiện; những đoạn di chuyển dài có dừng nghỉ nên đỡ mệt.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Hai đêm ở lại miền hồ Ba Bể",
+        "Dạo rừng trúc, thuyền ngắm hồ"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "2 đêm lưu trú",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "01 đêm lưu trú Ngân Sơn.",
+        "Phần ăn nhẹ picnic và dẫn đường địa phương tại Sam Chiêm; trung chuyển tiêu chuẩn cần được báo giá xác nhận trước khi bán."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Chụp ảnh chuyên nghiệp, thuê trang phục, lều qua đêm và các hoạt động dưới nước."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 107,
+      "code": "TJ07",
+      "slug": "sam-chiem-ban-chang",
+      "name": "Gió trên thảo nguyên — Sam Chiêm & Bản Chang",
+      "destinationIds": [
+        "sam-chiem",
+        "ban-chang"
+      ],
+      "days": 2,
+      "price": 2590000,
+      "priceMax": 3190000,
+      "tags": [
+        "Thiên nhiên",
+        "Nhiếp ảnh",
+        "Khám phá",
+        "Check-in Thảo nguyên"
+      ],
+      "label": "HẸN VỚI KHOẢNG TRỜI RỘNG",
+      "image": "tours/thao-nguyen-sam-chiem.jpg",
+      "imageCaption": "Thảo nguyên Sam Chiêm · Bộ ảnh chủ website cung cấp.",
+      "summary": "Đón gió lộng trên thảo nguyên Sam Chiêm bao la với thảm cỏ uốn lượn, thỏa sức săn ảnh vùng cao và dạo bước ngắm hồ Bản Chang tĩnh lặng, thơ mộng.",
+      "description": "Tour dành cho những người thích mang về một bộ ảnh và cảm giác thoáng đãng. Sam Chiêm được ghép với Bản Chang theo khu vực Ngân Sơn, tránh kéo thêm chặng Ba Bể trong chuyến hai ngày. Đoàn nghỉ tại cơ sở lưu trú, không mặc định cắm trại qua đêm ở nơi chưa xác nhận dịch vụ và quyền tiếp cận.",
+      "audience": "Nhóm bạn, người thích ảnh phong cảnh và đi bộ ngoài trời; không phù hợp lịch trình cần tiếp cận hoàn toàn bằng xe lớn.",
+      "difficulty": "Vừa — đi bộ trên cỏ, có dốc và đoạn đường tiếp cận cần phương tiện phù hợp.",
+      "group": "8–12 khách; có thể cần xe trung chuyển theo khảo sát.",
+      "season": "Chọn đợt trời khô, ít gió; sắc cỏ, mây và tầm nhìn thay đổi theo mùa, không cam kết săn mây.",
+      "transport": "Xe riêng từ trung tâm lên Ngân Sơn khoảng 4–5 giờ gồm dừng nghỉ; đường cuối đến Sam Chiêm cần khảo sát riêng và tính phương án trung chuyển.",
+      "highlights": [
+        "Khoảng thời gian dài chụp ảnh tại Sam Chiêm, không đuổi theo nhiều điểm.",
+        "Dã ngoại có kiểm soát tại khu được phép.",
+        "Ngắm hồ Bản Chang từ bờ, kết thúc trước chặng xe về."
+      ],
+      "itinerary": [
+        {
+          "title": "Một buổi chiều trên triền cỏ",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "01 đêm nhà nghỉ/homestay khu vực Ngân Sơn",
+          "activities": [
+            {
+              "time": "06:30–11:30",
+              "title": "Lên Ngân Sơn",
+              "description": "Khởi hành sớm từ trung tâm, nghỉ giữa chặng; đến điểm ăn trưa trước khi vào đường địa phương."
+            },
+            {
+              "time": "11:30–13:30",
+              "title": "Ăn trưa, chuẩn bị lên Sam Chiêm",
+              "description": "Dùng bữa, kiểm tra thời tiết và đổi phương tiện nếu tuyến yêu cầu; trung chuyển chỉ thực hiện khi đã xác nhận an toàn."
+            },
+            {
+              "time": "13:30–16:00",
+              "title": "Thảo nguyên Sam Chiêm",
+              "description": "Đi bộ ngắn trên tuyến được phép, chụp ảnh các lớp đồi, dùng đồ ăn nhẹ và nghỉ. Không lái xe tự do trên cỏ, không dựng lều hoặc đốt lửa khi chưa được cho phép."
+            },
+            {
+              "time": "16:00–18:00",
+              "title": "Xuống núi, nhận phòng",
+              "description": "Rời khu vực trước tối, có thời gian đệm cho trung chuyển và đường dốc; nhận chỗ nghỉ."
+            },
+            {
+              "time": "18:30–20:00",
+              "title": "Bữa tối ở Ngân Sơn",
+              "description": "Ăn tối và xem lại những bức ảnh của ngày; nghỉ để chuẩn bị đi hồ buổi sáng."
+            }
+          ],
+          "day": 1
+        },
+        {
+          "title": "Bản Chang trong ánh sáng sớm",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:00–08:30",
+              "title": "Ăn sáng, trả phòng",
+              "description": "Thu xếp hành lý, di chuyển đến khu vực hồ Bản Chang theo tuyến đã khảo sát."
+            },
+            {
+              "time": "08:30–10:30",
+              "title": "Dạo bên hồ",
+              "description": "Ngắm mặt nước và cảnh quan xung quanh từ vị trí được phép, chụp ảnh theo nhóm nhỏ; không bao gồm bơi, chèo thuyền hoặc câu cá."
+            },
+            {
+              "time": "10:30–12:30",
+              "title": "Rời hồ, dùng bữa trưa",
+              "description": "Lên xe trở về, ăn trưa tại điểm đặt trước trên tuyến."
+            },
+            {
+              "time": "12:30–18:00",
+              "title": "Hành trình về trung tâm",
+              "description": "Nghỉ dọc đường, trả khách tại Thái Nguyên; dành đệm cho giao thông và đường miền núi."
+            }
+          ],
+          "day": 2
+        }
+      ],
+      "includedExtra": [
+        "01 đêm lưu trú Ngân Sơn.",
+        "Phần ăn nhẹ picnic và dẫn đường địa phương tại Sam Chiêm; trung chuyển tiêu chuẩn cần được báo giá xác nhận trước khi bán."
+      ],
+      "excludedExtra": [
+        "Chụp ảnh chuyên nghiệp, thuê trang phục, lều qua đêm và các hoạt động dưới nước."
+      ],
+      "lodging": "01 đêm cơ sở lưu trú Ngân Sơn; không cam kết resort hoặc dịch vụ cao cấp.",
+      "food": "01 bữa sáng, 03 bữa chính và 01 phần ăn nhẹ.",
+      "notes": [
+        "Dừng tham quan khi sương dày, dông hoặc đường cỏ trơn.",
+        "Bản Chang là hồ thủy lợi; không mặc định có dịch vụ vui chơi dưới nước."
+      ],
+      "weatherPlan": "Nếu đường Sam Chiêm không tiếp cận được, đổi ngày là ưu tiên; có thể giữ tuyến Bản Chang và chương trình nghỉ tại cơ sở khi khách đồng ý, không thay bằng cung đường chưa khảo sát.",
+      "gallery": [
+        {
+          "image": "tours/thao-nguyen-sam-chiem.jpg",
+          "caption": "Thảo nguyên Sam Chiêm · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 1,
+      "tag": "Thiên nhiên",
+      "places": [
+        "Thảo nguyên Sam Chiêm",
+        "Hồ Bản Chang"
+      ],
+      "stops": [
+        {
+          "id": "sam-chiem",
+          "name": "Thảo nguyên Sam Chiêm",
+          "region": "Hiệp Lực, khu vực Ngân Sơn",
+          "lat": 22.4667,
+          "lng": 105.9833,
+          "sourceIds": [
+            "prairie"
+          ]
+        },
+        {
+          "id": "ban-chang",
+          "name": "Hồ Bản Chang",
+          "region": "Khu vực Đức Vân cũ, Ngân Sơn",
+          "lat": 22.4417,
+          "lng": 105.9333,
+          "sourceIds": [
+            "chang"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "prairie",
+        "chang"
+      ],
+      "demoReviews": [
+        {
+          "name": "Lương Minh Đức",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Hợp với người thích ảnh phong cảnh",
+          "body": "Mình thích việc dành hẳn một buổi cho Sam Chiêm, có thời gian tìm góc chụp và ngồi ngắm cảnh. Không cố ghép quá nhiều điểm nên dù có chặng xe dài, trải nghiệm vẫn thoải mái.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        },
+        {
+          "name": "Nguyễn Yến Nhi",
+          "party": "Đi cùng người thương",
+          "rating": 4,
+          "title": "Những khoảng trời rộng rất đáng nhớ",
+          "body": "Buổi ở thảo nguyên là điểm nhấn của chuyến đi. Đoạn đường tiếp cận cần kiên nhẫn và giày dễ đi. Mình mong phần thông tin về trung chuyển được mô tả rõ hơn ngay lúc xem tour.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 4,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Phạm Hữu Phúc",
+          "party": "Đi cùng bạn bè",
+          "rating": 4,
+          "title": "Chuyến đi gọn, phù hợp nhóm nhỏ",
+          "body": "Sam Chiêm và Bản Chang đem lại hai khung cảnh khác nhau. Đồ ăn khá dễ dùng, chỗ nghỉ đáp ứng nhu cầu cơ bản. Lần sau mình muốn thêm thời gian ở hồ trước khi trở về.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.3,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Thời gian chụp ảnh trên thảo nguyên",
+        "Dạo bờ hồ Bản Chang"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "1 đêm lưu trú",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "02 đêm lưu trú Ba Bể.",
+        "01 chuyến thuyền ngắm hồ cơ bản cho đoàn, có áo phao.",
+        "Dự toán gói hang có tổ chức: dẫn đường chuyên môn, trung chuyển, mũ/đèn và trang bị theo tuyến; tất cả phải xác nhận khả dụng, quyền khai thác và giá trước khi mở bán."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Tuyến hang mở rộng, quay phim chuyên nghiệp, hoạt động kỹ thuật ngoài gói chuyên môn đã xác nhận."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động.",
+        "Giày phù hợp địa hình ướt, quần áo nhanh khô, túi chống nước và bộ đồ thay.",
+        "Trang bị kỹ thuật không tự thay thế bằng đồ gia dụng; dùng theo hướng dẫn của đơn vị chuyên môn."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 108,
+      "code": "TJ08",
+      "slug": "ba-be-tham-phay",
+      "name": "Từ mặt hồ đến lòng núi — Ba Bể & Thẳm Phầy",
+      "destinationIds": [
+        "ba-be",
+        "tham-phay"
+      ],
+      "days": 3,
+      "price": 4590000,
+      "priceMax": 5590000,
+      "tags": [
+        "Khám phá",
+        "Trekking",
+        "Thiên nhiên",
+        "Hang động kỳ vĩ"
+      ],
+      "label": "HÀNH TRÌNH CÓ CHUYÊN GIA",
+      "image": "tours/ho-ba-be.jpg",
+      "imageCaption": "Hồ Ba Bể · Bộ ảnh chủ website cung cấp.",
+      "summary": "Thám hiểm hang nước Thẳm Phầy kỳ bí tựa Sơn Đoòng phương Bắc cùng chuyên gia, kết hợp du ngoạn hồ Ba Bể tuyệt sắc và nghỉ ngơi homestay bản địa.",
+      "description": "Đây là tour khám phá chuyên biệt, không phải một điểm tham quan thêm vào lịch nghỉ dưỡng. Hoạt động hang chỉ đưa vào vận hành khi đơn vị chuyên môn xác nhận được phép khai thác, điều kiện nước, trang bị và nhân sự. Khung ngày hai dành riêng cho hành trình vào–ra, thời gian cụ thể phụ thuộc tuyến được duyệt; không cam kết đi hết chiều dài hang.",
+      "audience": "Người lớn có thể lực tốt và đáp ứng yêu cầu của đơn vị khai thác hang; cần trao đổi trước về khả năng đi địa hình ướt và vận động kéo dài.",
+      "difficulty": "Cao — đi rừng, đá ướt, không gian tối và có thể có đoạn nước; không dành mặc định cho trẻ nhỏ hoặc khách chỉ muốn tham quan nhẹ.",
+      "group": "6–10 khách; giá dự kiến theo 10 khách, tỷ lệ hướng dẫn do đơn vị chuyên môn xác định.",
+      "season": "Chỉ khi tuyến hang được phép hoạt động và đánh giá thủy văn/thời tiết phù hợp; có thể hoãn dù ngày khởi hành trời nắng.",
+      "transport": "Xe riêng trung tâm → Ba Bể dự trù 4–5,5 giờ gồm nghỉ; trung chuyển đến điểm tập kết hang do đơn vị chuyên môn xác nhận.",
+      "highlights": [
+        "Thuyền ngắm Ba Bể nhẹ nhàng trước ngày vận động.",
+        "Ngày khám phá hang có phổ biến quy trình, trang bị và điểm quay đầu.",
+        "Hai đêm cùng nơi nghỉ, không đổi phòng sau ngày đi hang."
+      ],
+      "itinerary": [
+        {
+          "title": "Làm quen với miền hồ",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 1 tại Ba Bể",
+          "activities": [
+            {
+              "time": "06:00–11:30",
+              "title": "Đến Ba Bể",
+              "description": "Đón khách và di chuyển, nghỉ dọc đường; ưu tiên đến nơi đủ sớm để không vội phần thuyền."
+            },
+            {
+              "time": "11:30–14:00",
+              "title": "Ăn trưa, nhận phòng",
+              "description": "Dùng bữa, nhận phòng và nghỉ; kiểm tra tư trang cho hôm sau."
+            },
+            {
+              "time": "14:00–16:30",
+              "title": "Ngắm hồ bằng thuyền",
+              "description": "Chuyến ngắn theo tuyến mở, mặc áo phao và hạn chế hoạt động gắng sức; nếu đến muộn hoặc thời tiết xấu, bỏ hoạt động thay vì kéo đến tối."
+            },
+            {
+              "time": "17:00–18:00",
+              "title": "Gặp đội hướng dẫn hang",
+              "description": "Trao đổi sức khỏe, điều kiện tham gia, kiểm tra cỡ trang bị; đơn vị chuyên môn quyết định tiếp nhận và cung đi."
+            },
+            {
+              "time": "18:30–20:00",
+              "title": "Ăn tối, nghỉ sớm",
+              "description": "Dùng bữa và chuẩn bị quần áo khô, vật dụng cá nhân cần thiết."
+            }
+          ],
+          "day": 1
+        },
+        {
+          "title": "Ngày khám phá Thẳm Phầy",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 2 tại cùng cơ sở Ba Bể",
+          "activities": [
+            {
+              "time": "06:30–08:00",
+              "title": "Ăn sáng, đến điểm tập kết",
+              "description": "Kiểm tra lại thời tiết và điều kiện hang; chỉ di chuyển vào tuyến khi trưởng nhóm chuyên môn cho phép."
+            },
+            {
+              "time": "08:00–09:00",
+              "title": "Phổ biến và kiểm tra trang bị",
+              "description": "Nhận mũ bảo hộ, đèn, đồ hỗ trợ phù hợp tuyến từ đơn vị vận hành; thực hành quy tắc di chuyển và thống nhất tín hiệu quay đầu."
+            },
+            {
+              "time": "09:00–12:00",
+              "title": "Tiếp cận và khám phá phần tuyến cho phép",
+              "description": "Theo đội hướng dẫn qua đoạn rừng và hang đã duyệt. Nhịp đi và phạm vi do điều kiện thực tế quyết định; không rời nhóm, không chạm nhũ đá."
+            },
+            {
+              "time": "12:00–13:00",
+              "title": "Bữa trưa theo điều phối",
+              "description": "Ăn suất mang theo tại vị trí do đội chuyên môn chọn, thu gom rác; thời điểm có thể thay đổi theo tuyến."
+            },
+            {
+              "time": "13:00–16:00",
+              "title": "Rời hang và trở về điểm tập kết",
+              "description": "Quay lại theo giới hạn giờ đã thống nhất, dành thời gian đệm; kiểm đếm người và trang bị khi kết thúc."
+            },
+            {
+              "time": "16:00–19:30",
+              "title": "Hồi phục tại nơi nghỉ",
+              "description": "Trung chuyển về homestay, thay đồ, nghỉ và ăn tối; không ghép thêm điểm tham quan."
+            }
+          ],
+          "day": 2
+        },
+        {
+          "title": "Một buổi sáng để nghỉ",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:30–09:30",
+              "title": "Ăn sáng và nghỉ",
+              "description": "Tận hưởng buổi sáng tại nơi lưu trú, không bố trí trekking thêm."
+            },
+            {
+              "time": "09:30–11:30",
+              "title": "Trả phòng, khởi hành",
+              "description": "Thu xếp đồ khô và đồ ướt riêng, kiểm tra hành lý trước khi lên xe."
+            },
+            {
+              "time": "11:30–12:30",
+              "title": "Ăn trưa dọc tuyến",
+              "description": "Nghỉ tại cơ sở đã hẹn để cả đoàn hồi phục trước chặng cuối."
+            },
+            {
+              "time": "12:30–17:30",
+              "title": "Trở về Thái Nguyên",
+              "description": "Dành thời gian dừng nghỉ và đệm đường; kết thúc tại điểm đón."
+            }
+          ],
+          "day": 3
+        }
+      ],
+      "includedExtra": [
+        "02 đêm lưu trú Ba Bể.",
+        "01 chuyến thuyền ngắm hồ cơ bản cho đoàn, có áo phao.",
+        "Dự toán gói hang có tổ chức: dẫn đường chuyên môn, trung chuyển, mũ/đèn và trang bị theo tuyến; tất cả phải xác nhận khả dụng, quyền khai thác và giá trước khi mở bán."
+      ],
+      "excludedExtra": [
+        "Tuyến hang mở rộng, quay phim chuyên nghiệp, hoạt động kỹ thuật ngoài gói chuyên môn đã xác nhận."
+      ],
+      "lodging": "02 đêm cùng cơ sở Ba Bể, ưu tiên chỗ phơi đồ và tắm thay sau trekking.",
+      "food": "02 bữa sáng, 05 bữa chính; bữa trưa ngày hai là suất mang theo được đội vận hành thống nhất.",
+      "packingExtra": [
+        "Giày phù hợp địa hình ướt, quần áo nhanh khô, túi chống nước và bộ đồ thay.",
+        "Trang bị kỹ thuật không tự thay thế bằng đồ gia dụng; dùng theo hướng dẫn của đơn vị chuyên môn."
+      ],
+      "notes": [
+        "Chưa có xác nhận tuyến mở thì tour giữ trạng thái đề xuất, không nhận cọc.",
+        "Không tự vào hang nước; thực hiện sàng lọc, yêu cầu bảo hiểm và cứu hộ theo đơn vị vận hành."
+      ],
+      "weatherPlan": "Hủy/hoãn phần hang khi điều kiện không phù hợp. Khách chọn đổi ngày hoặc chương trình nghỉ dưỡng Ba Bể được báo lại giá; không quảng cáo một tuyến hang khác là thay thế tương đương khi chưa đánh giá.",
+      "gallery": [
+        {
+          "image": "tours/ho-ba-be.jpg",
+          "caption": "Hồ Ba Bể · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 2,
+      "tag": "Khám phá",
+      "places": [
+        "Hồ Ba Bể",
+        "Hang Thẳm Phầy"
+      ],
+      "stops": [
+        {
+          "id": "ba-be",
+          "name": "Hồ Ba Bể",
+          "region": "Khu vực Ba Bể",
+          "lat": 22.4083,
+          "lng": 105.6167,
+          "sourceIds": [
+            "babe"
+          ]
+        },
+        {
+          "id": "tham-phay",
+          "name": "Hang Thẳm Phầy",
+          "aliases": [
+            "Hang Thẩm Phầy"
+          ],
+          "region": "Khu vực Ba Bể",
+          "lat": 22.3556,
+          "lng": 105.6583,
+          "sourceIds": [
+            "cave"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "babe",
+        "cave"
+      ],
+      "demoReviews": [
+        {
+          "name": "Trần Nhật Minh",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Dành riêng một ngày cho hang là lựa chọn đúng",
+          "body": "Mình thích cách lịch trình không ghép thêm điểm sau ngày khám phá hang. Phần kiểm tra trang bị và phổ biến quy tắc làm nhóm hiểu rõ những gì sẽ tham gia. Tối về chỉ cần ăn và nghỉ.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Lê Phương Thảo",
+          "party": "Nhóm yêu khám phá",
+          "rating": 4,
+          "title": "Một trải nghiệm cần chuẩn bị nghiêm túc",
+          "body": "Mình đã đọc kỹ yêu cầu thể lực nên không bị bất ngờ khi phải vận động lâu. Đội hướng dẫn giải thích rõ từng đoạn. Nếu có thêm danh sách đồ cần mang dạng checklist từ sớm thì sẽ tiện hơn.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Đặng Quốc Khánh",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Ngày hồ nhẹ nhàng trước hành trình lớn",
+          "body": "Buổi đi hồ giúp cả nhóm làm quen trước ngày vận động. Ở cùng một nơi hai đêm rất tiện để cất đồ và nghỉ ngơi. Mình đánh giá cao việc có giới hạn tuyến, không cố đi xa chỉ để đủ điểm.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Ngày riêng khám phá hang có tổ chức",
+        "Hai đêm nghỉ, đủ thời gian hồi phục"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "2 đêm lưu trú",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "03 đêm lưu trú: 01 đêm Định Hóa, 02 đêm Ba Bể.",
+        "Thưởng trà cơ bản, thuyết minh ATK, 01 chuyến thuyền hồ và dẫn đường rừng trúc khi tuyến yêu cầu."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Hoạt động hang Thẳm Phầy, kayak/SUP, chương trình văn nghệ và các điểm ngoài danh sách."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 109,
+      "code": "TJ09",
+      "slug": "mien-tra-ve-nguon-ba-be",
+      "name": "Miền trà về nguồn — Từ ATK đến Ba Bể",
+      "destinationIds": [
+        "tan-cuong",
+        "atk",
+        "khuon-tat",
+        "ba-be",
+        "yen-duong"
+      ],
+      "days": 4,
+      "price": 4690000,
+      "priceMax": 5590000,
+      "tags": [
+        "Văn hóa",
+        "Thiên nhiên",
+        "Nghỉ dưỡng",
+        "Hành trình Di sản"
+      ],
+      "label": "MỘT DẢI KÝ ỨC XANH",
+      "image": "tours/thac-khuon-tat.jpg",
+      "imageCaption": "Thác Khuôn Tát · Bộ ảnh chủ website cung cấp.",
+      "summary": "Hành trình bốn ngày nối liền hương trà Tân Cương, di tích ATK Định Hóa, thác Khuôn Tát hoang sơ cùng vẻ đẹp hồ Ba Bể và rừng trúc xanh ngút ngàn.",
+      "description": "Tour dành cho người muốn cảm nhận nhiều lớp của Thái Nguyên nhưng không muốn mỗi ngày thay một chỗ ngủ. Tuyến nghỉ một đêm tại Định Hóa và hai đêm ở Ba Bể; ngày chuyển vùng có buổi sáng ngắn và phần đường dài được dành riêng. Lịch trình cân bằng câu chuyện lịch sử với những khoảng xanh để nghỉ ngơi.",
+      "audience": "Nhóm gia đình có thể đi bộ dốc nhẹ, nhóm bạn thích văn hóa và thiên nhiên; phù hợp khách có bốn ngày trọn vẹn.",
+      "difficulty": "Vừa — nhiều chặng xe miền núi, bậc thang tại di tích và lối dốc rừng trúc.",
+      "group": "10–16 khách.",
+      "season": "Ưu tiên chuỗi ngày thời tiết ổn định; dự phòng thay điểm thác và rừng trúc khi đường ẩm trơn.",
+      "transport": "Xe riêng; ngày đầu nối Tân Cương–Định Hóa, ngày hai dành buổi chiều chuyển đến Ba Bể khoảng 4–5 giờ kể cả nghỉ, ngày cuối từ Yến Dương về trung tâm theo tuyến khảo sát.",
+      "highlights": [
+        "Trải nghiệm trà trước khi lên miền gió ngàn.",
+        "Tách ATK và Khuôn Tát thành hai buổi để tránh lịch quá dày.",
+        "Một ngày hồ Ba Bể và điểm kết rừng trúc Yến Dương."
+      ],
+      "itinerary": [
+        {
+          "title": "Hương trà và dấu ấn ATK",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "01 đêm Định Hóa",
+          "activities": [
+            {
+              "time": "07:00–10:00",
+              "title": "Khởi hành và Tân Cương",
+              "description": "Từ trung tâm về đồi chè, dạo lối tham quan và thưởng trà tại cơ sở hẹn trước."
+            },
+            {
+              "time": "10:00–13:30",
+              "title": "Lên Định Hóa, ăn trưa",
+              "description": "Dành 2–2,5 giờ cho xe và nghỉ, dùng bữa trưa trước phần tham quan lịch sử."
+            },
+            {
+              "time": "13:30–16:30",
+              "title": "Tìm hiểu ATK",
+              "description": "Theo tuyến ban quản lý xác nhận, nghe thuyết minh tại cụm di tích; dừng nghỉ giữa các đoạn bậc thang."
+            },
+            {
+              "time": "16:30–19:30",
+              "title": "Nhận phòng và bữa tối",
+              "description": "Nghỉ ở Định Hóa, dùng bữa địa phương; không ghép thêm thác vào cuối chiều."
+            }
+          ],
+          "day": 1
+        },
+        {
+          "title": "Khuôn Tát và con đường lên miền hồ",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 1 tại Ba Bể",
+          "activities": [
+            {
+              "time": "07:00–08:30",
+              "title": "Ăn sáng, trả phòng",
+              "description": "Chuẩn bị hành lý gọn, khởi hành đến khu vực thác Khuôn Tát."
+            },
+            {
+              "time": "08:30–10:30",
+              "title": "Khoảng xanh bên thác",
+              "description": "Đi bộ đoạn được phép, ngắm cảnh từ vị trí phù hợp; không leo tầng cao."
+            },
+            {
+              "time": "10:30–12:00",
+              "title": "Bữa trưa sớm",
+              "description": "Dùng bữa trước chặng xe dài, vệ sinh và nghỉ ngắn."
+            },
+            {
+              "time": "12:00–17:00",
+              "title": "Di chuyển đến Ba Bể",
+              "description": "Dành trọn buổi chiều cho đường miền núi và một điểm nghỉ; không chèn thêm điểm tham quan giữa chặng."
+            },
+            {
+              "time": "17:00–19:30",
+              "title": "Nhận phòng và ăn tối",
+              "description": "Ổn định chỗ nghỉ, dùng bữa và nghỉ sớm sau ngày chuyển vùng."
+            }
+          ],
+          "day": 2
+        },
+        {
+          "title": "Ba Bể thong thả",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 2 tại cùng cơ sở Ba Bể",
+          "activities": [
+            {
+              "time": "07:00–08:30",
+              "title": "Ăn sáng và ra bến",
+              "description": "Chuẩn bị tư trang gọn, nghe quy tắc lên xuống thuyền."
+            },
+            {
+              "time": "08:30–11:30",
+              "title": "Thuyền ngắm hồ",
+              "description": "Dạo hồ theo tuyến cơ bản được phép, dừng ngắm cảnh; mặc áo phao suốt hành trình."
+            },
+            {
+              "time": "11:30–14:30",
+              "title": "Bữa trưa và khoảng nghỉ",
+              "description": "Ăn trưa, về homestay nghỉ; không ép khách hoạt động liên tục."
+            },
+            {
+              "time": "14:30–16:30",
+              "title": "Tự do ven bản",
+              "description": "Đi bộ gần nơi lưu trú hoặc trò chuyện với chủ nhà nếu thuận tiện; không tự xuống nước."
+            },
+            {
+              "time": "18:00–20:00",
+              "title": "Bữa tối miền hồ",
+              "description": "Dùng bữa, chuẩn bị đồ để trả phòng sớm hôm sau."
+            }
+          ],
+          "day": 3
+        },
+        {
+          "title": "Qua miền trúc, về miền trà",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "06:30–08:30",
+              "title": "Ăn sáng, về Yến Dương",
+              "description": "Trả phòng sớm, di chuyển đến khu vực Phiêng Phàng theo cung đường được khảo sát."
+            },
+            {
+              "time": "08:30–10:30",
+              "title": "Dạo rừng trúc",
+              "description": "Chọn đoạn phù hợp thể lực, chụp ảnh và nghe giới thiệu về đời sống địa phương; không nối thêm tuyến lên đỉnh."
+            },
+            {
+              "time": "10:30–12:00",
+              "title": "Ăn trưa, nghỉ trước chặng về",
+              "description": "Dùng bữa tại cơ sở đặt trước, kiểm tra hành lý."
+            },
+            {
+              "time": "12:00–18:00",
+              "title": "Trở về Thái Nguyên",
+              "description": "Chặng về có dừng nghỉ và thời gian đệm; kết thúc tại điểm đón."
+            }
+          ],
+          "day": 4
+        }
+      ],
+      "includedExtra": [
+        "03 đêm lưu trú: 01 đêm Định Hóa, 02 đêm Ba Bể.",
+        "Thưởng trà cơ bản, thuyết minh ATK, 01 chuyến thuyền hồ và dẫn đường rừng trúc khi tuyến yêu cầu."
+      ],
+      "excludedExtra": [
+        "Hoạt động hang Thẳm Phầy, kayak/SUP, chương trình văn nghệ và các điểm ngoài danh sách."
+      ],
+      "lodging": "01 đêm cơ sở tiêu chuẩn Định Hóa và 02 đêm homestay Ba Bể; loại phòng xác nhận theo đoàn.",
+      "food": "03 bữa sáng, 07 bữa chính; thực đơn luân phiên theo địa phương và nguyên liệu sẵn có.",
+      "notes": [
+        "Đây là tuyến nhiều ngày, không khuyến nghị rút xuống hai ngày vì tăng thời gian ngồi xe và giảm chất lượng trải nghiệm.",
+        "Ngày cuối cần xuất phát sớm; khách cần chuyến bay/tàu nối tiếp nên dành đệm riêng."
+      ],
+      "weatherPlan": "Bỏ thác/rừng trúc khi không phù hợp, thay bằng thời gian nghỉ và nội dung trong nhà có thể xác nhận. Chuyến thuyền chỉ thực hiện khi được phép hoạt động.",
+      "gallery": [
+        {
+          "image": "tours/thac-khuon-tat.jpg",
+          "caption": "Thác Khuôn Tát · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/atk-dinh-hoa.jpg",
+          "caption": "ATK Định Hóa · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/doi-che-tan-cuong.jpg",
+          "caption": "Ảnh minh họa đồi chè cho hành trình Tân Cương · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/ho-ba-be.jpg",
+          "caption": "Hồ Ba Bể · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 3,
+      "tag": "Văn hóa",
+      "places": [
+        "Đồi chè Tân Cương",
+        "ATK Định Hóa",
+        "Thác Khuôn Tát",
+        "Hồ Ba Bể",
+        "Rừng trúc Yến Dương"
+      ],
+      "stops": [
+        {
+          "id": "tan-cuong",
+          "name": "Đồi chè Tân Cương",
+          "region": "Tân Cương",
+          "lat": 21.527,
+          "lng": 105.754,
+          "sourceIds": [
+            "tea"
+          ]
+        },
+        {
+          "id": "atk",
+          "name": "ATK Định Hóa",
+          "region": "Định Hóa",
+          "lat": 21.8906,
+          "lng": 105.6322,
+          "sourceIds": [
+            "heritage"
+          ]
+        },
+        {
+          "id": "khuon-tat",
+          "name": "Thác Khuôn Tát",
+          "region": "Khu vực Định Hóa",
+          "lat": 21.8967,
+          "lng": 105.6178,
+          "sourceIds": [
+            "waterfall"
+          ]
+        },
+        {
+          "id": "ba-be",
+          "name": "Hồ Ba Bể",
+          "region": "Khu vực Ba Bể",
+          "lat": 22.4083,
+          "lng": 105.6167,
+          "sourceIds": [
+            "babe"
+          ]
+        },
+        {
+          "id": "yen-duong",
+          "name": "Rừng trúc Yến Dương",
+          "aliases": [
+            "Rừng trúc Yên Dương",
+            "Rừng trúc Pù Lầu",
+            "Rừng trúc Phiêng Phàng"
+          ],
+          "region": "Phiêng Phàng, khu vực Ba Bể",
+          "lat": 22.385,
+          "lng": 105.75,
+          "sourceIds": [
+            "bamboo"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "tea",
+        "heritage",
+        "waterfall",
+        "babe",
+        "bamboo"
+      ],
+      "demoReviews": [
+        {
+          "name": "Nguyễn Tú Anh",
+          "party": "Đi cùng gia đình",
+          "rating": 5,
+          "title": "Lịch sử và thiên nhiên kết hợp rất có duyên",
+          "body": "Mình thích sự chuyển đổi từ vùng trà sang ATK rồi lên hồ. Mỗi nơi mang một câu chuyện riêng, không bị lặp cảm giác. Hai đêm ở Ba Bể giúp gia đình nghỉ lại đủ lâu sau chặng chuyển vùng.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Phạm Văn Long",
+          "party": "Đi cùng người thương",
+          "rating": 4,
+          "title": "Bốn ngày phong phú, nên chuẩn bị cho chặng xe",
+          "body": "Lịch có những ngày chuyển vùng dài nhưng đã dành riêng thời gian, không quá vội. Mình thích phần thuyết minh ATK và rừng trúc nhất. Bữa ăn có thể đổi món nhiều hơn ở các ngày cuối.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Hoàng Mai Linh",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Một chuyến đi có nhiều điều để kể",
+          "body": "Nhóm mình thích cả trải nghiệm trà và buổi đi thuyền. Hướng dẫn chủ động báo kế hoạch ngày hôm sau, nên ai cũng dễ chuẩn bị. Chuyến đi cân bằng được tham quan và khoảng nghỉ.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Trà, lịch sử và thiên nhiên trong một tuyến",
+        "Hai đêm nghỉ ở Ba Bể"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "3 đêm lưu trú",
+        "Bữa ăn theo lịch"
+      ]
+    },
+    {
+      "status": "draft_itinerary",
+      "statusLabel": "Lịch trình đề xuất · Chưa mở bán",
+      "currency": "VND",
+      "reviewCount": 0,
+      "rating": null,
+      "departure": "Đón và trả tại điểm hẹn trong khu vực trung tâm Thái Nguyên. Địa chỉ cụ thể được xác nhận khi chốt đoàn.",
+      "departureSchedule": "Theo yêu cầu đoàn riêng; chưa công bố ngày khởi hành cố định hoặc số chỗ còn trống.",
+      "pricingNote": "Khoảng giá biên tập để lập kế hoạch, tính cho 1 người lớn trong đoàn 10 khách, đi ngày thường, xe riêng và lưu trú tiêu chuẩn địa phương. Chưa có báo giá xác nhận từ nhà cung cấp; chưa bao gồm VAT nếu phát sinh. Đoàn ít người, dịp lễ và phòng riêng cần báo lại giá.",
+      "timingNote": "Giờ trong lịch trình là khung dự kiến, đã dành khoảng đệm cho đón khách và nghỉ dọc đường; chưa phải thời gian dẫn đường đã đo thực địa. Thứ tự có thể đổi theo giao thông, thời tiết và lịch tiếp đón.",
+      "geographyNote": "Dùng tên khu vực quen thuộc Đại Từ, Võ Nhai, Sông Công, Định Hóa, Ba Bể, Ngân Sơn để nhận diện tuyến; không coi đây là địa chỉ hành chính hiện hành đầy đủ. Yên Dương được chuẩn hóa thành Yến Dương; Chùa Hang được hiểu là Kim Sơn Tự gần trung tâm Thái Nguyên.",
+      "included": [
+        "Xe riêng đưa đón và di chuyển theo lịch trình, phân bổ trên đoàn 10 người.",
+        "Hướng dẫn viên tiếng Việt theo chương trình; thuyết minh tại điểm khi đặt được dịch vụ.",
+        "Các bữa ăn ghi trong từng ngày; nước uống cơ bản trên xe.",
+        "Ngân sách vé vào điểm có thu phí trong tuyến cơ bản; danh mục và mức phí cần xác nhận trước khi bán.",
+        "04 đêm lưu trú: 02 Ngân Sơn, 02 Ba Bể.",
+        "Buổi thưởng trà, dẫn đường Sam Chiêm/rừng trúc và trung chuyển tiêu chuẩn theo tuyến được xác nhận.",
+        "01 chuyến thuyền hồ Ba Bể cơ bản cho đoàn, có áo phao."
+      ],
+      "excluded": [
+        "Di chuyển từ nơi cư trú đến điểm đón Thái Nguyên và chiều về.",
+        "Bữa sáng ngày đầu; đồ uống gọi thêm, mua sắm, tiền tip tự nguyện và chi tiêu riêng.",
+        "VAT nếu phát sinh; phụ thu ngày lễ, phòng đơn, nâng hạng dịch vụ.",
+        "Hoạt động tự chọn không ghi trong phần bao gồm; chương trình văn nghệ, SUP/kayak và hoạt động mạo hiểm bổ sung.",
+        "Hang Thẳm Phầy, camping qua đêm, SUP/kayak, hoạt động kỹ thuật, dịch vụ chụp ảnh riêng."
+      ],
+      "children": "Chưa áp dụng biểu giá trẻ em cố định. Báo giá theo tuổi, chiều cao, ghế xe, suất ăn và nhu cầu giường. Tour trekking/hang nước cần đơn vị chuyên môn xác nhận điều kiện tham gia; không mặc định phù hợp trẻ nhỏ.",
+      "cancellation": "Chính sách đặt cọc, hủy/đổi và hoàn tiền sẽ được thống nhất bằng văn bản với đơn vị vận hành trước khi thanh toán; website chưa thu cọc. Nếu phải thay hoạt động vì thời tiết, cần thông báo phương án và chênh lệch dịch vụ để khách đồng ý.",
+      "insurance": "Trước khi mở bán phải xác nhận bảo hiểm phù hợp phạm vi hoạt động; tour trekking và hang nước cần kiểm tra riêng điều khoản và loại trừ. Bộ dữ liệu không khẳng định đã mua bảo hiểm.",
+      "packing": [
+        "Giày đế bám, trang phục gọn, mũ và áo khoác nhẹ.",
+        "Bình nước cá nhân, vật dụng vệ sinh, thuốc đang dùng và túi đựng rác.",
+        "Giấy tờ tùy thân phục vụ lưu trú; báo trước nhu cầu ăn chay, dị ứng và khả năng vận động."
+      ],
+      "operationChecklist": [
+        "Khảo sát lại đường đi và điểm đón/trả, thời gian xe, khả năng tiếp cận của loại xe dự kiến.",
+        "Xác nhận quyền tiếp cận, giờ mở cửa, dịch vụ, giá vé, suất ăn và nơi lưu trú.",
+        "Chốt nhà cung cấp, hướng dẫn viên, điều kiện thời tiết, phương án thay thế và liên hệ hỗ trợ.",
+        "Thay ảnh minh họa bằng ảnh đúng điểm đến có quyền sử dụng; không tạo đánh giá giả."
+      ],
+      "id": 110,
+      "code": "TJ10",
+      "slug": "vong-cung-mien-xanh",
+      "name": "Vòng cung miền xanh — Trà, thảo nguyên và Ba Bể",
+      "destinationIds": [
+        "tan-cuong",
+        "sam-chiem",
+        "ban-chang",
+        "yen-duong",
+        "ba-be"
+      ],
+      "days": 5,
+      "price": 5990000,
+      "priceMax": 7190000,
+      "tags": [
+        "Thiên nhiên",
+        "Nhiếp ảnh",
+        "Khám phá",
+        "Vòng cung Đông Bắc"
+      ],
+      "label": "CHUYẾN ĐI ĐỂ NHỚ",
+      "image": "tours/thao-nguyen-sam-chiem.jpg",
+      "imageCaption": "Thảo nguyên Sam Chiêm · Bộ ảnh chủ website cung cấp.",
+      "summary": "Đại hành trình năm ngày khám phá Đông Bắc: đắm chìm giữa đồi chè Tân Cương, thảo nguyên Sam Chiêm, hồ Bản Chang, rừng trúc và du ngoạn hồ Ba Bể.",
+      "description": "Đây là tour dài nhất trong bộ sưu tập, phù hợp người muốn khám phá không gian du lịch mở rộng của Thái Nguyên. Tuyến đi lần lượt từ vùng trà lên Ngân Sơn rồi chuyển sang Ba Bể, hạn chế quay lại cùng một đường chỉ để thêm điểm. Không ghép Thẳm Phầy vào lịch này để giữ nhịp trải nghiệm vừa phải và đủ khoảng nghỉ.",
+      "audience": "Nhóm bạn, người yêu ảnh phong cảnh, khách có năm ngày trọn vẹn và chấp nhận nhiều chặng xe đường núi.",
+      "difficulty": "Vừa — đường dốc ở Sam Chiêm/rừng trúc và nhiều lần di chuyển; không phải tour nghỉ dưỡng tiếp cận hoàn toàn bằng xe.",
+      "group": "8–12 khách; giá tính theo 10 khách.",
+      "season": "Ưu tiên chuỗi ngày khô, dự phòng một hoạt động ngoài trời bị thay đổi; cảnh mây, cỏ và nắng không được bảo đảm.",
+      "transport": "Xe riêng; ngày một chuyển từ Tân Cương lên Ngân Sơn, ngày ba dành khoảng 3–4 giờ chuyển vùng Ngân Sơn–Yến Dương, ngày năm khoảng 5 giờ về trung tâm; toàn bộ là quỹ giờ cần khảo sát, không phải cam kết quãng đường.",
+      "highlights": [
+        "Năm sắc thái cảnh quan trong một tuyến kết hợp.",
+        "Hai đêm Ngân Sơn, hai đêm Ba Bể: giảm số lần đổi nơi nghỉ.",
+        "Có ngày riêng cho Sam Chiêm–Bản Chang và ngày riêng cho mặt hồ Ba Bể."
+      ],
+      "itinerary": [
+        {
+          "title": "Hương trà mở lối",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 1 khu vực Ngân Sơn",
+          "activities": [
+            {
+              "time": "07:00–10:00",
+              "title": "Đón khách và trải nghiệm Tân Cương",
+              "description": "Đi từ trung tâm về vùng chè, thưởng trà và dạo đồi trên lối cho phép; mở đầu chuyến đi bằng nhịp thật chậm."
+            },
+            {
+              "time": "10:00–12:00",
+              "title": "Khởi hành về phía Bắc",
+              "description": "Lên xe, dành một điểm nghỉ trước bữa trưa trên tuyến."
+            },
+            {
+              "time": "12:00–13:00",
+              "title": "Dùng bữa trưa",
+              "description": "Ăn tại cơ sở đặt trước, bổ sung nước và nghỉ."
+            },
+            {
+              "time": "13:00–17:00",
+              "title": "Tiếp tục lên Ngân Sơn",
+              "description": "Đi xe với khoảng đệm cho giao thông và đường núi; nhận phòng khi đến."
+            },
+            {
+              "time": "18:00–20:00",
+              "title": "Ăn tối, nghỉ ngơi",
+              "description": "Thống nhất kế hoạch thời tiết ngày hai, không tổ chức thêm hoạt động đêm bắt buộc."
+            }
+          ],
+          "day": 1
+        },
+        {
+          "title": "Triền cỏ và mặt hồ vùng cao",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 2 tại cùng cơ sở Ngân Sơn",
+          "activities": [
+            {
+              "time": "06:30–08:30",
+              "title": "Đến Sam Chiêm",
+              "description": "Ăn sáng, đi xe và trung chuyển theo tuyến được kiểm tra; không cam kết lên thảo nguyên bằng xe lớn."
+            },
+            {
+              "time": "08:30–11:00",
+              "title": "Chạm vào khoảng trời rộng",
+              "description": "Đi bộ trên triền cỏ được phép, chụp ảnh và nghỉ; không săn bình minh bằng cách đi đêm trên tuyến chưa xác nhận."
+            },
+            {
+              "time": "11:00–13:30",
+              "title": "Xuống điểm dịch vụ, ăn trưa",
+              "description": "Rời thảo nguyên, ăn trưa và nghỉ trước khi đến hồ."
+            },
+            {
+              "time": "13:30–16:30",
+              "title": "Hồ Bản Chang",
+              "description": "Di chuyển, đi bộ ven bờ tại khu được phép và chụp ảnh; phần còn lại dành nghỉ chân, không bao gồm hoạt động dưới nước."
+            },
+            {
+              "time": "16:30–19:30",
+              "title": "Về lại nơi nghỉ",
+              "description": "Trở về cơ sở, dùng bữa tối, chuẩn bị hành lý cho ngày chuyển vùng."
+            }
+          ],
+          "day": 2
+        },
+        {
+          "title": "Qua miền trúc đến Ba Bể",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 1 tại Ba Bể",
+          "activities": [
+            {
+              "time": "07:00–11:30",
+              "title": "Ngân Sơn đến Yến Dương",
+              "description": "Ăn sáng, trả phòng và di chuyển; có thời gian đệm cho tuyến miền núi và dừng nghỉ."
+            },
+            {
+              "time": "11:30–13:00",
+              "title": "Bữa trưa ở khu vực Phiêng Phàng",
+              "description": "Dùng bữa đã đặt, chuẩn bị giày và nước cho đoạn đi bộ."
+            },
+            {
+              "time": "13:00–15:00",
+              "title": "Đi giữa rừng trúc",
+              "description": "Tham quan đoạn lối mở, chụp ảnh dưới tán trúc; không ghép leo núi Pù Lầu hoặc đi thác vào cùng buổi."
+            },
+            {
+              "time": "15:00–17:30",
+              "title": "Chuyển về homestay Ba Bể",
+              "description": "Dành đủ thời gian xe, nhận phòng và nghỉ; không cố đi thuyền khi đã muộn."
+            },
+            {
+              "time": "18:30–20:00",
+              "title": "Bữa tối đầu tiên ở miền hồ",
+              "description": "Ăn tối, nghe hướng dẫn sinh hoạt tại cơ sở lưu trú."
+            }
+          ],
+          "day": 3
+        },
+        {
+          "title": "Ở lại cùng Ba Bể",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ],
+          "stay": "Đêm 2 tại cùng cơ sở Ba Bể",
+          "activities": [
+            {
+              "time": "07:00–08:30",
+              "title": "Bữa sáng và chuẩn bị",
+              "description": "Tập trung theo giờ bến, kiểm tra áo phao và sức chứa tàu cùng người vận hành."
+            },
+            {
+              "time": "08:30–11:30",
+              "title": "Du ngoạn mặt hồ",
+              "description": "Theo tuyến thuyền cơ bản đã đặt; ngắm cảnh núi, mặt nước và chụp ảnh từ vị trí ổn định."
+            },
+            {
+              "time": "11:30–14:30",
+              "title": "Ăn trưa và nghỉ",
+              "description": "Về điểm dùng bữa, nghỉ trưa dài sau ba ngày di chuyển."
+            },
+            {
+              "time": "14:30–16:30",
+              "title": "Thời gian của riêng bạn",
+              "description": "Nghỉ ở homestay hoặc đi bộ gần bản theo hướng dẫn; các trải nghiệm bổ sung cần đặt riêng và xem điều kiện."
+            },
+            {
+              "time": "18:00–20:00",
+              "title": "Bữa tối khép lại vòng cung",
+              "description": "Cả nhóm chia sẻ những bức ảnh và kỷ niệm của chuyến đi; không mặc định có biểu diễn nghệ thuật."
+            }
+          ],
+          "day": 4
+        },
+        {
+          "title": "Mang miền xanh về nhà",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ],
+          "stay": "Không lưu trú",
+          "activities": [
+            {
+              "time": "07:00–09:00",
+              "title": "Buổi sáng thư thả",
+              "description": "Ăn sáng, thu xếp hành lý và kiểm tra đồ dùng trước giờ trả phòng."
+            },
+            {
+              "time": "09:00–11:30",
+              "title": "Khởi hành về Thái Nguyên",
+              "description": "Dành thời gian cho chặng đầu và một điểm nghỉ nếu cần."
+            },
+            {
+              "time": "11:30–12:30",
+              "title": "Ăn trưa dọc đường",
+              "description": "Bữa trưa cuối của đoàn tại cơ sở trên tuyến."
+            },
+            {
+              "time": "12:30–17:00",
+              "title": "Trở về điểm hẹn",
+              "description": "Tiếp tục chặng về với quỹ thời gian đệm; kết thúc vòng cung tại trung tâm Thái Nguyên."
+            }
+          ],
+          "day": 5
+        }
+      ],
+      "includedExtra": [
+        "04 đêm lưu trú: 02 Ngân Sơn, 02 Ba Bể.",
+        "Buổi thưởng trà, dẫn đường Sam Chiêm/rừng trúc và trung chuyển tiêu chuẩn theo tuyến được xác nhận.",
+        "01 chuyến thuyền hồ Ba Bể cơ bản cho đoàn, có áo phao."
+      ],
+      "excludedExtra": [
+        "Hang Thẳm Phầy, camping qua đêm, SUP/kayak, hoạt động kỹ thuật, dịch vụ chụp ảnh riêng."
+      ],
+      "lodging": "Hai cơ sở lưu trú, mỗi nơi 02 đêm; loại phòng và tiện nghi cần chốt bằng văn bản trước khi bán.",
+      "food": "04 bữa sáng và 09 bữa chính; đổi thực đơn giữa các ngày, báo trước ăn chay/dị ứng.",
+      "notes": [
+        "Không ghép toàn bộ 13 điểm vào một chuyến năm ngày; ưu tiên chất lượng thời gian tại từng cụm.",
+        "Chặng cuối có thể kết thúc muộn do điều kiện đường; không hẹn chuyến bay sát giờ trả khách."
+      ],
+      "weatherPlan": "Nếu Sam Chiêm/rừng trúc không tiếp cận được, lùi giờ hoặc bỏ điểm sau khi trao đổi với đoàn; lịch nghỉ và thuyền cũng điều chỉnh theo điều kiện thực tế, đối soát dịch vụ thay thế.",
+      "gallery": [
+        {
+          "image": "tours/thao-nguyen-sam-chiem.jpg",
+          "caption": "Thảo nguyên Sam Chiêm · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/doi-che-tan-cuong.jpg",
+          "caption": "Ảnh minh họa đồi chè cho hành trình Tân Cương · Bộ ảnh chủ website cung cấp."
+        },
+        {
+          "image": "tours/ho-ba-be.jpg",
+          "caption": "Hồ Ba Bể · Bộ ảnh chủ website cung cấp."
+        }
+      ],
+      "nights": 4,
+      "tag": "Thiên nhiên",
+      "places": [
+        "Đồi chè Tân Cương",
+        "Thảo nguyên Sam Chiêm",
+        "Hồ Bản Chang",
+        "Rừng trúc Yến Dương",
+        "Hồ Ba Bể"
+      ],
+      "stops": [
+        {
+          "id": "tan-cuong",
+          "name": "Đồi chè Tân Cương",
+          "region": "Tân Cương",
+          "lat": 21.527,
+          "lng": 105.754,
+          "sourceIds": [
+            "tea"
+          ]
+        },
+        {
+          "id": "sam-chiem",
+          "name": "Thảo nguyên Sam Chiêm",
+          "region": "Hiệp Lực, khu vực Ngân Sơn",
+          "lat": 22.4667,
+          "lng": 105.9833,
+          "sourceIds": [
+            "prairie"
+          ]
+        },
+        {
+          "id": "ban-chang",
+          "name": "Hồ Bản Chang",
+          "region": "Khu vực Đức Vân cũ, Ngân Sơn",
+          "lat": 22.4417,
+          "lng": 105.9333,
+          "sourceIds": [
+            "chang"
+          ]
+        },
+        {
+          "id": "yen-duong",
+          "name": "Rừng trúc Yến Dương",
+          "aliases": [
+            "Rừng trúc Yên Dương",
+            "Rừng trúc Pù Lầu",
+            "Rừng trúc Phiêng Phàng"
+          ],
+          "region": "Phiêng Phàng, khu vực Ba Bể",
+          "lat": 22.385,
+          "lng": 105.75,
+          "sourceIds": [
+            "bamboo"
+          ]
+        },
+        {
+          "id": "ba-be",
+          "name": "Hồ Ba Bể",
+          "region": "Khu vực Ba Bể",
+          "lat": 22.4083,
+          "lng": 105.6167,
+          "sourceIds": [
+            "babe"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "tea",
+        "prairie",
+        "chang",
+        "bamboo",
+        "babe"
+      ],
+      "demoReviews": [
+        {
+          "name": "Vũ Khánh Hòa",
+          "party": "Đi cùng bạn bè",
+          "rating": 5,
+          "title": "Năm ngày để thấy nhiều sắc thái của miền xanh",
+          "body": "Mỗi chặng có một khung cảnh khác nhau, từ đồi chè đến thảo nguyên rồi mặt hồ. Việc ở hai đêm mỗi nơi giúp mình không phải liên tục đóng mở hành lý. Ngày nghỉ ở Ba Bể là phần mình thích nhất.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 5
+          }
+        },
+        {
+          "name": "Trần Hải Yến",
+          "party": "Đi cùng người thương",
+          "rating": 4,
+          "title": "Hành trình đẹp nhưng cần dành đủ thời gian",
+          "body": "Mình thích đi nhiều nơi nên tuyến này khá đúng ý. Có các chặng xe dài, vì vậy không nên chọn nếu chỉ muốn nghỉ ở một resort. Phần chụp ảnh tại thảo nguyên được bố trí thoải mái.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 4,
+            "value": 4
+          }
+        },
+        {
+          "name": "Nguyễn Anh Duy",
+          "party": "Nhóm yêu nhiếp ảnh",
+          "rating": 5,
+          "title": "Không phải cuộc đua qua các điểm check-in",
+          "body": "Điểm cộng là tour không cố thêm một tuyến hang vào lịch vốn đã phong phú. Có thời gian nhìn cảnh, chụp ảnh và trò chuyện. Mình mong có thêm lựa chọn thực đơn chay rõ ràng khi đăng ký.",
+          "isDemo": true,
+          "verified": false,
+          "scores": {
+            "guide": 5,
+            "planning": 5,
+            "value": 4
+          }
+        }
+      ],
+      "demoRating": 4.7,
+      "demoReviewCount": 3,
+      "demoReviewDisclosure": "Đánh giá mô phỏng: tên người viết, điểm số và trải nghiệm đều là nội dung hư cấu để minh họa giao diện, không phải phản hồi khách hàng thực tế.",
+      "cardHighlights": [
+        "Năm điểm đến, nhiều sắc thái cảnh quan",
+        "Giảm đổi phòng: hai đêm mỗi nơi"
+      ],
+      "serviceBadges": [
+        "Xe riêng",
+        "4 đêm lưu trú",
+        "Bữa ăn theo lịch"
+      ]
+    }
+  ]
+}

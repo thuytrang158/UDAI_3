@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelPlan.ai — Lập kế hoạch chuyến đi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Be Vietnam Pro', sans-serif; }
+    @page { size: A4; margin: 16mm; }
+    @media print {
+      html, body { min-height: 0 !important; height: auto !important; background: #fff !important; color: #111827 !important; }
+      body { font-family: 'Be Vietnam Pro', Arial, sans-serif; font-size: 10pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      header, #step-navigation, button, .no-print { display: none !important; }
+      main { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+      #panel-step-1, #panel-step-2, #panel-step-3, #panel-step-4 { display: none !important; }
+      #panel-step-5 { display: block !important; }
+      #dossier-content { display: block !important; }
+      #panel-step-5 > div:first-child { background: #fff !important; color: #111827 !important; border: 1px solid #9ca3af !important; }
+      #dossier-destination, #dossier-subtitle { color: #111827 !important; }
+      #dossier-content > section, #dossier-content > div { break-inside: auto; page-break-inside: auto; }
+      .itinerary-day { break-inside: auto; page-break-inside: auto; }
+      .itinerary-day h3, .itinerary-day h4 { break-after: avoid-page; page-break-after: avoid; }
+      .schedule-item { break-inside: avoid; page-break-inside: avoid; }
+      .print-card { border: 1px solid #9ca3af !important; background: #fff !important; }
+      a { color: #111827 !important; text-decoration: underline !important; overflow-wrap: anywhere; }
+      * { position: static !important; max-height: none !important; overflow: visible !important; box-shadow: none !important; }
+    }
+  </style>
+  <style>
+    @media screen {
+      :root { --tea-green: #225941; --tea-deep: #163f31; --tea-ink: #233f33; --tea-muted: #788078; --tea-paper: #fcfcf8; --tea-line: #e4e8df; --tea-soft: #eef2e8; }
+      body.bg-slate-50 { background: var(--tea-paper) !important; color: var(--tea-ink) !important; }
+      header.bg-white { background: var(--tea-paper) !important; border-color: var(--tea-line) !important; }
+      .text-indigo-600, .text-indigo-700, .text-indigo-900 { color: var(--tea-green) !important; }
+      .bg-indigo-600, .bg-emerald-600 { background-color: var(--tea-green) !important; }
+      .hover\:bg-indigo-700:hover, .hover\:bg-emerald-700:hover { background-color: var(--tea-deep) !important; }
+      .bg-indigo-50, .bg-indigo-50\/30, .bg-indigo-50\/50, .bg-indigo-50\/80 { background-color: var(--tea-soft) !important; }
+      .text-indigo-100 { color: #dce9d8 !important; }
+      .border-indigo-100, .border-indigo-200, .border-indigo-300, .border-indigo-400, .border-indigo-500, .border-indigo-600 { border-color: #b9cdb6 !important; }
+      .border-indigo-600, .hover\:border-indigo-400:hover { border-color: var(--tea-green) !important; }
+      .ring-indigo-500 { --tw-ring-color: var(--tea-green) !important; }
+      .text-slate-900, .text-slate-800 { color: var(--tea-ink) !important; }
+      .text-slate-700, .text-slate-600 { color: #526656 !important; }
+      .text-slate-500 { color: var(--tea-muted) !important; }
+      .text-slate-400 { color: #909a8f !important; }
+      .bg-slate-200 { background-color: #e8ece4 !important; }
+      .bg-slate-100 { background-color: #f1f3ed !important; }
+      .border-slate-100, .border-slate-200 { border-color: var(--tea-line) !important; }
+      .hover\:bg-indigo-50\/50:hover { background-color: var(--tea-soft) !important; }
+      #interest-pills label:has(input:checked) { background: var(--tea-soft) !important; border-color: var(--tea-green) !important; color: var(--tea-deep) !important; }
+      #interest-pills input[type="checkbox"], #places-container input[type="checkbox"] { accent-color: var(--tea-green); }
+      button.bg-indigo-600, button.bg-emerald-600 { border-color: var(--tea-green) !important; }
+      a { text-decoration-color: #9ab397; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="text-2xl"></span>
+        <span class="font-extrabold text-xl tracking-tight text-indigo-600">TravelPlan<span class="text-slate-800">.ai</span></span>
+        <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded-full border border-indigo-200">Mã nguồn mở</span>
+      </div>
+      <div class="text-xs text-slate-500 font-medium">
+        LangGraph • Ollama (qwen3:4b) • OSM • OSRM
+      </div>
+    </div>
+  </header>
+
+  <div id="step-navigation" class="max-w-6xl mx-auto px-6 py-6">
+    <div class="grid grid-cols-5 gap-2 text-center text-xs font-semibold">
+      <div id="step-tab-1" class="py-2.5 rounded-lg bg-indigo-600 text-white transition">1. Thông tin chuyến đi</div>
+      <div id="step-tab-2" class="py-2.5 rounded-lg bg-slate-200 text-slate-600 transition">2. Địa điểm tham quan</div>
+      <div id="step-tab-3" class="py-2.5 rounded-lg bg-slate-200 text-slate-600 transition">3. Lịch trình</div>
+      <div id="step-tab-4" class="py-2.5 rounded-lg bg-slate-200 text-slate-600 transition">4. Chỗ ở</div>
+      <div id="step-tab-5" class="py-2.5 rounded-lg bg-slate-200 text-slate-600 transition">5. Tổng hợp chuyến đi</div>
+    </div>
+  </div>
+
+  <main class="max-w-4xl mx-auto px-6 pb-20">
+
+    <!-- STEP 1: Specs & Interests -->
+    <section id="panel-step-1" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900">Lên kế hoạch cho chuyến đi của bạn</h2>
+        <p class="text-slate-500 text-sm mt-1">Chia sẻ điểm đến và những trải nghiệm bạn yêu thích.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Điểm đến</label>
+          <input id="in-destination" type="text" value="Bengaluru" class="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Thời lượng (ngày)</label>
+          <input id="in-days" type="number" min="1" max="14" value="3" class="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Số người tham gia</label>
+          <input id="in-travelers" type="number" min="1" max="10" value="2" class="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Ngân sách mỗi người / ngày</label>
+          <input id="in-budget" type="text" value="1.085.000 VND/ngày" class="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" />
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Phương tiện di chuyển</label>
+          <select id="in-transport" class="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white">
+            <option value="Cab and Metro">Taxi và tàu điện (khuyên dùng)</option>
+            <option value="Only Metro / Public Transit">Tàu điện / phương tiện công cộng</option>
+            <option value="Private Cab Only">Chỉ taxi riêng</option>
+          </select>
+        </div>
+
+        <!-- NEW: What Are You Interested In? (Category Selector) -->
+        <div class="md:col-span-2 space-y-2 pt-2 border-t border-slate-100">
+          <label class="block text-xs font-bold uppercase text-slate-700">Bạn quan tâm đến trải nghiệm nào? (Có thể chọn nhiều)</label>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 text-xs font-semibold" id="interest-pills">
+            <label class="flex items-center space-x-2 p-3 border rounded-xl cursor-pointer hover:bg-indigo-50/50 transition has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-500 has-[:checked]:text-indigo-900">
+              <input type="checkbox" value="Trekking & Adventure" class="h-4 w-4 rounded text-indigo-600" />
+              <span> Leo núi và phiêu lưu</span>
+            </label>
+            <label class="flex items-center space-x-2 p-3 border rounded-xl cursor-pointer hover:bg-indigo-50/50 transition has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-500 has-[:checked]:text-indigo-900">
+              <input type="checkbox" value="Parks & Leisure" class="h-4 w-4 rounded text-indigo-600" />
+              <span> Công viên và thư giãn</span>
+            </label>
+            <label class="flex items-center space-x-2 p-3 border rounded-xl cursor-pointer hover:bg-indigo-50/50 transition has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-500 has-[:checked]:text-indigo-900">
+              <input type="checkbox" value="Heritage & Architecture" class="h-4 w-4 rounded text-indigo-600" />
+              <span> Di sản và kiến trúc</span>
+            </label>
+            <label class="flex items-center space-x-2 p-3 border rounded-xl cursor-pointer hover:bg-indigo-50/50 transition has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-500 has-[:checked]:text-indigo-900">
+              <input type="checkbox" value="Spiritual & Wellness" class="h-4 w-4 rounded text-indigo-600" />
+              <span> Tâm linh và chăm sóc sức khỏe</span>
+            </label>
+            <label class="flex items-center space-x-2 p-3 border rounded-xl cursor-pointer hover:bg-indigo-50/50 transition has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-500 has-[:checked]:text-indigo-900">
+              <input type="checkbox" value="Food & Culinary" class="h-4 w-4 rounded text-indigo-600" />
+              <span> Ẩm thực</span>
+            </label>
+            <label class="flex items-center space-x-2 p-3 border rounded-xl cursor-pointer hover:bg-indigo-50/50 transition has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-500 has-[:checked]:text-indigo-900">
+              <input type="checkbox" value="Shopping & Bazaars" class="h-4 w-4 rounded text-indigo-600" />
+              <span> Mua sắm và chợ truyền thống</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button id="btn-submit-specs" onclick="handleStep1()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-100 flex items-center justify-center space-x-2">
+        <span>Khám phá địa điểm phù hợp</span>
+        <span>→</span>
+      </button>
+    </section>
+
+    <!-- STEP 2: Places -->
+    <section id="panel-step-2" class="hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">Địa điểm tham quan gợi ý</h2>
+          <p class="text-slate-500 text-sm mt-0.5">Được chọn theo sở thích bạn đã cung cấp.</p>
+        </div>
+        <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-3 py-1 rounded-full border border-indigo-200">
+           Khám phá bằng AI
+        </span>
+      </div>
+
+      <div id="places-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+      <button onclick="handleStep2()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-100">
+        Tạo lịch trình tối ưu →
+      </button>
+    </section>
+
+    <!-- STEP 3: Itinerary -->
+    <section id="panel-step-3" class="hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">Lịch trình và lộ trình đề xuất</h2>
+          <p class="text-slate-500 text-sm mt-0.5">Các điểm được sắp xếp theo vị trí để giảm thời gian di chuyển.</p>
+        </div>
+        <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-3 py-1 rounded-full border border-indigo-200">Chờ bạn xác nhận</span>
+      </div>
+
+      <div id="itinerary-days-container" class="space-y-4"></div>
+
+      <div class="bg-amber-50 border border-amber-200 p-6 rounded-2xl space-y-4">
+        <h3 class="font-bold text-amber-900 text-base">Xác nhận lịch trình</h3>
+        <p class="text-xs text-amber-800">Hãy xác nhận lịch trình trước khi tìm chỗ ở.</p>
+
+        <div class="flex flex-col md:flex-row gap-3">
+          <button onclick="approveItinerary()" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition">
+             Xác nhận lịch trình
+          </button>
+          <button onclick="openModifyPrompt()" class="flex-1 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl transition">
+             Chỉnh sửa địa điểm
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: Stays -->
+    <section id="panel-step-4" class="hidden space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">Chọn chỗ ở</h2>
+          <p class="text-slate-500 text-sm mt-0.5">Thay đổi lựa chọn bên dưới để tìm các chỗ ở phù hợp.</p>
+        </div>
+        <span class="text-xs bg-indigo-50 text-indigo-700 font-semibold px-3 py-1 rounded-full border border-indigo-200">
+           Nhiều lựa chọn lưu trú
+        </span>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 shadow-sm">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Loại chỗ ở</label>
+          <select id="in-stay-type" onchange="triggerStaySearch()" class="w-full p-2.5 border rounded-xl bg-white text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
+            <option value="Hotel" selected> Khách sạn</option>
+            <option value="Hostel"> Nhà nghỉ / lưu trú ba lô</option>
+            <option value="Apartment"> Căn hộ dịch vụ</option>
+            <option value="Resort"> Khu nghỉ dưỡng thiên nhiên</option>
+            <option value="Boutique Villa"> Biệt thự boutique</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Ngân sách mỗi đêm</label>
+          <select id="in-stay-budget" onchange="triggerStaySearch()" class="w-full p-2.5 border rounded-xl bg-white text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
+            <option value="500000">Dưới 500.000 VND (tiết kiệm)</option>
+            <option value="1000000">Dưới 1.000.000 VND (phổ thông)</option>
+            <option value="1500000" selected>Dưới 1.500.000 VND (thoải mái)</option>
+            <option value="2500000">Dưới 2.500.000 VND (cao cấp)</option>
+            <option value="5000000">Dưới 5.000.000 VND (sang trọng)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Khu vực mong muốn</label>
+          <select id="in-stay-area" onchange="triggerStaySearch()" class="w-full p-2.5 border rounded-xl bg-white text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
+            <option value="City Center" selected> Trung tâm thành phố</option>
+            <option value="Near Public Transport"> Gần tàu điện / phương tiện công cộng</option>
+            <option value="Quiet Area"> Khu vực yên tĩnh</option>
+            <option value="Near Major Attractions"> Gần điểm tham quan chính</option>
+            <option value="Nightlife and Cafes Hub"> Khu ẩm thực và giải trí về đêm</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="stays-container" class="space-y-3"></div>
+
+      <button id="btn-confirm-stay" onclick="handleStep4()" disabled class="w-full py-3.5 bg-indigo-600 disabled:opacity-40 hover:bg-indigo-700 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-100">
+        Xác nhận lựa chọn và xem tổng hợp →
+      </button>
+    </section>
+
+    <!-- STEP 5: Final Dossier -->
+    <section id="panel-step-5" class="hidden space-y-6">
+      <div class="bg-indigo-600 text-white p-8 rounded-2xl shadow-lg shadow-indigo-100">
+        <h2 class="text-3xl font-extrabold" id="dossier-destination">Tổng hợp chuyến đi</h2>
+        <p class="text-indigo-100 mt-1" id="dossier-subtitle">Tổng quan</p>
+      </div>
+
+      <div id="dossier-content" class="space-y-6"></div>
+    </section>
+
+  </main>
+
+  <script>
+    let tripState = {
+      destination: "Bengaluru",
+      days: 3,
+      travelers: 2,
+      budget: "1.085.000 VND/ngày",
+      transport: "Cab and Metro",
+      interests: [],
+      available_places: [],
+      selected_places: [],
+      itinerary: null,
+      routes: [],
+      selected_stay: null
+    };
+
+    // Display-only labels. Internal values sent to the API remain unchanged.
+    const categoryLabels = {
+      "Trekking & Adventure": "Leo núi và phiêu lưu", "Parks & Leisure": "Công viên và thư giãn",
+      "Heritage & Architecture": "Di sản và kiến trúc", "Spiritual & Wellness": "Tâm linh và chăm sóc sức khỏe",
+      "Food & Culinary": "Ẩm thực", "Shopping & Bazaars": "Mua sắm và chợ truyền thống"
+    };
+    const transportLabels = {
+      "Cab and Metro": "Taxi và tàu điện", "Only Metro / Public Transit": "Tàu điện / phương tiện công cộng",
+      "Private Cab Only": "Chỉ taxi riêng"
+    };
+    const stayTypeLabels = { Hotel: "Khách sạn", Hostel: "Nhà nghỉ", Apartment: "Căn hộ dịch vụ", Resort: "Khu nghỉ dưỡng", "Boutique Villa": "Biệt thự boutique" };
+    const areaLabels = {
+      "City Center": "Trung tâm thành phố", "Near Public Transport": "Gần phương tiện công cộng",
+      "Quiet Area": "Khu vực yên tĩnh", "Near Major Attractions": "Gần điểm tham quan chính",
+      "Nightlife and Cafes Hub": "Khu ẩm thực và giải trí về đêm"
+    };
+    const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
+    const displayCategory = value => categoryLabels[value] || value || "Địa điểm tham quan";
+
+    function displayActivity(activity) {
+      const known = {
+        "Depart Hotel / Base": "Khởi hành từ nơi lưu trú",
+        "Lunch & Rest Break": "Nghỉ trưa và dùng bữa",
+        "Return to Accommodation": "Trở về nơi lưu trú"
+      };
+      if (known[activity]) return known[activity];
+      if (activity.startsWith("Travel to ")) return `Di chuyển đến ${activity.slice("Travel to ".length)}`;
+      return activity;
+    }
+
+    function displayTheme(theme) {
+      const known = {
+        "Scenic Excursion & Hilltop Trek": "Khám phá thiên nhiên và leo núi",
+        "Heritage & City Garden Discovery": "Di sản và vườn xanh trong thành phố"
+      };
+      return known[theme] || theme || "Lịch trình tham quan";
+    }
+
+    function displayItineraryDetails(details) {
+      const transport = /^Head out via (.+)\.$/.exec(details || "");
+      if (transport) return `Bắt đầu hành trình bằng ${transportLabels[transport[1]] || transport[1]}.`;
+      const drive = /^Drive: (.+?) km \| ~(.+?) mins\.$/.exec(details || "");
+      if (drive) return `Quãng đường ${drive[1]} km, thời gian dự kiến ${drive[2]} phút.`;
+      if (details === "Local cuisine tasting and relaxation.") return "Thưởng thức ẩm thực địa phương và nghỉ ngơi.";
+      if (details === "Free leisure evening to unwind.") return "Buổi tối tự do nghỉ ngơi và thư giãn.";
+      const separator = " — ";
+      const categoryAt = (details || "").indexOf(separator);
+      if (categoryAt >= 0) {
+        const category = details.slice(0, categoryAt);
+        if (categoryLabels[category]) return `${categoryLabels[category]}${separator}${details.slice(categoryAt + separator.length)}`;
+      }
+      return details;
+    }
+
+    function hasCompleteReportItinerary(itinerary) {
+      return !!(itinerary && Array.isArray(itinerary.days) && itinerary.days.length === Number(tripState.days) && itinerary.days.every((day, index) =>
+        day && Number(day.day_number) === index + 1 && typeof day.theme === "string" && day.theme.trim() &&
+        Array.isArray(day.schedule) && day.schedule.length > 0 && day.schedule.every(item =>
+          item && item.time && item.activity && typeof item.details === "string" && item.details.trim()
+        )
+      ));
+    }
+
+    function renderReportItinerary(itinerary) {
+      if (!hasCompleteReportItinerary(itinerary)) {
+        return `<div class="bg-amber-50 border border-amber-200 text-amber-900 p-5 rounded-xl text-sm">Chưa có dữ liệu lịch trình đầy đủ để đưa vào báo cáo. Hãy quay lại bước Lịch trình để xem hoặc tạo lịch trình.</div>`;
+      }
+      return itinerary.days.map(day => `
+        <section class="itinerary-day print-card bg-white p-5 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-2">
+          <h4 class="font-bold text-slate-900 text-base pb-2 border-b">Ngày ${escapeHtml(day.day_number)}: ${escapeHtml(displayTheme(day.theme))}</h4>
+          <div>
+            ${day.schedule.map(item => `
+              <article class="schedule-item flex items-start gap-4 text-sm border-b border-slate-100 last:border-0 py-3">
+                <span class="font-bold text-indigo-700 w-16 shrink-0">${escapeHtml(item.time || "")}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="font-semibold text-slate-900">${escapeHtml(displayActivity(item.activity || ""))}</div>
+                  <p class="text-slate-600 mt-1 whitespace-pre-line">${escapeHtml(displayItineraryDetails(item.details || ""))}</p>
+                </div>
+              </article>`).join("")}
+          </div>
+        </section>`).join("");
+    }
+
+    function setStep(num) {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById(`panel-step-${i}`).classList.add("hidden");
+        const tab = document.getElementById(`step-tab-${i}`);
+        if (i <= num) {
+          tab.className = "py-2.5 rounded-lg bg-indigo-600 text-white font-bold transition";
+        } else {
+          tab.className = "py-2.5 rounded-lg bg-slate-200 text-slate-600 font-semibold transition";
+        }
+      }
+      document.getElementById(`panel-step-${num}`).classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // STEP 1
+    async function handleStep1() {
+      const btn = document.getElementById("btn-submit-specs");
+      btn.innerHTML = "<span>Đang tìm địa điểm phù hợp...</span>";
+      btn.disabled = true;
+
+      tripState.destination = document.getElementById("in-destination").value;
+      tripState.days = parseInt(document.getElementById("in-days").value);
+      tripState.travelers = parseInt(document.getElementById("in-travelers").value);
+      tripState.budget = document.getElementById("in-budget").value;
+      tripState.transport = document.getElementById("in-transport").value;
+
+      // Collect selected interests checkboxes
+      const interestBoxes = document.querySelectorAll("#interest-pills input[type='checkbox']:checked");
+      tripState.interests = Array.from(interestBoxes).map(b => b.value);
+
+      try {
+        const res = await fetch("/api/trip/initiate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            destination: tripState.destination,
+            number_of_days: tripState.days,
+            number_of_travelers: tripState.travelers,
+            budget_per_day: tripState.budget,
+            transportation_preference: tripState.transport,
+            interests: tripState.interests
+          })
+        });
+        const data = await res.json();
+        tripState.available_places = data.available_places;
+        renderPlaces(data.available_places);
+        if (data.places_notice) {
+          document.getElementById("places-container").insertAdjacentHTML("beforeend", `<p class="col-span-full p-5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm">${escapeHtml(data.places_notice || "Không tìm thấy địa điểm. Nguồn dữ liệu có thể tạm thời không truy cập được.")}</p>`);
+        }
+        setStep(2);
+      } catch (err) {
+        alert("Không thể kết nối với hệ thống: " + err);
+      } finally {
+        btn.innerHTML = "<span>Khám phá địa điểm phù hợp</span><span>→</span>";
+        btn.disabled = false;
+      }
+    }
+
+function isThaiNguyenDestination() {
+      const normalized = (tripState.destination || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").toLowerCase();
+      return normalized.includes("thai nguyen") || normalized.includes("thainguyen");
+    }
+
+    function placeSourceLinks(place) {
+      const sources = place.sources || [];
+      return sources.filter(source => isThaiNguyenDestination()
+        ? /^https:\/\/mythainguyen\.vn\//i.test(source.url || "")
+        : /^https:\/\/(mythainguyen\.vn|[a-z]+\.wikipedia\.org)\//i.test(source.url || ""));
+    }
+
+function coordinateStatusLabel(place) {
+      if (place.latitude != null && place.longitude != null) return `${Number(place.latitude).toFixed(4)}, ${Number(place.longitude).toFixed(4)}`;
+      if (place.geocoding_status === "service_error" && place.geocoding_reason === "access_forbidden") return "Nominatim từ chối truy cập";
+      if (place.geocoding_status === "service_error") return "Dịch vụ tọa độ tạm thời không phản hồi";
+      if (place.geocoding_status === "configuration_error") return "Chưa cấu hình dịch vụ tọa độ";
+      if (["ambiguous", "rejected"].includes(place.geocoding_status)) return "Cần xác minh địa điểm trước khi dùng tọa độ";
+      return "Chưa tìm thấy tọa độ; quãng đường sẽ chưa được ước tính";
+    }
+
+function renderPlaces(places) {
+      const container = document.getElementById("places-container");
+      container.innerHTML = "";
+
+      // Display Active Filter Tags Banner at the top of Step 2
+      const activeBanner = document.createElement("div");
+      activeBanner.className = "col-span-1 md:col-span-2 p-3 bg-indigo-50/80 border border-indigo-200 rounded-xl flex items-center justify-between";
+      activeBanner.innerHTML = `
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-bold text-indigo-900 uppercase">${tripState.interests.length ? "Sở thích đã chọn:" : "Bộ lọc sở thích:"}</span>
+          <div class="flex flex-wrap gap-1.5">
+            ${tripState.interests.length ? tripState.interests.map(cat => `<span class="text-[11px] font-bold bg-white text-indigo-700 px-2.5 py-0.5 rounded-full border border-indigo-300 shadow-sm">${escapeHtml(displayCategory(cat))}</span>`).join("") : "<span class=\"text-[11px] font-semibold text-indigo-700\">Không lọc theo sở thích</span>"}
+          </div>
+        </div>
+        <span class="text-xs font-semibold text-indigo-600">${places.length} địa điểm phù hợp</span>
+      `;
+      container.appendChild(activeBanner);
+
+      places.forEach((p, idx) => {
+        const checked = idx < 4 ? "checked" : "";
+        const card = document.createElement("div");
+        card.className = "p-5 border border-slate-200 rounded-xl bg-white hover:border-indigo-400 transition shadow-sm space-y-2 cursor-pointer flex items-start space-x-3";
+
+        // Category color coding
+        let badgeColor = "bg-indigo-50 text-indigo-700 border-indigo-200";
+        if ((p.category || "").includes("Trek")) badgeColor = "bg-amber-50 text-amber-700 border-amber-200";
+        if ((p.category || "").includes("Park")) badgeColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
+        if ((p.category || "").includes("Heritage")) badgeColor = "bg-purple-50 text-purple-700 border-purple-200";
+        const hasCoordinates = p.latitude != null && p.longitude != null && Number.isFinite(Number(p.latitude)) && Number.isFinite(Number(p.longitude));
+        const sources = (p.sources || []).map(source => source.name).filter(Boolean);
+        const sourceLinks = placeSourceLinks(p);
+
+        card.innerHTML = `
+          <input type="checkbox" id="place-${idx}" value="${idx}" ${checked ? "checked" : ""} class="mt-1.5 h-4 w-4 text-indigo-600 rounded cursor-pointer" aria-label="Chọn ${escapeHtml(p.name)}" />
+          <div class="flex-1">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-800">${escapeHtml(p.name)}</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full border font-semibold ${badgeColor}">${escapeHtml(displayCategory(p.category))}</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">${escapeHtml(p.description)}</p>
+            <div class="text-[10px] ${hasCoordinates ? "text-slate-400" : "text-amber-700"} mt-2">${escapeHtml(coordinateStatusLabel(p))}</div>
+            <div class="text-[10px] text-slate-500 mt-2">Nguồn: ${escapeHtml(sources.join(", ") || "Chưa rõ")}${p.coordinate_source === "Nominatim" ? ` · Tọa độ: <a class="underline" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a>${p.coordinate_attribution ? ` · ${escapeHtml(p.coordinate_attribution)}` : ""}` : ""}</div>
+            <button type="button" class="mt-3 text-xs text-indigo-700 underline font-semibold" onclick="openPlaceDetails(${idx}); event.stopPropagation()">Xem chi tiết</button>
+          </div>
+        `;
+        const checkbox = card.querySelector("input[type='checkbox']");
+        card.addEventListener("click", event => {
+          if (event.target.closest("button") || event.target === checkbox) return;
+          checkbox.checked = !checkbox.checked;
+        });
+        if (sourceLinks.length) card.dataset.sourceUrls = sourceLinks.map(s => s.url).join(" ");
+        container.appendChild(card);
+      });
+    }
+
+    function openPlaceDetails(index) {
+      const place = tripState.available_places[index];
+      if (!place) return;
+      let modal = document.getElementById("place-detail-modal");
+      if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "place-detail-modal";
+        modal.className = "fixed inset-0 z-50 bg-slate-900/60 p-4 flex items-center justify-center";
+        document.body.appendChild(modal);
+      }
+      const links = placeSourceLinks(place);
+      const reference = place.reference_data || {};
+      const contact = reference.contact_source || {};
+      const factualDetails = [reference.category_source ? `Loại hình theo nguồn: ${reference.category_source}` : "",
+        reference.admission_fee_source ? `Giá vé (theo nguồn): ${reference.admission_fee_source}` : "",
+        Array.isArray(reference.services_source) && reference.services_source.length ? `Dịch vụ theo nguồn: ${reference.services_source.join(", ")}` : "",
+        contact.hours || "", contact.phone ? `Điện thoại: ${contact.phone}` : "", contact.email ? `Email: ${contact.email}` : ""].filter(Boolean);
+      modal.innerHTML = `<div role="dialog" aria-modal="true" class="bg-white max-w-2xl w-full max-h-[85vh] overflow-auto rounded-2xl p-6 space-y-4">
+        <div class="flex justify-between gap-4"><h2 class="text-xl font-bold text-slate-900">${escapeHtml(place.name)}</h2><button type="button" class="text-slate-500" onclick="document.getElementById('place-detail-modal').remove()" aria-label="Đóng">✕</button></div>
+        <p class="text-sm text-slate-600 whitespace-pre-line">${escapeHtml(place.introduction || place.description || "Chưa có nội dung giới thiệu từ nguồn.")}</p>
+        <p class="text-xs text-slate-500">Địa chỉ: ${escapeHtml(place.address || "Chưa có địa chỉ trong nguồn")}</p>
+        <p class="text-xs text-slate-500">Phân loại gợi ý: ${escapeHtml(displayCategory(place.category))}</p>
+        ${factualDetails.length ? `<ul class="text-xs text-slate-600 list-disc pl-5">${factualDetails.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}
+        <div class="text-xs text-slate-500">Nguồn: ${links.length ? links.map(s => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline mr-3">${escapeHtml(s.name)} ↗</a>`).join("") : "Chưa có liên kết nguồn"}</div>
+        <button type="button" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700" onclick="document.getElementById('place-detail-modal').remove()">Đóng</button>
+      </div>`;
+    }
+
+    // STEP 2
+    async function handleStep2() {
+      const checkboxes = document.querySelectorAll("#places-container input[type='checkbox']:checked");
+      const indices = Array.from(checkboxes).map(c => parseInt(c.value));
+      tripState.selected_places = indices.map(i => tripState.available_places[i]);
+
+      if (tripState.selected_places.length === 0) {
+        alert("Vui lòng chọn ít nhất một địa điểm.");
+        return;
+      }
+      const res = await fetch("/api/trip/generate-itinerary", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          destination: tripState.destination,
+          number_of_days: tripState.days,
+          transportation_preference: tripState.transport,
+          selected_places: tripState.selected_places
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || "Không thể tạo lịch trình.");
+      if (Array.isArray(data.selected_places)) {
+        tripState.selected_places = data.selected_places;
+        const byId = new Map(data.selected_places.map(place => [place.id, place]));
+        tripState.available_places = tripState.available_places.map(place => byId.get(place.id) || place);
+      }
+      tripState.itinerary = data.itinerary;
+      tripState.routes = data.routes;
+      renderItinerary(data.itinerary);
+      setStep(3);
+    }
+
+    function renderItinerary(itin) {
+      const container = document.getElementById("itinerary-days-container");
+      container.innerHTML = "";
+
+      itin.days.forEach(d => {
+        const dayBox = document.createElement("div");
+        dayBox.className = "bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3";
+
+        let itemsHtml = "";
+        d.schedule.forEach(s => {
+          const isTransit = s.activity.startsWith("Travel") || s.activity.startsWith("Di chuyển");
+          itemsHtml += `
+            <div class="flex items-start space-x-4 text-xs ${isTransit ? 'text-indigo-600 bg-indigo-50/50 p-2 rounded' : 'text-slate-800'}">
+              <span class="font-bold w-16">${s.time}</span>
+              <div class="flex-1">
+                <span class="font-semibold">${displayActivity(s.activity)}</span>
+          <p class="text-slate-500 mt-0.5">${displayItineraryDetails(s.details)}</p>
+          ${s.place_id && !["source_coordinates", "nominatim_verified", "reference_coordinates"].includes(s.geocoding_status) ? `<p class="text-amber-700 mt-1">${s.geocoding_status === "configuration_error" ? "Chưa cấu hình dịch vụ tọa độ; không ước tính quãng đường cho điểm này." : s.geocoding_status === "service_error" && s.geocoding_reason === "access_forbidden" ? "Nominatim từ chối truy cập; không ước tính quãng đường cho điểm này." : s.geocoding_status === "service_error" ? "Dịch vụ tọa độ tạm thời không phản hồi; không ước tính quãng đường cho điểm này." : ["ambiguous", "rejected"].includes(s.geocoding_status) ? "Cần xác minh địa điểm; không ước tính quãng đường cho điểm này." : "Chưa tìm thấy tọa độ; quãng đường sẽ chưa được ước tính."}</p>` : ""}
+          ${s.coordinate_source === "Nominatim" ? `<p class="text-[10px] text-slate-500 mt-1"><a class="underline" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a>${s.coordinate_attribution ? ` · ${escapeHtml(s.coordinate_attribution)}` : ""}</p>` : ""}
+              </div>
+            </div>
+          `;
+        });
+
+        dayBox.innerHTML = `
+          <div class="border-b pb-2 flex items-center justify-between">
+            <span class="font-bold text-slate-800">Ngày ${d.day_number}: ${displayTheme(d.theme)}</span>
+          </div>
+          <div class="space-y-3 pt-2">${itemsHtml}</div>
+        `;
+        container.appendChild(dayBox);
+      });
+    }
+
+    function approveItinerary() {
+      setStep(4);
+      triggerStaySearch();
+    }
+
+async function openModifyPrompt() {
+      const feedback = prompt(
+        "Bạn muốn thay đổi điều gì trong lịch trình?\n\nVí dụ:\n• 'Bỏ Lalbagh và thêm Bangalore Palace'\n• 'Bỏ Nandi Hills'\n• 'Tôi chỉ muốn đi công viên, không leo núi'\n• 'Thay Cubbon Park bằng ISKCON Temple'"
+      );
+      if (!feedback || !feedback.trim()) return;
+
+      const container = document.getElementById("itinerary-days-container");
+      container.innerHTML = `
+        <div class="bg-white p-8 rounded-2xl border border-indigo-100 flex flex-col items-center justify-center space-y-3 text-center shadow-sm">
+          <div class="animate-spin rounded-full h-9 w-9 border-b-2 border-indigo-600"></div>
+          <div>
+            <p class="text-sm font-bold text-slate-800">Đang cập nhật lịch trình...</p>
+            <p class="text-xs text-slate-500 mt-1">Yêu cầu: “${feedback}”</p>
+          </div>
+        </div>
+      `;
+
+      try {
+        const res = await fetch("/api/trip/modify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            feedback: feedback,
+            destination: tripState.destination,
+            number_of_days: tripState.days,
+            transportation_preference: tripState.transport,
+            available_places: tripState.available_places,
+            selected_places: tripState.selected_places
+          })
+        });
+
+        const data = await res.json();
+        tripState.selected_places = data.selected_places;
+        tripState.itinerary = data.itinerary;
+        tripState.routes = data.routes;
+
+        // Immediately render the freshly updated timetable
+        renderItinerary(data.itinerary);
+      } catch (err) {
+        alert("Không thể cập nhật lịch trình: " + err);
+        renderItinerary(tripState.itinerary);
+      }
+    }
+
+    // STEP 4: Stays Search
+    async function triggerStaySearch() {
+      const stayType = document.getElementById("in-stay-type").value;
+      const budget = parseInt(document.getElementById("in-stay-budget").value) || 1500000;
+      const area = document.getElementById("in-stay-area").value;
+      const container = document.getElementById("stays-container");
+      const confirmBtn = document.getElementById("btn-confirm-stay");
+
+      tripState.selected_stay = null;
+      confirmBtn.disabled = true;
+
+      container.innerHTML = `
+        <div class="bg-white p-8 rounded-2xl border border-indigo-100 flex flex-col items-center justify-center space-y-3 text-center shadow-sm">
+          <div class="animate-spin rounded-full h-9 w-9 border-b-2 border-indigo-600"></div>
+          <div>
+            <p class="text-sm font-bold text-slate-800">Đang tìm ${((stayTypeLabels[stayType] || "chỗ ở").toLowerCase())}...</p>
+            <p class="text-xs text-slate-500 mt-1">Tại ${tripState.destination}, khu vực ${(areaLabels[area] || area).toLowerCase()}, giá dưới ${formatVnd(budget)}...</p>
+          </div>
+        </div>
+      `;
+
+      try {
+        const res = await fetch("/api/trip/stays", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            destination: tripState.destination,
+            stay_type: stayType,
+            max_budget: budget,
+            preferred_area: area
+          })
+        });
+        const data = await res.json();
+        renderStays(data.accommodation_options || []);
+      } catch (err) {
+        container.innerHTML = `<div class="bg-rose-50 border border-rose-200 text-rose-700 p-4 rounded-xl text-xs">Không thể tải danh sách chỗ ở: ${err}</div>`;
+      }
+    }
+
+    function formatVnd(amount) {
+      return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND", maximumFractionDigits: 0 }).format(Number(amount) || 0);
+    }
+
+    function renderStays(stays) {
+      const container = document.getElementById("stays-container");
+      container.innerHTML = "";
+
+      if (stays.length === 0) {
+        container.innerHTML = `<div class="bg-amber-50 border border-amber-200 text-amber-800 p-6 rounded-2xl text-xs text-center">Chưa tìm thấy chỗ ở phù hợp. Hãy thử điều chỉnh ngân sách hoặc khu vực.</div>`;
+        return;
+      }
+
+      stays.forEach((s) => {
+        const item = document.createElement("div");
+        item.className = "p-4 border border-slate-200 rounded-xl bg-white hover:border-indigo-400 cursor-pointer flex items-center justify-between transition shadow-sm";
+        item.onclick = () => selectStay(s, item);
+
+        item.innerHTML = `
+          <div class="space-y-1 flex-1 pr-4">
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-slate-800 text-sm">${s.name}</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full border font-semibold bg-indigo-50 text-indigo-700 border-indigo-200">${stayTypeLabels[s.stay_type] || s.tag || s.stay_type}</span>
+            </div>
+            <div class="text-xs text-slate-500">
+              ${stayTypeLabels[s.stay_type] || s.stay_type} • <span class="text-slate-700 font-medium">${areaLabels[s.area_type] || s.area_type}</span>
+            </div>
+            <div class="text-xs text-slate-500">
+              ⭐ ${s.rating} / 5.0 • <a href="${s.booking_url}" target="_blank" class="text-indigo-600 underline font-medium" onclick="event.stopPropagation()">Xem trang đặt phòng</a>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-base font-extrabold text-slate-900">${formatVnd(s.price_per_night)}</span>
+            <span class="block text-[10px] text-slate-400">/ đêm</span>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function selectStay(stay, element) {
+      tripState.selected_stay = stay;
+      document.querySelectorAll("#stays-container > div").forEach(d => {
+        d.classList.remove("border-indigo-600", "bg-indigo-50/30", "ring-2", "ring-indigo-500");
+      });
+      element.classList.add("border-indigo-600", "bg-indigo-50/30", "ring-2", "ring-indigo-500");
+      document.getElementById("btn-confirm-stay").disabled = false;
+    }
+
+    // STEP 5: Finalize
+    async function handleStep4() {
+      const res = await fetch("/api/trip/finalize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          destination: tripState.destination,
+          number_of_days: tripState.days,
+          number_of_travelers: tripState.travelers,
+          transportation_preference: tripState.transport,
+          itinerary: tripState.itinerary,
+          selected_accommodation: tripState.selected_stay,
+          routes: tripState.routes,
+          selected_places: tripState.selected_places
+        })
+      });
+      const data = await res.json();
+      renderDossier(data);
+      setStep(5);
+    }
+
+    function renderDossier(dossier) {
+      document.getElementById("dossier-destination").innerText = `Chuyến đi ${dossier.destination || tripState.destination}`;
+      const durationSummary = String(dossier.duration_summary || "").replace(/(\d+)\s*Days?\s*\/\s*(\d+)\s*Nights?/i, "$1 ngày / $2 đêm");
+      document.getElementById("dossier-subtitle").innerText = `${durationSummary} • ${dossier.travelers || tripState.travelers} người • ${transportLabels[tripState.transport] || tripState.transport}`;
+
+      if (!hasCompleteReportItinerary(dossier.itinerary)) {
+        document.getElementById("dossier-content").innerHTML = renderReportItinerary(null);
+        return;
+      }
+
+      const stay = dossier.selected_accommodation;
+      const cost = dossier.cost_breakdown;
+
+      const container = document.getElementById("dossier-content");
+      container.innerHTML = `
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2">
+          <h3 class="font-bold text-slate-900">Chỗ ở đã chọn</h3>
+          <p class="text-sm text-slate-600"><strong>${stay.name}</strong> (${stayTypeLabels[stay.stay_type] || stay.stay_type} - ${areaLabels[stay.area_type] || stay.area_type})</p>
+          <p class="text-xs text-slate-500">Giá: ${formatVnd(stay.price_per_night)} / đêm • <a href="${stay.booking_url}" target="_blank" class="text-indigo-600 underline font-semibold">Liên kết đặt phòng</a></p>
+        </div>
+
+        <section class="space-y-3">
+          <h3 class="text-xl font-bold text-slate-900">Lịch trình chi tiết</h3>
+          ${renderReportItinerary(dossier.itinerary)}
+        </section>
+
+        <section class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+          <h3 class="font-bold text-slate-900">Địa điểm đã chọn và nguồn tham khảo</h3>
+          ${(dossier.selected_places || []).map(place => `<article class="border-b last:border-0 py-2"><h4 class="font-semibold text-sm">${escapeHtml(place.name)}</h4><p class="text-xs text-slate-600">${escapeHtml(place.description || "")}</p><div class="text-xs mt-1">${placeSourceLinks(place).map(source => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline mr-3">${escapeHtml(source.name)} ↗</a>`).join("")}</div></article>`).join("")}
+        </section>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+          <h3 class="font-bold text-slate-900">Chi phí dự kiến</h3>
+          <div class="space-y-1 text-xs text-slate-700">
+            <div class="flex justify-between py-1 border-b"><span>Chi phí chỗ ở:</span><span class="font-semibold">${formatVnd(cost.accommodation_cost)}</span></div>
+            <div class="flex justify-between py-1 border-b"><span>Di chuyển và vận chuyển:</span><span class="font-semibold">${formatVnd(cost.transportation_cost)}</span></div>
+            <div class="flex justify-between py-1 border-b"><span>Ăn uống:</span><span class="font-semibold">${formatVnd(cost.food_cost)}</span></div>
+            <div class="flex justify-between py-1 border-b"><span>Hoạt động và vé vào cửa:</span><span class="font-semibold">${formatVnd(cost.activities_cost)}</span></div>
+            <div class="flex justify-between py-1 border-b"><span>Dự phòng / chi phí khác:</span><span class="font-semibold">${formatVnd(cost.miscellaneous_cost)}</span></div>
+            <div class="flex justify-between py-2 text-base font-extrabold text-slate-900"><span>Tổng chi phí dự kiến:</span><span class="text-indigo-600">${formatVnd(cost.total_estimated_cost)}</span></div>
+          </div>
+        </div>
+
+        <button onclick="window.print()" class="no-print w-full py-3 bg-slate-900 hover:bg-black text-white font-bold rounded-xl transition">
+           In / Lưu PDF
+        </button>
+      `;
+    }
+  </script>
+</body>
+</html>

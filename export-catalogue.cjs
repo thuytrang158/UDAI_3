@@ -1,0 +1,16 @@
+const fs=require('node:fs'),vm=require('node:vm');
+const ctx=vm.createContext({Intl});
+vm.runInContext(fs.readFileSync('dist/tours-data.js','utf8'),ctx);
+vm.runInContext(fs.readFileSync('dist/tour-reviews-data.js','utf8'),ctx);
+vm.runInContext(fs.readFileSync('dist/tour-engagement.js','utf8'),ctx);
+vm.runInContext("const money=n=>new Intl.NumberFormat('vi-VN').format(n)+' ₫';",ctx);
+const details=fs.readFileSync('dist/tour-details.js','utf8');
+vm.runInContext(details.slice(0,details.indexOf('function tourDetailsHTML')),ctx);
+const catalog=ctx.TRA_CATALOG;
+fs.mkdirSync('dist/data',{recursive:true});
+fs.writeFileSync('dist/data/tours.json',JSON.stringify(catalog,null,2)+'\n');
+const intro='# Trà Journey — 10 hành trình du lịch Thái Nguyên\n\nCập nhật: 14/10/2026.\n\n'+catalog.editorialNote+'\n\n'+catalog.common.geographyNote+'\n\nTất cả tour khởi hành và kết thúc tại khu vực trung tâm Thái Nguyên. Giá là khoảng dự kiến cho đoàn 10 người lớn, ngày thường; chưa có lịch mở bán hoặc đánh giá khách hàng thực tế. Đánh giá mô phỏng trong tài liệu sử dụng tên hư cấu và được ghi nhãn rõ. Các nhà cung cấp, tuyến, dịch vụ và điều kiện tiếp cận phải được xác nhận trước khi nhận đặt chỗ.\n\n## Danh mục\n\n| Mã | Tour | Thời lượng | Giá dự kiến/người lớn |\n|---|---|---|---|\n'+catalog.tours.map(t=>`| ${t.code} | ${t.name} | ${t.days} ngày ${t.nights} đêm | ${t.price.toLocaleString('vi-VN')}–${t.priceMax.toLocaleString('vi-VN')} đ |`).join('\n')+'\n\n---\n\n';
+fs.writeFileSync('dist/data/tour-catalogue.md',intro+catalog.tours.map(t=>ctx.tourMarkdown(t)).join('\n\n---\n\n'));
+const palettes={heritage:['#d1d6b2','#697d58','VỀ MIỀN KÝ ỨC'],cave:['#b6cebf','#254d45','CÂU CHUYỆN TRONG LÒNG NÚI'],'lake-art':['#bcd8d1','#437c6d','NHỮNG NGÀY BÊN HỒ'],prairie:['#d4dfb2','#6c8a53','HẸN VỚI MIỀN XANH']};
+for(const [name,[sky,land,label]] of Object.entries(palettes))fs.writeFileSync(`dist/assets/${name}.svg`,`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"><rect width="800" height="500" fill="${sky}"/><circle cx="610" cy="125" r="57" fill="#f6edcd"/><path d="M0 270Q140 110 290 270T580 240T850 260V500H0" fill="${land}" opacity=".45"/><path d="M0 380Q180 180 340 340T800 285V500H0" fill="${land}"/><path d="M0 460Q230 300 440 420T800 350V500H0" fill="#204b3c"/><path d="M170 500Q290 385 500 390" fill="none" stroke="#efecd3" stroke-width="5" stroke-dasharray="8 12"/><text x="45" y="62" font-family="sans-serif" font-size="16" letter-spacing="3" fill="#254d38">TRÀ JOURNEY</text><text x="45" y="465" font-family="sans-serif" font-size="20" letter-spacing="2" fill="#f8f5e8">${label}</text></svg>`);
+console.log(`Exported ${catalog.tours.length} tours, ${catalog.places.length} destinations and detailed Markdown.`);
